@@ -4,6 +4,7 @@ import streamlit as st
 
 BASE_DIR = Path(__file__).parent
 TBN_VIDEO = BASE_DIR / "assets" / "TBN_Automation.mp4"
+PATHFINDHER_VIDEO = BASE_DIR / "assets" / "PathFindHer_Walk_Without_Fear.mp4"
 SALES_AI_SCREENSHOT = BASE_DIR / "assets" / "sales_ai_agent.png"
 
 BAY_AREA_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/bay-area-transit/main/assets/bay_area_dashboard_screenshot.png"
@@ -39,6 +40,7 @@ st.markdown(
     .flow-step { border-top: 1px solid #ded5ca; padding: .62rem 0; }
     .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
     .image-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+    .video-note { border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; margin: .55rem 0 .75rem; }
     .mock-dashboard { width: 100%; height: 315px; box-sizing: border-box; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; overflow: hidden; margin: .55rem 0 .75rem; }
     .mock-title { font-size: 1.08rem; font-weight: 900; color: #071d3a; margin-bottom: .3rem; }
     .mock-tabs { display:flex; gap:.65rem; border-bottom:1px solid #d7dde8; padding-bottom:.42rem; margin:.7rem 0; font-size:.68rem; color:#0d4fd7; white-space: nowrap; }
@@ -94,6 +96,13 @@ def dashboard_card(title, tag, description, tools, link, img=None, local_path=No
     st.markdown(f'<p class="muted">{description}</p><p class="mini"><strong>Tools:</strong> {tools}</p><a href="{link}" target="_blank">View project</a></div>', unsafe_allow_html=True)
 
 
+def video_or_upload_note(path, upload_name):
+    if path.exists():
+        st.video(str(path))
+    else:
+        st.markdown(f'<div class="video-note"><div class="tag">Video Pending</div><p class="muted">Upload <strong>assets/{upload_name}</strong> to show the original project video here.</p></div>', unsafe_allow_html=True)
+
+
 st.markdown('<div class="eyebrow">Portfolio Presentation</div>', unsafe_allow_html=True)
 st.title("Ritika Garg")
 st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
@@ -123,10 +132,7 @@ with m4:
 video_col, flow_col = st.columns([1.05, .95], gap="large")
 with video_col:
     st.markdown("#### Real Automation Workflow")
-    if TBN_VIDEO.exists():
-        st.video(str(TBN_VIDEO))
-    else:
-        st.markdown('<div class="card"><div class="tag">Video Pending</div><p class="muted">Upload <strong>assets/TBN_Automation.mp4</strong> to display the original workflow video.</p></div>', unsafe_allow_html=True)
+    video_or_upload_note(TBN_VIDEO, "TBN_Automation.mp4")
 with flow_col:
     st.markdown("#### Workflow Map")
     for label, text in [("01 Slack", "Watch public channel messages and thread replies."), ("02 Make.com", "Filter, deduplicate, aggregate, and route messages."), ("03 OpenAI", "Classify task category, subcategory, and reasoning."), ("04 Google Sheets", "Store AI output and human-review fields."), ("05 Looker Studio", "Display productivity and task distribution for leadership.")]:
@@ -165,13 +171,9 @@ with d3:
         img=HACKER_NEWS_SCREENSHOT_URL,
     )
 with d4:
-    dashboard_card(
-        "PathFindHer",
-        "Agentic Travel Experiences",
-        "A safety-first navigation concept that combines community safety mapping, AI area scanning, safe havens, and route-aware recommendations.",
-        "React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini",
-        "https://github.com/ritikagarg0903/PathFindHer",
-    )
+    st.markdown('<div class="card"><div class="tag">Agentic Travel Experiences</div><h3>PathFindHer</h3>', unsafe_allow_html=True)
+    video_or_upload_note(PATHFINDHER_VIDEO, "PathFindHer_Walk_Without_Fear.mp4")
+    st.markdown('<p class="muted">A safety-first navigation concept that combines community safety mapping, AI area scanning, safe havens, and route-aware recommendations.</p><p class="mini"><strong>Tools:</strong> React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini</p><a href="https://github.com/ritikagarg0903/PathFindHer" target="_blank">View project</a></div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")

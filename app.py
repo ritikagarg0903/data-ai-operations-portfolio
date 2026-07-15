@@ -1,12 +1,12 @@
 from pathlib import Path
 
-import plotly.graph_objects as go
 import streamlit as st
 
 BASE_DIR = Path(__file__).parent
 TBN_VIDEO = BASE_DIR / "assets" / "TBN_Automation.mp4"
 SALES_AI_SCREENSHOT = BASE_DIR / "assets" / "sales_ai_agent.png"
-TBN_DASHBOARD = BASE_DIR / "assets" / "tbn_dashboard.png"
+BAY_AREA_SCREENSHOT = BASE_DIR / "assets" / "bay_area_transit.png"
+HACKER_NEWS_SCREENSHOT = BASE_DIR / "assets" / "hacker_news_virality.png"
 
 st.set_page_config(
     page_title="Ritika Garg | Data, AI & Operations Product Portfolio",
@@ -139,25 +139,27 @@ with flow_col:
     ]:
         st.markdown(f'<div class="flow-step"><strong>{label}</strong><br><span class="muted">{text}</span></div>', unsafe_allow_html=True)
 
-st.header("Visual Proof")
-proof1, proof2 = st.columns(2, gap="large")
-with proof1:
-    st.markdown("#### Sales AI Agent")
-    media_panel("Sales Pipeline Command Center", "Screenshot of the AI-assisted sales pipeline dashboard. Expected path: assets/sales_ai_agent.png", SALES_AI_SCREENSHOT, "image")
-with proof2:
-    st.markdown("#### TBN Dashboard")
-    media_panel("Productivity Dashboard", "Optional screenshot of the TBN leadership dashboard. Expected path: assets/tbn_dashboard.png", TBN_DASHBOARD, "image")
+st.header("Dashboard Screenshots")
+d1, d2 = st.columns(2, gap="large")
+with d1:
+    media_panel("Sales Pipeline Command Center", "AI-assisted sales dashboard. Expected path: assets/sales_ai_agent.png", SALES_AI_SCREENSHOT, "image")
+with d2:
+    media_panel("Bay Area Transit Performance Monitor", "Transit reliability dashboard. Expected path: assets/bay_area_transit.png", BAY_AREA_SCREENSHOT, "image")
+
+st.markdown(" ")
+d3, _ = st.columns([1, 1], gap="large")
+with d3:
+    media_panel("Hacker News Virality Analysis", "Product analytics dashboard. Expected path: assets/hacker_news_virality.png", HACKER_NEWS_SCREENSHOT, "image")
 
 st.header("Project Portfolio")
 p1, p2 = st.columns(2, gap="large")
 with p1:
     project(
-        "AI-Assisted Sales Pipeline Command Center",
-        "Sales AI Agent",
-        "Interactive dashboard for pipeline health, quota gaps, forecast accuracy, rep performance, funnel concentration, and explainable deal risk scoring.",
-        "Python, Streamlit, pandas, Plotly",
-        "Turns CRM-style data into a manager-ready decision surface.",
-        "https://github.com/ritikagarg0903/sales-ops-command-center",
+        "The Best Notary Slack Automation",
+        "AI Automation",
+        "Make.com workflow that turns Slack conversations and Hubstaff activity into classified task data and leadership-ready productivity reporting.",
+        "Make.com, OpenAI, Slack, Hubstaff, Google Sheets, Looker Studio",
+        "Real operational automation with measurable time savings and a human-in-the-loop feedback process.",
     )
     project(
         "PathFindHer",
@@ -169,26 +171,21 @@ with p1:
     )
 with p2:
     project(
-        "The Best Notary Slack Automation",
-        "AI Automation",
-        "Make.com workflow that turns Slack conversations and Hubstaff activity into classified task data and leadership-ready productivity reporting.",
-        "Make.com, OpenAI, Slack, Hubstaff, Google Sheets, Looker Studio",
-        "Real operational automation with measurable time savings and a human-in-the-loop feedback process.",
+        "E-Commerce Sales Optimization",
+        "Statistical Modeling",
+        "Regression and hypothesis-testing project focused on sales drivers, marketing effectiveness, prediction intervals, and executive-ready recommendations.",
+        "R, regression, hypothesis testing, R Markdown",
+        "Shows forecasting, model interpretation, and business communication.",
+        "https://github.com/ritikagarg0903/ecommerce-sales-optimization",
     )
     project(
-        "Bay Area Transit Performance Monitor",
-        "Operational Analytics",
-        "Near-real-time ELT pipeline and dashboard for GTFS transit feeds, route delays, data freshness, and geospatial delay monitoring.",
-        "Python, SQL, BigQuery, dbt, Looker Studio",
-        "Demonstrates pipeline design, freshness monitoring, and operational KPI modeling.",
-        "https://github.com/ritikagarg0903/bay-area-transit",
+        "AI Voice-of-Customer Research Workflow",
+        "AI Insights",
+        "A structured workflow for turning public reviews and comments into sentiment, themes, objections, benefits, and growth recommendations.",
+        "Python, Streamlit, pandas, LLM classification",
+        "Included as a text case study only; no dashboard screenshot repeated here.",
+        "https://github.com/ritikagarg0903/AI-voice",
     )
-
-st.header("Impact Snapshot")
-fig = go.Figure(data=[go.Bar(x=["Manual review saved", "Classification accuracy lift"], y=[10, 25], marker_color=["#d96f5f", "#3d7b72"], text=["10+ hrs/week", "+25 pts"], textposition="outside")])
-fig.update_layout(height=320, margin=dict(l=10, r=10, t=25, b=10), paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", yaxis_title="Improvement", xaxis_title="TBN automation result", font=dict(color="#25211d"))
-fig.update_yaxes(showgrid=True, gridcolor="#ded5ca")
-st.plotly_chart(fig, use_container_width=True)
 
 st.markdown("---")
 st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")

@@ -37,8 +37,8 @@ st.markdown(
     .muted { color: #716960; line-height: 1.5; }
     .mini { color: #716960; font-size: .86rem; }
     .flow-step { border-top: 1px solid #ded5ca; padding: .62rem 0; }
-    .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #fff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
-    .image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
+    .image-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
     .mock-dashboard { width: 100%; height: 315px; box-sizing: border-box; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; overflow: hidden; margin: .55rem 0 .75rem; }
     .mock-title { font-size: 1.08rem; font-weight: 900; color: #071d3a; margin-bottom: .3rem; }
     .mock-tabs { display:flex; gap:.65rem; border-bottom:1px solid #d7dde8; padding-bottom:.42rem; margin:.7rem 0; font-size:.68rem; color:#0d4fd7; white-space: nowrap; }

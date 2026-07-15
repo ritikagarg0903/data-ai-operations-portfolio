@@ -32,21 +32,21 @@ st.markdown(
     .metric { border-top: 1px solid #ded5ca; padding: .85rem 0; }
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
-    .panel { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: 1rem; min-height: 100%; }
-    .project { border-top: 1px solid #ded5ca; padding: .95rem 0 1.05rem; }
+    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; }
     .tag { color: #3d7b72; font-size: .7rem; font-weight: 900; letter-spacing: .08rem; text-transform: uppercase; }
     .muted { color: #716960; line-height: 1.5; }
     .mini { color: #716960; font-size: .86rem; }
     .flow-step { border-top: 1px solid #ded5ca; padding: .62rem 0; }
-    .mock-dashboard { border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; }
-    .mock-title { font-size: 1.15rem; font-weight: 900; color: #071d3a; margin-bottom: .35rem; }
-    .mock-tabs { display:flex; gap:.7rem; border-bottom:1px solid #d7dde8; padding-bottom:.45rem; margin:.7rem 0; font-size:.72rem; color:#0d4fd7; }
-    .mock-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:.55rem; margin:.8rem 0; }
-    .mock-kpi { font-size: .74rem; color:#071d3a; }
-    .mock-kpi strong { display:block; font-size:1.25rem; margin-top:.2rem; }
-    .mock-chart { height: 165px; display:flex; gap:.55rem; align-items:end; border-top:1px solid #e1e6ef; padding-top:.7rem; }
-    .bar { flex:1; background:#0b70c9; color:white; text-align:center; font-size:.7rem; font-weight:800; padding-top:.35rem; min-height:42px; }
-    div[data-testid="stImage"] img { border: 1px solid #ded5ca; border-radius: 8px; }
+    .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #fff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
+    .image-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .mock-dashboard { width: 100%; height: 315px; box-sizing: border-box; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; overflow: hidden; margin: .55rem 0 .75rem; }
+    .mock-title { font-size: 1.08rem; font-weight: 900; color: #071d3a; margin-bottom: .3rem; }
+    .mock-tabs { display:flex; gap:.65rem; border-bottom:1px solid #d7dde8; padding-bottom:.42rem; margin:.7rem 0; font-size:.68rem; color:#0d4fd7; white-space: nowrap; }
+    .mock-grid { display:grid; grid-template-columns: repeat(5, 1fr); gap:.48rem; margin:.75rem 0; }
+    .mock-kpi { font-size: .68rem; color:#071d3a; }
+    .mock-kpi strong { display:block; font-size:1.08rem; margin-top:.2rem; }
+    .mock-chart { height: 145px; display:flex; gap:.5rem; align-items:end; border-top:1px solid #e1e6ef; padding-top:.65rem; }
+    .bar { flex:1; background:#0b70c9; color:white; text-align:center; font-size:.66rem; font-weight:800; padding-top:.35rem; min-height:42px; }
     </style>
     """,
     unsafe_allow_html=True,
@@ -54,76 +54,50 @@ st.markdown(
 
 
 def metric(value, label):
-    st.markdown(
-        f'<div class="metric"><div class="metric-value">{value}</div><div class="metric-label">{label}</div></div>',
-        unsafe_allow_html=True,
-    )
+    st.markdown(f'<div class="metric"><div class="metric-value">{value}</div><div class="metric-label">{label}</div></div>', unsafe_allow_html=True)
 
 
-def project(title, tag, body, tools, proof, link=None):
-    link_html = f'<a href="{link}" target="_blank">View project</a>' if link else ""
-    st.markdown(
-        f"""
-        <div class="project">
-          <div class="tag">{tag}</div>
-          <h3>{title}</h3>
-          <p class="muted">{body}</p>
-          <p><strong>Tools:</strong> {tools}</p>
-          <p class="mini"><strong>Proof:</strong> {proof}</p>
-          {link_html}
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+def image_frame(src, alt):
+    st.markdown(f'<div class="image-frame"><img src="{src}" alt="{alt}"></div>', unsafe_allow_html=True)
 
 
-def media_panel(title, caption, source=None, kind="image"):
-    st.markdown(f'<div class="tag">{title}</div>', unsafe_allow_html=True)
-    if source:
-        if kind == "video":
-            if Path(source).exists():
-                st.video(str(source))
-            else:
-                st.markdown(f'<div class="panel"><p class="muted">{caption}</p><p class="mini">Upload <strong>assets/TBN_Automation.mp4</strong> to display the real workflow video.</p></div>', unsafe_allow_html=True)
-        else:
-            st.image(str(source), use_container_width=True)
-            st.caption(caption)
+def local_image_or_mock(path):
+    if path.exists():
+        image_frame(str(path), "Sales AI dashboard")
     else:
-        st.markdown(f'<div class="panel"><p class="muted">{caption}</p></div>', unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="mock-dashboard">
+              <div class="mock-title">AI-Assisted Sales Pipeline Command Center</div>
+              <p class="mini">CRM command center for pipeline risk, forecast gaps, rep performance patterns, and manager attention.</p>
+              <div class="mock-tabs"><span>Executive Overview</span><span>Pipeline Health</span><span>Rep Performance</span><span>AI Deal Risk</span></div>
+              <div class="mock-grid">
+                <div class="mock-kpi">Open pipeline<strong>$21.5M</strong></div>
+                <div class="mock-kpi">Weighted<strong>$8.8M</strong></div>
+                <div class="mock-kpi">Quota gap<strong>$6.8M</strong></div>
+                <div class="mock-kpi">Coverage<strong>3.16x</strong></div>
+                <div class="mock-kpi">High risk<strong>$4.9M</strong></div>
+              </div>
+              <div class="mock-chart"><div class="bar" style="height:118px">5.2M</div><div class="bar" style="height:104px">4.9M</div><div class="bar" style="height:138px">6.1M</div><div class="bar" style="height:114px">5.3M</div></div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
 
-def sales_mock():
-    st.markdown(
-        """
-        <div class="mock-dashboard">
-          <div class="mock-title">AI-Assisted Sales Pipeline Command Center</div>
-          <p class="mini">CRM command center for pipeline risk, forecast gaps, rep performance patterns, and manager attention.</p>
-          <div class="mock-tabs"><span>Executive Overview</span><span>Pipeline Health</span><span>Rep Performance</span><span>AI Deal Risk</span></div>
-          <div class="mock-grid">
-            <div class="mock-kpi">Open pipeline<strong>$21.5M</strong></div>
-            <div class="mock-kpi">Weighted<strong>$8.8M</strong></div>
-            <div class="mock-kpi">Quota gap<strong>$6.8M</strong></div>
-            <div class="mock-kpi">Coverage<strong>3.16x</strong></div>
-            <div class="mock-kpi">High risk<strong>$4.9M</strong></div>
-          </div>
-          <div class="mock-chart"><div class="bar" style="height:120px">5.2M</div><div class="bar" style="height:108px">4.9M</div><div class="bar" style="height:142px">6.1M</div><div class="bar" style="height:118px">5.3M</div></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    st.caption("Upload assets/sales_ai_agent.png to replace this mock with the exact screenshot.")
+def dashboard_card(title, tag, description, tools, link, img=None, local_path=None):
+    st.markdown(f'<div class="card"><div class="tag">{tag}</div><h3>{title}</h3>', unsafe_allow_html=True)
+    if local_path is not None:
+        local_image_or_mock(local_path)
+    elif img:
+        image_frame(img, title)
+    st.markdown(f'<p class="muted">{description}</p><p class="mini"><strong>Tools:</strong> {tools}</p><a href="{link}" target="_blank">View project</a></div>', unsafe_allow_html=True)
 
 
 st.markdown('<div class="eyebrow">Portfolio Presentation</div>', unsafe_allow_html=True)
 st.title("Ritika Garg")
-st.markdown(
-    '<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>',
-    unsafe_allow_html=True,
-)
+st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
+st.markdown('<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>', unsafe_allow_html=True)
 
 intro_left, intro_right = st.columns([1.35, .65], gap="large")
 with intro_left:
@@ -149,69 +123,54 @@ with m4:
 video_col, flow_col = st.columns([1.05, .95], gap="large")
 with video_col:
     st.markdown("#### Real Automation Workflow")
-    media_panel("Slack Automation Video", "Original walkthrough of the Slack automation workflow.", TBN_VIDEO, "video")
+    if TBN_VIDEO.exists():
+        st.video(str(TBN_VIDEO))
+    else:
+        st.markdown('<div class="card"><div class="tag">Video Pending</div><p class="muted">Upload <strong>assets/TBN_Automation.mp4</strong> to display the original workflow video.</p></div>', unsafe_allow_html=True)
 with flow_col:
     st.markdown("#### Workflow Map")
-    for label, text in [
-        ("01 Slack", "Watch public channel messages and thread replies."),
-        ("02 Make.com", "Filter, deduplicate, aggregate, and route messages."),
-        ("03 OpenAI", "Classify task category, subcategory, and reasoning."),
-        ("04 Google Sheets", "Store AI output and human-review fields."),
-        ("05 Looker Studio", "Display productivity and task distribution for leadership."),
-    ]:
+    for label, text in [("01 Slack", "Watch public channel messages and thread replies."), ("02 Make.com", "Filter, deduplicate, aggregate, and route messages."), ("03 OpenAI", "Classify task category, subcategory, and reasoning."), ("04 Google Sheets", "Store AI output and human-review fields."), ("05 Looker Studio", "Display productivity and task distribution for leadership.")]:
         st.markdown(f'<div class="flow-step"><strong>{label}</strong><br><span class="muted">{text}</span></div>', unsafe_allow_html=True)
 
 st.header("Dashboard Screenshots")
 d1, d2 = st.columns(2, gap="large")
 with d1:
-    st.markdown('<div class="tag">Sales Pipeline Command Center</div>', unsafe_allow_html=True)
-    if SALES_AI_SCREENSHOT.exists():
-        st.image(str(SALES_AI_SCREENSHOT), use_container_width=True)
-        st.caption("AI-assisted sales dashboard.")
-    else:
-        sales_mock()
+    dashboard_card(
+        "AI-Assisted Sales Pipeline Command Center",
+        "Sales AI Agent",
+        "A CRM command center for spotting pipeline risk, quota gaps, forecast realism, rep performance patterns, and deals needing manager attention.",
+        "Python, Streamlit, pandas, Plotly",
+        "https://github.com/ritikagarg0903/sales-ops-command-center",
+        local_path=SALES_AI_SCREENSHOT,
+    )
 with d2:
-    media_panel("Bay Area Transit Performance Monitor", "Transit reliability dashboard.", BAY_AREA_SCREENSHOT_URL, "image")
+    dashboard_card(
+        "Bay Area Transit Performance Monitor",
+        "Operational Analytics",
+        "A near-real-time reliability dashboard for monitoring route delays, data freshness, severity trends, and live geospatial delay patterns.",
+        "Python, SQL, BigQuery, dbt, Looker Studio",
+        "https://github.com/ritikagarg0903/bay-area-transit",
+        img=BAY_AREA_SCREENSHOT_URL,
+    )
 
 st.markdown(" ")
-d3, _ = st.columns([1.06, .94], gap="large")
+d3, d4 = st.columns(2, gap="large")
 with d3:
-    media_panel("Hacker News Virality Analysis", "Product analytics dashboard.", HACKER_NEWS_SCREENSHOT_URL, "image")
-
-st.header("Project Portfolio")
-p1, p2 = st.columns(2, gap="large")
-with p1:
-    project(
-        "The Best Notary Slack Automation",
-        "AI Automation",
-        "Make.com workflow that turns Slack conversations and Hubstaff activity into classified task data and leadership-ready productivity reporting.",
-        "Make.com, OpenAI, Slack, Hubstaff, Google Sheets, Looker Studio",
-        "Real operational automation with measurable time savings and a human-in-the-loop feedback process.",
+    dashboard_card(
+        "Hacker News Virality Analysis",
+        "Product Analytics",
+        "A product analytics dashboard exploring content virality, creator retention, posting windows, and engagement patterns across 286K+ posts.",
+        "SQL, BigQuery, dbt, Looker Studio",
+        "https://github.com/ritikagarg0903/hacker-news-analytics",
+        img=HACKER_NEWS_SCREENSHOT_URL,
     )
-    project(
+with d4:
+    dashboard_card(
         "PathFindHer",
         "Agentic Travel Experiences",
-        "Safety-first navigation concept combining community safety mapping, AI area scanning, safe havens, and route-aware recommendations.",
+        "A safety-first navigation concept that combines community safety mapping, AI area scanning, safe havens, and route-aware recommendations.",
         "React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini",
-        "Shows recommendation logic, routing constraints, and user-centered AI product thinking.",
         "https://github.com/ritikagarg0903/PathFindHer",
-    )
-with p2:
-    project(
-        "E-Commerce Sales Optimization",
-        "Statistical Modeling",
-        "Regression and hypothesis-testing project focused on sales drivers, marketing effectiveness, prediction intervals, and executive-ready recommendations.",
-        "R, regression, hypothesis testing, R Markdown",
-        "Shows forecasting, model interpretation, and business communication.",
-        "https://github.com/ritikagarg0903/ecommerce-sales-optimization",
-    )
-    project(
-        "AI Voice-of-Customer Research Workflow",
-        "AI Insights",
-        "A structured workflow for turning public reviews and comments into sentiment, themes, objections, benefits, and growth recommendations.",
-        "Python, Streamlit, pandas, LLM classification",
-        "Included as a text case study only; no dashboard screenshot repeated here.",
-        "https://github.com/ritikagarg0903/AI-voice",
     )
 
 st.markdown("---")

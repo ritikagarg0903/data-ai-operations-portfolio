@@ -37,6 +37,11 @@ st.markdown(
     .tag { color: #3d7b72; font-size: .7rem; font-weight: 900; letter-spacing: .08rem; text-transform: uppercase; }
     .muted { color: #716960; line-height: 1.5; }
     .mini { color: #716960; font-size: .86rem; }
+    .project-copy { border-top: 1px solid #ded5ca; margin-top: .85rem; padding-top: .85rem; }
+    .project-copy p { margin: 0 0 .55rem 0; }
+    .project-copy strong { color: #25211d; }
+    .tools-line { color: #716960; font-size: .86rem; margin-bottom: .7rem !important; }
+    .project-link { display: inline-block; margin-top: .1rem; }
     .flow-step { border-top: 1px solid #ded5ca; padding: .62rem 0; }
     .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
     .image-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
@@ -87,13 +92,27 @@ def local_image_or_mock(path):
         )
 
 
+def project_copy(description, tools, link):
+    st.markdown(
+        f"""
+        <div class="project-copy">
+          <p class="muted"><strong>What it shows:</strong> {description}</p>
+          <p class="tools-line"><strong>Tools:</strong> {tools}</p>
+          <a class="project-link" href="{link}" target="_blank">View project</a>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 def dashboard_card(title, tag, description, tools, link, img=None, local_path=None):
     st.markdown(f'<div class="card"><div class="tag">{tag}</div><h3>{title}</h3>', unsafe_allow_html=True)
     if local_path is not None:
         local_image_or_mock(local_path)
     elif img:
         image_frame(img, title)
-    st.markdown(f'<p class="muted">{description}</p><p class="mini"><strong>Tools:</strong> {tools}</p><a href="{link}" target="_blank">View project</a></div>', unsafe_allow_html=True)
+    project_copy(description, tools, link)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 def video_or_upload_note(path, upload_name):
@@ -117,7 +136,7 @@ with intro_right:
 
 st.header("Flagship Work")
 st.subheader("The Best Notary Slack Productivity Automation")
-st.write("An end-to-end automation workflow that captures Slack work updates and Hubstaff activity, classifies tasks with AI, stores structured records in Google Sheets, and feeds leadership reporting in Looker Studio.")
+st.write("A Slack-to-dashboard automation that turns daily work updates into structured productivity insight for leadership review.")
 
 m1, m2, m3, m4 = st.columns(4)
 with m1:
@@ -135,7 +154,7 @@ with video_col:
     video_or_upload_note(TBN_VIDEO, "TBN_Automation.mp4")
 with flow_col:
     st.markdown("#### Workflow Map")
-    for label, text in [("01 Slack", "Watch public channel messages and thread replies."), ("02 Make.com", "Filter, deduplicate, aggregate, and route messages."), ("03 OpenAI", "Classify task category, subcategory, and reasoning."), ("04 Google Sheets", "Store AI output and human-review fields."), ("05 Looker Studio", "Display productivity and task distribution for leadership.")]:
+    for label, text in [("01 Slack", "Capture public channel updates and thread replies."), ("02 Make.com", "Filter, deduplicate, aggregate, and route work signals."), ("03 OpenAI", "Classify category, subcategory, priority, and reasoning."), ("04 Google Sheets", "Store AI output with fields for human review."), ("05 Looker Studio", "Surface productivity and task distribution for leadership.")]:
         st.markdown(f'<div class="flow-step"><strong>{label}</strong><br><span class="muted">{text}</span></div>', unsafe_allow_html=True)
 
 st.header("Dashboard Screenshots")
@@ -144,7 +163,7 @@ with d1:
     dashboard_card(
         "AI-Assisted Sales Pipeline Command Center",
         "Sales AI Agent",
-        "A CRM command center for spotting pipeline risk, quota gaps, forecast realism, rep performance patterns, and deals needing manager attention.",
+        "Turns pipeline data into one executive view for quota gaps, coverage, forecast confidence, rep performance, and deal risk.",
         "Python, Streamlit, pandas, Plotly",
         "https://github.com/ritikagarg0903/sales-ops-command-center",
         local_path=SALES_AI_SCREENSHOT,
@@ -153,7 +172,7 @@ with d2:
     dashboard_card(
         "Bay Area Transit Performance Monitor",
         "Operational Analytics",
-        "A near-real-time reliability dashboard for monitoring route delays, data freshness, severity trends, and live geospatial delay patterns.",
+        "Tracks reliability with delay KPIs, freshness checks, route trends, heatmaps, and live geospatial context.",
         "Python, SQL, BigQuery, dbt, Looker Studio",
         "https://github.com/ritikagarg0903/bay-area-transit",
         img=BAY_AREA_SCREENSHOT_URL,
@@ -165,7 +184,7 @@ with d3:
     dashboard_card(
         "Hacker News Virality Analysis",
         "Product Analytics",
-        "A product analytics dashboard exploring content virality, creator retention, posting windows, and engagement patterns across 286K+ posts.",
+        "Analyzes 286K+ posts to reveal when content gains traction, where posts stall, and how creator cohorts retain.",
         "SQL, BigQuery, dbt, Looker Studio",
         "https://github.com/ritikagarg0903/hacker-news-analytics",
         img=HACKER_NEWS_SCREENSHOT_URL,
@@ -173,7 +192,12 @@ with d3:
 with d4:
     st.markdown('<div class="card"><div class="tag">Agentic Travel Experiences</div><h3>PathFindHer</h3>', unsafe_allow_html=True)
     video_or_upload_note(PATHFINDHER_VIDEO, "PathFindHer_Walk_Without_Fear.mp4")
-    st.markdown('<p class="muted">A safety-first navigation concept that combines community safety mapping, AI area scanning, safe havens, and route-aware recommendations.</p><p class="mini"><strong>Tools:</strong> React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini</p><a href="https://github.com/ritikagarg0903/PathFindHer" target="_blank">View project</a></div>', unsafe_allow_html=True)
+    project_copy(
+        "Shows a safety-first travel experience with AI area scanning, community signals, safe havens, and route-aware recommendations.",
+        "React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini",
+        "https://github.com/ritikagarg0903/PathFindHer",
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")

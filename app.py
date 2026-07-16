@@ -20,16 +20,16 @@ st.markdown(
     """
     <style>
     .stApp { background: #f8f2ea; color: #25211d; }
-    .block-container { max-width: 1240px; padding-top: 2rem; padding-bottom: 2rem; }
-    h1 { font-size: clamp(2.8rem, 6.6vw, 6rem); line-height: .92; margin: .15rem 0 .4rem; letter-spacing: 0; }
-    h2 { border-top: 1px solid #ded5ca; padding-top: 1rem; margin-top: 1.8rem; letter-spacing: 0; }
+    .block-container { max-width: 1240px; padding-top: 3.4rem; padding-bottom: 2rem; }
+    h1 { font-size: clamp(2.8rem, 6.6vw, 6rem); line-height: 1; margin: 0 0 .55rem; letter-spacing: 0; }
+    h2 { border-top: 1px solid #ded5ca; padding-top: 1rem; margin-top: 1.45rem; letter-spacing: 0; }
     h3 { color: #25211d; letter-spacing: 0; margin-bottom: .35rem; }
     a { color: #246b61 !important; font-weight: 800; text-decoration: none; }
-    .eyebrow { color: #d96f5f; font-size: .74rem; font-weight: 900; letter-spacing: .22rem; text-transform: uppercase; }
     .subhead { color: #716960; font-size: 1.08rem; line-height: 1.5; max-width: 900px; margin-bottom: .75rem; }
     .pill-row { display: flex; flex-wrap: wrap; gap: .45rem; margin: .5rem 0 .9rem; }
     .pill { border: 1px solid #ccbfb0; border-radius: 999px; padding: .38rem .7rem; font-size: .72rem; font-weight: 900; letter-spacing: .07rem; text-transform: uppercase; background: rgba(255,250,244,.75); white-space: nowrap; }
-    .contact { border-top: 1px solid #ded5ca; padding-top: .75rem; display: flex; flex-wrap: wrap; gap: .85rem; align-items: center; }
+    .hero-contact { border-top: 1px solid #ded5ca; padding-top: .8rem; margin-top: .85rem; display: flex; flex-wrap: wrap; gap: .9rem; align-items: center; }
+    .hero-contact strong { margin-right: .2rem; }
     .metric { border-top: 1px solid #ded5ca; padding: .85rem 0; }
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
@@ -122,17 +122,10 @@ def video_or_upload_note(path, upload_name):
         st.markdown(f'<div class="video-note"><div class="tag">Video Pending</div><p class="muted">Upload <strong>assets/{upload_name}</strong> to show the original project video here.</p></div>', unsafe_allow_html=True)
 
 
-st.markdown('<div class="eyebrow">Portfolio Presentation</div>', unsafe_allow_html=True)
 st.title("Ritika Garg")
 st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
 st.markdown('<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>', unsafe_allow_html=True)
-
-intro_left, intro_right = st.columns([1.35, .65], gap="large")
-with intro_left:
-    st.subheader("What This Portfolio Shows")
-    st.write("A focused set of work across Slack automation, sales AI dashboards, safe routing, and operational analytics. The throughline is the same: convert fragmented signals into structured decisions.")
-with intro_right:
-    st.markdown('<div class="contact"><strong>Contact</strong><a href="https://github.com/ritikagarg0903" target="_blank">GitHub</a><a href="https://linkedin.com/in/ritikagarg14" target="_blank">LinkedIn</a><a href="mailto:ritikagarg0903@gmail.com">Email</a></div>', unsafe_allow_html=True)
+st.markdown('<div class="hero-contact"><strong>Contact</strong><a href="https://github.com/ritikagarg0903" target="_blank">GitHub</a><a href="https://linkedin.com/in/ritikagarg14" target="_blank">LinkedIn</a><a href="mailto:ritikagarg0903@gmail.com">Email</a></div>', unsafe_allow_html=True)
 
 st.header("Flagship Work")
 st.subheader("The Best Notary Slack Productivity Automation")

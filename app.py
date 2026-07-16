@@ -57,6 +57,7 @@ st.markdown(
     .flow-step span { display: block; color: #716960; font-size: .86rem; line-height: 1.38; }
     .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
     .image-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+    .media-gap { height: .55rem; }
     .video-note { border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; margin: .55rem 0 .75rem; }
     .mock-dashboard { width: 100%; height: 315px; box-sizing: border-box; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; overflow: hidden; margin: .55rem 0 .75rem; }
     .mock-title { font-size: 1.08rem; font-weight: 900; color: #071d3a; margin-bottom: .3rem; }
@@ -244,6 +245,7 @@ with d4:
         ''',
         unsafe_allow_html=True,
     )
+    st.markdown('<div class="media-gap"></div>', unsafe_allow_html=True)
     video_or_upload_note(PATHFINDHER_VIDEO, "PathFindHer_Walk_Without_Fear.mp4")
     project_copy(
         "Shows a safety-first travel experience with AI area scanning, community signals, safe havens, and route-aware recommendations, built with Google AI Studio.",

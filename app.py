@@ -42,7 +42,10 @@ st.markdown(
     .project-copy strong { color: #25211d; }
     .tools-line { color: #716960; font-size: .86rem; margin-bottom: .7rem !important; }
     .project-link { display: inline-block; margin-top: .1rem; }
-    .flow-step { border-top: 1px solid #ded5ca; padding: .62rem 0; }
+    .workflow-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .7rem; margin-top: .7rem; }
+    .flow-step { border-top: 1px solid #ded5ca; padding: .72rem 0 0; min-height: 118px; }
+    .flow-step strong { display: block; margin-bottom: .28rem; }
+    .flow-step span { font-size: .9rem; }
     .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
     .image-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
     .video-note { border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; margin: .55rem 0 .75rem; }
@@ -54,6 +57,7 @@ st.markdown(
     .mock-kpi strong { display:block; font-size:1.08rem; margin-top:.2rem; }
     .mock-chart { height: 145px; display:flex; gap:.5rem; align-items:end; border-top:1px solid #e1e6ef; padding-top:.65rem; }
     .bar { flex:1; background:#0b70c9; color:white; text-align:center; font-size:.66rem; font-weight:800; padding-top:.35rem; min-height:42px; }
+    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } }
     </style>
     """,
     unsafe_allow_html=True,
@@ -122,6 +126,10 @@ def video_or_upload_note(path, upload_name):
         st.markdown(f'<div class="video-note"><div class="tag">Video Pending</div><p class="muted">Upload <strong>assets/{upload_name}</strong> to show the original project video here.</p></div>', unsafe_allow_html=True)
 
 
+def workflow_step(label, text):
+    st.markdown(f'<div class="flow-step"><strong>{label}</strong><span class="muted">{text}</span></div>', unsafe_allow_html=True)
+
+
 st.title("Ritika Garg")
 st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
 st.markdown('<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>', unsafe_allow_html=True)
@@ -139,16 +147,16 @@ with m2:
 with m3:
     metric("85%", "classification accuracy after feedback loop")
 with m4:
-    metric("1", "leadership reporting system")
+    metric("Live", "leadership reporting dashboard")
 
-video_col, flow_col = st.columns([1.05, .95], gap="large")
-with video_col:
-    st.markdown("#### Real Automation Workflow")
-    video_or_upload_note(TBN_VIDEO, "TBN_Automation.mp4")
-with flow_col:
-    st.markdown("#### Workflow Map")
-    for label, text in [("01 Slack", "Capture public channel updates and thread replies."), ("02 Make.com", "Filter, deduplicate, aggregate, and route work signals."), ("03 OpenAI", "Classify category, subcategory, priority, and reasoning."), ("04 Google Sheets", "Store AI output with fields for human review."), ("05 Looker Studio", "Surface productivity and task distribution for leadership.")]:
-        st.markdown(f'<div class="flow-step"><strong>{label}</strong><br><span class="muted">{text}</span></div>', unsafe_allow_html=True)
+st.markdown("#### Real Automation Workflow")
+video_or_upload_note(TBN_VIDEO, "TBN_Automation.mp4")
+
+st.markdown("#### Workflow Map")
+st.markdown('<div class="workflow-grid">', unsafe_allow_html=True)
+for label, text in [("01 Slack", "Capture channel updates and thread replies."), ("02 Make.com", "Filter, deduplicate, and route work signals."), ("03 OpenAI", "Classify category, priority, and reasoning."), ("04 Google Sheets", "Store AI output with human-review fields."), ("05 Looker Studio", "Surface productivity insight for leadership.")]:
+    workflow_step(label, text)
+st.markdown('</div>', unsafe_allow_html=True)
 
 st.header("Dashboard Screenshots")
 d1, d2 = st.columns(2, gap="large")

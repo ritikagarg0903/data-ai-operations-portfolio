@@ -3,7 +3,7 @@ from pathlib import Path
 import streamlit as st
 
 BASE_DIR = Path(__file__).parent
-TBN_VIDEO = BASE_DIR / "assets" / "TBN_Automation.mp4"
+TBN_GIF = BASE_DIR / "assets" / "tbn_auto.gif"
 PATHFINDHER_VIDEO = BASE_DIR / "assets" / "PathFindHer_Walk_Without_Fear.mp4"
 SALES_AI_SCREENSHOT = BASE_DIR / "assets" / "sales_ai_agent.png"
 
@@ -135,6 +135,13 @@ def video_or_upload_note(path, upload_name):
         st.markdown(f'<div class="video-note"><div class="tag">Video Pending</div><p class="muted">Upload <strong>assets/{upload_name}</strong> to show the original project video here.</p></div>', unsafe_allow_html=True)
 
 
+def gif_or_upload_note(path, upload_name):
+    if path.exists():
+        st.image(str(path), use_container_width=True)
+    else:
+        st.markdown(f'<div class="video-note"><div class="tag">GIF Pending</div><p class="muted">Upload <strong>assets/{upload_name}</strong> to show the automation workflow here.</p></div>', unsafe_allow_html=True)
+
+
 st.title("Ritika Garg")
 st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
 st.markdown('<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>', unsafe_allow_html=True)
@@ -174,7 +181,7 @@ with m4:
     metric("Live", "leadership reporting dashboard")
 
 st.markdown("#### Real Automation Workflow")
-video_or_upload_note(TBN_VIDEO, "TBN_Automation.mp4")
+gif_or_upload_note(TBN_GIF, "tbn_auto.gif")
 
 st.markdown("#### Workflow Map")
 st.markdown(

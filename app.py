@@ -39,10 +39,10 @@ st.markdown(
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
     .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; }
     .tag { color: #3d7b72; font-size: .7rem; font-weight: 900; letter-spacing: .08rem; text-transform: uppercase; }
-    .card-title-row { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin: .35rem 0 .55rem; }
+    .card-title-row { position: relative; margin: .35rem 0 0; padding-right: 10.8rem; min-height: 2.2rem; }
     .card-title-row h3 { margin: 0; }
-    .winner-badge { display: inline-flex; align-items: center; gap: .34rem; border: 1px solid #d7b36b; border-radius: 999px; background: #fff3cf; color: #775217; padding: .34rem .56rem; font-size: .68rem; font-weight: 900; letter-spacing: .045rem; text-transform: uppercase; white-space: nowrap; }
-    .winner-badge svg { width: 14px; height: 14px; flex: 0 0 auto; }
+    .winner-badge { position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: .3rem; border: 1px solid #d7b36b; border-radius: 999px; background: #fff3cf; color: #775217; padding: .3rem .5rem; font-size: .64rem; font-weight: 900; letter-spacing: .035rem; text-transform: uppercase; white-space: nowrap; }
+    .winner-badge svg { width: 13px; height: 13px; flex: 0 0 auto; }
     .muted { color: #716960; line-height: 1.5; }
     .mini { color: #716960; font-size: .86rem; }
     .project-copy { border-top: 1px solid #ded5ca; margin-top: .85rem; padding-top: .85rem; }
@@ -65,7 +65,7 @@ st.markdown(
     .mock-kpi strong { display:block; font-size:1.08rem; margin-top:.2rem; }
     .mock-chart { height: 145px; display:flex; gap:.5rem; align-items:end; border-top:1px solid #e1e6ef; padding-top:.65rem; }
     .bar { flex:1; background:#0b70c9; color:white; text-align:center; font-size:.66rem; font-weight:800; padding-top:.35rem; min-height:42px; }
-    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } .card-title-row { align-items: flex-start; flex-direction: column; gap: .35rem; } }
+    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } .card-title-row { padding-right: 0; } .winner-badge { position: static; transform: none; margin-top: .35rem; } }
     </style>
     """,
     unsafe_allow_html=True,

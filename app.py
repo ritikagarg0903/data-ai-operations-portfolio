@@ -19,7 +19,8 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    .stApp { background: #f8f2ea; color: #25211d; }
+    .stApp { background: #f8f2ea; color: #25211d; caret-color: transparent; }
+    a, button, input, textarea, select, video { caret-color: auto; }
     .block-container { max-width: 1240px; padding-top: 3.4rem; padding-bottom: 2rem; }
     h1 { font-size: clamp(2.8rem, 6.6vw, 6rem); line-height: 1; margin: 0 0 .55rem; letter-spacing: 0; }
     h2 { border-top: 1px solid #ded5ca; padding-top: 1rem; margin-top: 1.45rem; letter-spacing: 0; }
@@ -38,8 +39,10 @@ st.markdown(
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
     .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; }
     .tag { color: #3d7b72; font-size: .7rem; font-weight: 900; letter-spacing: .08rem; text-transform: uppercase; }
-    .winner-badge { display: inline-flex; align-items: center; gap: .4rem; border: 1px solid #d7b36b; border-radius: 999px; background: #fff3cf; color: #775217; padding: .4rem .65rem; margin: .2rem 0 .35rem; font-size: .76rem; font-weight: 900; letter-spacing: .06rem; text-transform: uppercase; }
-    .winner-badge svg { width: 15px; height: 15px; flex: 0 0 auto; }
+    .card-title-row { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin: .35rem 0 .55rem; }
+    .card-title-row h3 { margin: 0; }
+    .winner-badge { display: inline-flex; align-items: center; gap: .34rem; border: 1px solid #d7b36b; border-radius: 999px; background: #fff3cf; color: #775217; padding: .34rem .56rem; font-size: .68rem; font-weight: 900; letter-spacing: .045rem; text-transform: uppercase; white-space: nowrap; }
+    .winner-badge svg { width: 14px; height: 14px; flex: 0 0 auto; }
     .muted { color: #716960; line-height: 1.5; }
     .mini { color: #716960; font-size: .86rem; }
     .project-copy { border-top: 1px solid #ded5ca; margin-top: .85rem; padding-top: .85rem; }
@@ -62,7 +65,7 @@ st.markdown(
     .mock-kpi strong { display:block; font-size:1.08rem; margin-top:.2rem; }
     .mock-chart { height: 145px; display:flex; gap:.5rem; align-items:end; border-top:1px solid #e1e6ef; padding-top:.65rem; }
     .bar { flex:1; background:#0b70c9; color:white; text-align:center; font-size:.66rem; font-weight:800; padding-top:.35rem; min-height:42px; }
-    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } }
+    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } .card-title-row { align-items: flex-start; flex-direction: column; gap: .35rem; } }
     </style>
     """,
     unsafe_allow_html=True,
@@ -223,10 +226,12 @@ with d4:
         '''
         <div class="card">
           <div class="tag">Agentic Product Experiences</div>
-          <h3>PathFindHer</h3>
-          <div class="winner-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
-            Hackathon Winner
+          <div class="card-title-row">
+            <h3>PathFindHer</h3>
+            <div class="winner-badge">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>
+              Hackathon Winner
+            </div>
           </div>
         ''',
         unsafe_allow_html=True,

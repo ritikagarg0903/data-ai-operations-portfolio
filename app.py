@@ -189,7 +189,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.header("Dashboard Screenshots")
+st.header("Projects Highlights")
 d1, d2 = st.columns(2, gap="large")
 with d1:
     dashboard_card(

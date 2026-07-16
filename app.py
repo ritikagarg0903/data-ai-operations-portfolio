@@ -38,9 +38,10 @@ st.markdown(
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
     .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; }
+    .project-heading { position: relative; min-height: 118px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+    .project-heading.with-badge { padding-right: 10.5rem; }
+    .project-heading h3 { margin: .62rem 0 0; line-height: 1.12; }
     .tag { color: #3d7b72; font-size: .7rem; font-weight: 900; letter-spacing: .08rem; text-transform: uppercase; }
-    .card-title-row { position: relative; margin: .35rem 0 0; padding-right: 10.8rem; min-height: 2.2rem; }
-    .card-title-row h3 { margin: 0; }
     .winner-badge { position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: .3rem; border: 1px solid #d7b36b; border-radius: 999px; background: #fff3cf; color: #775217; padding: .3rem .5rem; font-size: .64rem; font-weight: 900; letter-spacing: .035rem; text-transform: uppercase; white-space: nowrap; }
     .winner-badge svg { width: 13px; height: 13px; flex: 0 0 auto; }
     .muted { color: #716960; line-height: 1.5; }
@@ -65,7 +66,7 @@ st.markdown(
     .mock-kpi strong { display:block; font-size:1.08rem; margin-top:.2rem; }
     .mock-chart { height: 145px; display:flex; gap:.5rem; align-items:end; border-top:1px solid #e1e6ef; padding-top:.65rem; }
     .bar { flex:1; background:#0b70c9; color:white; text-align:center; font-size:.66rem; font-weight:800; padding-top:.35rem; min-height:42px; }
-    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } .card-title-row { padding-right: 0; } .winner-badge { position: static; transform: none; margin-top: .35rem; } }
+    @media (max-width: 900px) { .workflow-grid { grid-template-columns: 1fr; } .flow-step { min-height: auto; } .project-heading { min-height: auto; justify-content: flex-start; } .project-heading.with-badge { padding-right: 0; } .winner-badge { position: static; transform: none; margin-top: .55rem; width: fit-content; } }
     </style>
     """,
     unsafe_allow_html=True,
@@ -118,7 +119,7 @@ def project_copy(description, tools, link):
 
 
 def dashboard_card(title, tag, description, tools, link, img=None, local_path=None):
-    st.markdown(f'<div class="card"><div class="tag">{tag}</div><h3>{title}</h3>', unsafe_allow_html=True)
+    st.markdown(f'<div class="card"><div class="project-heading"><div class="tag">{tag}</div><h3>{title}</h3></div>', unsafe_allow_html=True)
     if local_path is not None:
         local_image_or_mock(local_path)
     elif img:
@@ -225,8 +226,8 @@ with d4:
     st.markdown(
         '''
         <div class="card">
-          <div class="tag">Agentic Product Experiences</div>
-          <div class="card-title-row">
+          <div class="project-heading with-badge">
+            <div class="tag">Agentic Product Experiences</div>
             <h3>PathFindHer</h3>
             <div class="winner-badge">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path></svg>

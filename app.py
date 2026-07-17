@@ -236,7 +236,7 @@ def render_journey_timeline(journey: list[dict]):
             }}
             .career-path {{
               display: grid;
-              grid-template-columns: repeat(8, minmax(130px, 1fr));
+              grid-template-columns: repeat(7, minmax(140px, 1fr));
               gap: .5rem;
               overflow-x: auto;
               padding: .25rem 0 .35rem;
@@ -324,53 +324,72 @@ def render_journey_timeline(journey: list[dict]):
             .project-grid {{
               display: grid;
               grid-template-columns: repeat(3, minmax(0, 1fr));
-              gap: .75rem;
+              gap: .85rem;
             }}
             .project-shot {{
               border: 1px solid #ded5ca;
               border-radius: 8px;
-              background: #ffffff;
-              min-height: 132px;
-              overflow: hidden;
-              position: relative;
+              background: #fffdf9;
+              min-height: 228px;
+              padding: .72rem;
+              display: flex;
+              flex-direction: column;
+              gap: .55rem;
             }}
-            .project-shot img {{
-              width: 100%;
-              height: 132px;
-              object-fit: cover;
-              display: block;
-            }}
-            .project-shot span {{
-              position: absolute;
-              left: .55rem;
-              right: .55rem;
-              bottom: .5rem;
-              border-radius: 999px;
-              background: rgba(255, 250, 244, .92);
-              color: #25211d;
-              font-size: .68rem;
+            .project-shot-kicker {{
+              color: #3d7b72;
+              font-size: .62rem;
               font-weight: 900;
-              letter-spacing: .04rem;
-              padding: .32rem .48rem;
+              letter-spacing: .08rem;
+              line-height: 1.1;
               text-transform: uppercase;
             }}
+            .project-shot-title {{
+              color: #25211d;
+              font-size: .88rem;
+              font-weight: 900;
+              line-height: 1.15;
+              min-height: 2rem;
+            }}
+            .project-shot-frame {{
+              align-items: center;
+              background: #ffffff;
+              border: 1px solid #ebe3d9;
+              border-radius: 6px;
+              display: flex;
+              height: 112px;
+              justify-content: center;
+              overflow: hidden;
+            }}
+            .project-shot-frame img {{
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+              display: block;
+            }}
+            .project-shot-desc {{
+              color: #716960;
+              font-size: .76rem;
+              line-height: 1.34;
+            }}
             .sales-mini {{
-              height: 132px;
+              width: 100%;
+              height: 100%;
               box-sizing: border-box;
-              padding: .7rem;
+              padding: .65rem;
             }}
             .sales-mini-title {{
               color: #071d3a;
-              font-size: .78rem;
+              font-size: .72rem;
               font-weight: 900;
               line-height: 1.15;
-              margin-bottom: .45rem;
+              margin-bottom: .4rem;
             }}
             .sales-mini-bars {{
               align-items: end;
               display: flex;
               gap: .34rem;
-              height: 72px;
+              height: 64px;
               border-top: 1px solid #e1e6ef;
               padding-top: .45rem;
             }}
@@ -414,9 +433,24 @@ def render_journey_timeline(journey: list[dict]):
                 <div class="project-moments">
                   <div class="strip-title">Portfolio Project Snapshots</div>
                   <div class="project-grid">
-                    <div class="project-shot sales-mini"><div class="sales-mini-title">AI Sales Pipeline Command Center</div><div class="sales-mini-bars"><i style="height: 56px"></i><i style="height: 48px"></i><i style="height: 70px"></i><i style="height: 60px"></i></div><span>Sales AI Agent</span></div>
-                    <div class="project-shot"><img src="{HACKER_NEWS_SCREENSHOT_URL}" alt="Hacker News analytics dashboard"><span>Hacker News Analytics</span></div>
-                    <div class="project-shot"><img src="{BAY_AREA_SCREENSHOT_URL}" alt="Bay Area transit dashboard"><span>Transit Performance</span></div>
+                    <div class="project-shot">
+                      <div class="project-shot-kicker">Sales AI Agent</div>
+                      <div class="project-shot-title">AI Sales Pipeline Command Center</div>
+                      <div class="project-shot-frame"><div class="sales-mini"><div class="sales-mini-title">Pipeline risk, quota gap, and forecast view</div><div class="sales-mini-bars"><i style="height: 56px"></i><i style="height: 48px"></i><i style="height: 70px"></i><i style="height: 60px"></i></div></div></div>
+                      <div class="project-shot-desc">A decision dashboard for manager attention, pipeline health, and revenue risk.</div>
+                    </div>
+                    <div class="project-shot">
+                      <div class="project-shot-kicker">Product Analytics</div>
+                      <div class="project-shot-title">Hacker News Virality Analysis</div>
+                      <div class="project-shot-frame"><img src="{HACKER_NEWS_SCREENSHOT_URL}" alt="Hacker News analytics dashboard"></div>
+                      <div class="project-shot-desc">Creator retention, posting windows, and content virality signals across 286K+ posts.</div>
+                    </div>
+                    <div class="project-shot">
+                      <div class="project-shot-kicker">Operations Analytics</div>
+                      <div class="project-shot-title">Bay Area Transit Performance Monitor</div>
+                      <div class="project-shot-frame"><img src="{BAY_AREA_SCREENSHOT_URL}" alt="Bay Area transit dashboard"></div>
+                      <div class="project-shot-desc">Delay trends, freshness checks, and live reliability views for transit operations.</div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -459,14 +493,6 @@ journey = [
         "organization": "FORE School of Management, New Delhi",
         "location": "India",
         "contribution": "Built a foundation in international business, marketing research, structured problem-solving, and strategy.",
-    },
-    {
-        "period": "2020",
-        "icon": "MR",
-        "milestone": "Marketing and Research Intern",
-        "organization": "Global Governance Initiative",
-        "location": "Internship",
-        "contribution": "Identified three new market segments through SQL-based industry analysis, informing expansion strategy.",
     },
     {
         "period": "2021-2023",

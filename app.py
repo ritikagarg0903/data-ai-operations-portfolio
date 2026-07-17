@@ -111,14 +111,17 @@ def local_image_or_mock(path):
         )
 
 
-def project_copy(description, tools, link):
+def project_copy(description, tools, link=None):
+    links_html = ""
+    if link:
+        links_html = f'<a class="project-link" href="{link}" target="_blank">View project</a>'
     st.markdown(
         f"""
         <div class="project-copy">
           <p class="muted"><strong>What it shows:</strong> {description}</p>
           <p class="tools-line"><strong>Tools:</strong> {tools}</p>
           <div class="project-links">
-            <a class="project-link" href="{link}" target="_blank">View project</a>
+            {links_html}
           </div>
         </div>
         """,
@@ -632,7 +635,29 @@ with d5:
     )
     st.markdown('</div>', unsafe_allow_html=True)
 with d6:
-    st.empty()
+    st.markdown('<div class="card"><div class="project-heading"><div class="tag">Community Analytics</div><h3>Physicians Against Red Meat Outreach Analytics</h3></div>', unsafe_allow_html=True)
+    st.markdown(
+        """
+        <div class="mock-dashboard">
+          <div class="mock-title">Campaign and CRM Signal Review</div>
+          <p class="mini">Audience segmentation, outreach visibility, and campaign support for a health-focused NGO.</p>
+          <div class="mock-grid">
+            <div class="mock-kpi">Focus<strong>CRM targeting</strong></div>
+            <div class="mock-kpi">Channel<strong>Outreach</strong></div>
+            <div class="mock-kpi">Lens<strong>Engagement</strong></div>
+            <div class="mock-kpi">Role<strong>Part-time</strong></div>
+            <div class="mock-kpi">Impact<strong>Campaign clarity</strong></div>
+          </div>
+          <div class="mock-chart"><div class="bar" style="height:122px">Audience</div><div class="bar" style="height:104px">CRM</div><div class="bar" style="height:132px">Message</div><div class="bar" style="height:110px">Response</div></div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    project_copy(
+        "A lightweight analytics project supporting NGO outreach through CRM review, audience targeting, and clearer campaign decision-making.",
+        "CRM analysis, audience segmentation, campaign reporting, communications planning",
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")

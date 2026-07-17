@@ -277,14 +277,7 @@ def render_journey_timeline(journey: list[dict]):
               color: #d96f5f;
               font-size: 1rem;
               line-height: 1.15;
-              margin-bottom: .2rem;
-            }}
-            .focus-link span {{
-              color: #716960;
-              font-size: .72rem;
-              font-weight: 700;
-              letter-spacing: .04rem;
-              text-transform: uppercase;
+              margin-bottom: 0;
             }}
             .focus-link:hover {{
               background: rgba(255,255,255,.55);
@@ -457,11 +450,11 @@ def render_journey_timeline(journey: list[dict]):
                 </div>
                 <div class="journey-focus">
                   <div class="focus-head">Skills and Work</div>
-                  <a class="focus-link" href="#tbn-automation"><strong>AI Automation</strong><span>Slack, Make.com, OpenAI, workflow systems</span></a>
-                  <a class="focus-link" href="#hacker-news-project"><strong>Product Analytics</strong><span>Virality, retention, behavior analysis</span></a>
-                  <a class="focus-link" href="#transit-project"><strong>Operations Intelligence</strong><span>Freshness checks, monitoring, performance</span></a>
-                  <a class="focus-link" href="#sales-project"><strong>Decision Dashboards</strong><span>Executive views, pipeline, KPI storytelling</span></a>
-                  <a class="focus-link" href="#uber-clean-project"><strong>SQL + Python</strong><span>Modeling, analysis, GTM and capstone strategy</span></a>
+                  <a class="focus-link" href="#tbn-automation"><strong>AI Automation</strong></a>
+                  <a class="focus-link" href="#hacker-news-project"><strong>Product Analytics</strong></a>
+                  <a class="focus-link" href="#transit-project"><strong>Operations Intelligence</strong></a>
+                  <a class="focus-link" href="#sales-project"><strong>Decision Dashboards</strong></a>
+                  <a class="focus-link" href="#uber-clean-project"><strong>SQL + Python</strong></a>
                 </div>
               </div>
               <div class="career-strip">

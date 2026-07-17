@@ -11,6 +11,7 @@ UBER_CLEAN_COVER = BASE_DIR / "assets" / "uber_clean_cover.png"
 
 BAY_AREA_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/bay-area-transit/main/assets/bay_area_dashboard_screenshot.png"
 HACKER_NEWS_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/hacker-news-analytics/main/assets/dashboard_snapshot.png"
+UBER_CLEAN_COVER_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_cover.png"
 UBER_CLEAN_CAPSTONE_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_capstone.pdf"
 
 st.set_page_config(
@@ -626,7 +627,7 @@ with d4:
 st.markdown(" ")
 st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
 st.markdown('<div class="card"><div class="project-heading"><div class="tag">Go-to-Market Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
-image_frame(str(UBER_CLEAN_COVER), "Uber Clean Development Plan cover")
+image_frame(UBER_CLEAN_COVER_URL, "Uber Clean Development Plan cover")
 project_copy_with_pdf(
     "A presentation-led capstone focused on go-to-market strategy for Uber Clean, covering the customer problem, target persona, service model, and launch framing with Procter &amp; Gamble as a strategic partner.",
     "Go-to-market strategy, product planning, persona research, JTBD, service design",

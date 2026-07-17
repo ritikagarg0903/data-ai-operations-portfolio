@@ -7,6 +7,7 @@ BASE_DIR = Path(__file__).parent
 TBN_GIF = BASE_DIR / "assets" / "tbn_auto.gif"
 PATHFINDHER_VIDEO = BASE_DIR / "assets" / "PathFindHer_Walk_Without_Fear.mp4"
 SALES_AI_SCREENSHOT = BASE_DIR / "assets" / "sales_ai_agent.png"
+UBER_CLEAN_COVER = BASE_DIR / "assets" / "uber_clean_cover.png"
 
 BAY_AREA_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/bay-area-transit/main/assets/bay_area_dashboard_screenshot.png"
 HACKER_NEWS_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/hacker-news-analytics/main/assets/dashboard_snapshot.png"
@@ -139,27 +140,6 @@ def project_copy_with_pdf(description, tools, pdf_link, link=None, pdf_label="Vi
           <div class="project-links">
             {links_html}
           </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-def sql_case_study_panel():
-    st.markdown(
-        """
-        <div class="mock-dashboard">
-          <div class="mock-title">Uber Clean Development Plan</div>
-          <p class="mini">Go-to-market strategy presentation for an on-demand laundry pickup and delivery concept.</p>
-          <div class="mock-tabs"><span>Market Need</span><span>Target User</span><span>Service Model</span><span>Go-to-Market</span></div>
-          <div class="mock-grid">
-            <div class="mock-kpi">Service<strong>Uber Clean</strong></div>
-            <div class="mock-kpi">Partner<strong>P&amp;G</strong></div>
-            <div class="mock-kpi">Focus<strong>GTM strategy</strong></div>
-            <div class="mock-kpi">User need<strong>Pickup + delivery</strong></div>
-            <div class="mock-kpi">Output<strong>Presentation deck</strong></div>
-          </div>
-          <div class="mock-chart"><div class="bar" style="height:116px">Need</div><div class="bar" style="height:132px">Persona</div><div class="bar" style="height:122px">Model</div><div class="bar" style="height:110px">GTM</div></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -643,7 +623,7 @@ d5, d6 = st.columns(2, gap="large")
 with d5:
     st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
     st.markdown('<div class="card"><div class="project-heading"><div class="tag">Go-to-Market Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
-    sql_case_study_panel()
+    image_frame(str(UBER_CLEAN_COVER), "Uber Clean Development Plan cover")
     project_copy_with_pdf(
         "A presentation-led capstone focused on go-to-market strategy for Uber Clean, covering the customer problem, target persona, service model, and launch framing with Procter &amp; Gamble as a strategic partner.",
         "Go-to-market strategy, product planning, persona research, JTBD, service design",

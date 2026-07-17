@@ -10,6 +10,7 @@ SALES_AI_SCREENSHOT = BASE_DIR / "assets" / "sales_ai_agent.png"
 
 BAY_AREA_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/bay-area-transit/main/assets/bay_area_dashboard_screenshot.png"
 HACKER_NEWS_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/hacker-news-analytics/main/assets/dashboard_snapshot.png"
+COFFEE_SQL_CASE_STUDY_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/coffee_sql_case_study.pdf"
 
 st.set_page_config(
     page_title="Ritika Garg | Data, AI & Operations Product Portfolio",
@@ -30,7 +31,7 @@ st.markdown(
     .subhead { color: #716960; font-size: 1.08rem; line-height: 1.5; max-width: 900px; margin-bottom: .75rem; }
     .pill-row { display: flex; flex-wrap: wrap; gap: .45rem; margin: .5rem 0 .9rem; }
     .pill { border: 1px solid #ccbfb0; border-radius: 999px; padding: .38rem .7rem; font-size: .72rem; font-weight: 900; letter-spacing: .07rem; text-transform: uppercase; background: rgba(255,250,244,.75); white-space: nowrap; }
-    .hero-contact { border-top: 1px solid #ded5ca; border-bottom: 1px solid #ded5ca; padding: .78rem 0; margin-top: .95rem; display: flex; flex-wrap: wrap; gap: .52rem; align-items: center; }
+    .hero-contact, .journey-contact { border-top: 1px solid #ded5ca; border-bottom: 1px solid #ded5ca; padding: .78rem 0; margin-top: .95rem; display: flex; flex-wrap: wrap; gap: .52rem; align-items: center; }
     .contact-label { color: #25211d; font-size: .78rem; font-weight: 900; letter-spacing: .08rem; margin-right: .15rem; text-transform: uppercase; }
     .contact-link { display: inline-flex; align-items: center; gap: .38rem; border: 1px solid #ccbfb0; border-radius: 999px; padding: .42rem .68rem; background: #fffaf4; color: #246b61 !important; font-size: .86rem; line-height: 1; }
     .contact-link svg { width: 15px; height: 15px; flex: 0 0 auto; }
@@ -52,6 +53,8 @@ st.markdown(
     .project-copy strong { color: #25211d; }
     .tools-line { color: #716960; font-size: .86rem; margin-bottom: .7rem !important; }
     .project-link { display: inline-block; margin-top: .1rem; }
+    .project-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: .15rem; }
+    .project-link.alt-link { color: #25211d !important; font-weight: 700; }
     .workflow-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .72rem; margin-top: .75rem; margin-bottom: .6rem; }
     .flow-step { border: 1px solid #ded5ca; border-radius: 8px; background: #fffaf4; padding: .78rem .82rem; min-height: 112px; box-sizing: border-box; }
     .flow-step strong { display: block; margin-bottom: .34rem; font-size: .95rem; }
@@ -113,7 +116,49 @@ def project_copy(description, tools, link):
         <div class="project-copy">
           <p class="muted"><strong>What it shows:</strong> {description}</p>
           <p class="tools-line"><strong>Tools:</strong> {tools}</p>
-          <a class="project-link" href="{link}" target="_blank">View project</a>
+          <div class="project-links">
+            <a class="project-link" href="{link}" target="_blank">View project</a>
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def project_copy_with_pdf(description, tools, pdf_link, link=None):
+    project_link_html = ""
+    if link:
+        project_link_html = f'<a class="project-link" href="{link}" target="_blank">View project</a>'
+    st.markdown(
+        f"""
+        <div class="project-copy">
+          <p class="muted"><strong>What it shows:</strong> {description}</p>
+          <p class="tools-line"><strong>Tools:</strong> {tools}</p>
+          <div class="project-links">
+            {project_link_html}
+            <a class="project-link alt-link" href="{pdf_link}" target="_blank">View PDF case study</a>
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def sql_case_study_panel():
+    st.markdown(
+        """
+        <div class="mock-dashboard">
+          <div class="mock-title">Coffee Survey Cleaning and SQL Modeling</div>
+          <p class="mini">Raw survey file to staging table, normalized schema, and business-question analysis.</p>
+          <div class="mock-tabs"><span>Raw CSV</span><span>Staging</span><span>ERD</span><span>Queries</span></div>
+          <div class="mock-grid">
+            <div class="mock-kpi">Responses<strong>4,042</strong></div>
+            <div class="mock-kpi">Core tables<strong>6</strong></div>
+            <div class="mock-kpi">Data model<strong>Normalized</strong></div>
+            <div class="mock-kpi">Cleaning<strong>NULL + types</strong></div>
+            <div class="mock-kpi">Outputs<strong>Insights</strong></div>
+          </div>
+          <div class="mock-chart"><div class="bar" style="height:120px">Raw</div><div class="bar" style="height:135px">Stage</div><div class="bar" style="height:98px">Tables</div><div class="bar" style="height:112px">Queries</div></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -205,13 +250,6 @@ def render_journey_timeline(journey: list[dict]):
               flex-wrap: wrap;
               gap: .45rem;
               margin: 0 0 .8rem;
-            }}
-            .journey-headline {{
-              color: #25211d;
-              font-size: clamp(1.22rem, 2.1vw, 1.7rem);
-              font-weight: 900;
-              line-height: 1.18;
-              margin-bottom: .45rem;
             }}
             .journey-copy {{
               color: #716960;
@@ -312,116 +350,79 @@ def render_journey_timeline(journey: list[dict]):
               line-height: 1.25;
             }}
             .journey-bottom {{
-              display: grid;
-              grid-template-columns: minmax(0, .84fr) minmax(360px, 1.16fr);
-              border-top: 1px solid #ded5ca;
-            }}
-            .impact-list {{
-              padding: 1rem 1.25rem;
-              border-right: 1px solid #ded5ca;
-            }}
-            .impact-row {{
-              display: grid;
-              grid-template-columns: 4.6rem minmax(0, 1fr);
-              gap: .8rem;
-              padding: .72rem 0;
-              border-top: 1px solid #ded5ca;
-            }}
-            .impact-row:first-of-type {{ border-top: 0; }}
-            .impact-row strong {{
-              color: #d96f5f;
-              font-size: 1.35rem;
-              line-height: 1;
-            }}
-            .impact-row span {{
-              color: #716960;
-              line-height: 1.42;
-              font-size: .9rem;
-            }}
-            .project-moments {{
               padding: 1rem 1.25rem 1.15rem;
+              border-top: 1px solid #ded5ca;
             }}
-            .project-grid {{
+            .impact-summary {{
               display: grid;
-              grid-template-columns: repeat(3, minmax(0, 1fr));
-              gap: .85rem;
+              grid-template-columns: repeat(4, minmax(0, 1fr));
+              gap: .75rem;
+              margin-bottom: 1rem;
             }}
-            .project-shot {{
+            .impact-stat {{
               border: 1px solid #ded5ca;
               border-radius: 8px;
               background: #fffdf9;
-              min-height: 228px;
-              padding: .72rem;
-              display: flex;
-              flex-direction: column;
-              gap: .55rem;
+              padding: .8rem .85rem;
             }}
-            .project-shot-kicker {{
+            .impact-stat strong {{
+              display: block;
+              color: #d96f5f;
+              font-size: 1.15rem;
+              line-height: 1;
+              margin-bottom: .35rem;
+            }}
+            .impact-stat span {{
+              color: #716960;
+              line-height: 1.42;
+              font-size: .86rem;
+            }}
+            .experience-grid {{
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: .85rem;
+            }}
+            .experience-card {{
+              border: 1px solid #ded5ca;
+              border-radius: 8px;
+              background: #fffdf9;
+              padding: .9rem;
+            }}
+            .experience-kicker {{
               color: #3d7b72;
-              font-size: .62rem;
+              font-size: .65rem;
               font-weight: 900;
               letter-spacing: .08rem;
               line-height: 1.1;
               text-transform: uppercase;
             }}
-            .project-shot-title {{
+            .experience-title {{
               color: #25211d;
-              font-size: .88rem;
+              font-size: 1rem;
               font-weight: 900;
-              line-height: 1.15;
-              min-height: 2rem;
+              line-height: 1.18;
+              margin: .45rem 0 .3rem;
             }}
-            .project-shot-frame {{
-              align-items: center;
-              background: #ffffff;
-              border: 1px solid #ebe3d9;
-              border-radius: 6px;
-              display: flex;
-              height: 112px;
-              justify-content: center;
-              overflow: hidden;
-            }}
-            .project-shot-frame img {{
-              width: 100%;
-              height: 100%;
-              object-fit: contain;
-              display: block;
-            }}
-            .project-shot-desc {{
+            .experience-meta {{
               color: #716960;
-              font-size: .76rem;
-              line-height: 1.34;
+              font-size: .8rem;
+              line-height: 1.4;
+              margin-bottom: .6rem;
             }}
-            .sales-mini {{
-              width: 100%;
-              height: 100%;
-              box-sizing: border-box;
-              padding: .65rem;
+            .experience-list {{
+              margin: 0;
+              padding-left: 1rem;
+              color: #716960;
+              font-size: .85rem;
+              line-height: 1.5;
             }}
-            .sales-mini-title {{
-              color: #071d3a;
-              font-size: .72rem;
-              font-weight: 900;
-              line-height: 1.15;
-              margin-bottom: .4rem;
-            }}
-            .sales-mini-bars {{
-              align-items: end;
-              display: flex;
-              gap: .34rem;
-              height: 64px;
-              border-top: 1px solid #e1e6ef;
-              padding-top: .45rem;
-            }}
-            .sales-mini-bars i {{
-              background: #0b70c9;
-              flex: 1;
-              min-height: 26px;
+            .experience-list li {{
+              margin-bottom: .45rem;
             }}
             @media (max-width: 900px) {{
               .journey-top, .journey-bottom {{ grid-template-columns: 1fr; }}
-              .journey-stats, .impact-list {{ border-left: 0; border-right: 0; }}
-              .project-grid {{ grid-template-columns: 1fr; }}
+              .journey-stats {{ border-left: 0; border-right: 0; }}
+              .impact-summary, .experience-grid {{ grid-template-columns: 1fr; }}
             }}
             </style>
             <div class="journey-profile">
@@ -431,8 +432,22 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="journey-name">Ritika Garg</div>
                   <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>
                   <div class="journey-pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>
-                  <div class="journey-headline">India to USA, marketing to analytics, analytics to AI operations.</div>
                   <div class="journey-copy">A visual career path showing how each step sharpened my ability to turn business questions into practical systems, dashboards, and product decisions.</div>
+                  <div class="journey-contact">
+                    <span class="contact-label">Connect</span>
+                    <a class="contact-link" href="https://github.com/ritikagarg0903" target="_blank" aria-label="GitHub profile">
+                      <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.6 7.6 0 0 1 8 3.87c.68 0 1.36.09 2 .26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+                      GitHub
+                    </a>
+                    <a class="contact-link" href="https://linkedin.com/in/ritikagarg14" target="_blank" aria-label="LinkedIn profile">
+                      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V24h-4V8Zm7.5 0h3.83v2.19h.05c.53-1 1.84-2.19 3.79-2.19 4.05 0 4.8 2.67 4.8 6.14V24h-4v-8.73c0-2.08-.04-4.75-2.9-4.75-2.9 0-3.34 2.27-3.34 4.6V24h-4V8Z"></path></svg>
+                      LinkedIn
+                    </a>
+                    <a class="contact-link" href="mailto:ritikagarg0903@gmail.com" aria-label="Email Ritika Garg">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+                      Email
+                    </a>
+                  </div>
                 </div>
                 <div class="journey-stats">
                   <div class="journey-stat"><strong>3+</strong><span>years analytics work</span></div>
@@ -446,35 +461,33 @@ def render_journey_timeline(journey: list[dict]):
                 <div class="career-path">{"".join(path_nodes)}</div>
               </div>
               <div class="journey-bottom">
-                <div class="impact-list">
-                  <div class="strip-title">Experience & Impact</div>
-                  <div class="impact-row"><strong>AI</strong><span>Automated field-operations updates into structured reporting workflows.</span></div>
-                  <div class="impact-row"><strong>BI</strong><span>Built Looker Studio and Tableau dashboards for leadership visibility.</span></div>
-                  <div class="impact-row"><strong>PM</strong><span>Applied Kellogg product thinking through go-to-market and capstone planning.</span></div>
-                  <div class="impact-row"><strong>CARE</strong><span>Used analytics and communication work to support health-focused community outreach.</span></div>
-                  <div class="impact-row"><strong>SQL</strong><span>Used data cleaning, segmentation, and analysis to support growth decisions.</span></div>
+                <div class="strip-title">What I've Worked On</div>
+                <div class="impact-summary">
+                  <div class="impact-stat"><strong>AI</strong><span>LLM-assisted classification and workflow automation for operations teams.</span></div>
+                  <div class="impact-stat"><strong>BI</strong><span>Leadership dashboards in Looker Studio and Tableau for visibility and decisions.</span></div>
+                  <div class="impact-stat"><strong>CRM</strong><span>Segmentation, data cleanup, and campaign analysis across large customer datasets.</span></div>
+                  <div class="impact-stat"><strong>PM</strong><span>Product thinking applied through Kellogg coursework, capstones, and system design.</span></div>
                 </div>
-                <div class="project-moments">
-                  <div class="strip-title">Portfolio Project Snapshots</div>
-                  <div class="project-grid">
-                    <div class="project-shot">
-                      <div class="project-shot-kicker">Sales AI Agent</div>
-                      <div class="project-shot-title">AI Sales Pipeline Command Center</div>
-                      <div class="project-shot-frame"><div class="sales-mini"><div class="sales-mini-title">Pipeline risk, quota gap, and forecast view</div><div class="sales-mini-bars"><i style="height: 56px"></i><i style="height: 48px"></i><i style="height: 70px"></i><i style="height: 60px"></i></div></div></div>
-                      <div class="project-shot-desc">A decision dashboard for manager attention, pipeline health, and revenue risk.</div>
-                    </div>
-                    <div class="project-shot">
-                      <div class="project-shot-kicker">Product Analytics</div>
-                      <div class="project-shot-title">Hacker News Virality Analysis</div>
-                      <div class="project-shot-frame"><img src="{HACKER_NEWS_SCREENSHOT_URL}" alt="Hacker News analytics dashboard"></div>
-                      <div class="project-shot-desc">Creator retention, posting windows, and content virality signals across 286K+ posts.</div>
-                    </div>
-                    <div class="project-shot">
-                      <div class="project-shot-kicker">Operations Analytics</div>
-                      <div class="project-shot-title">Bay Area Transit Performance Monitor</div>
-                      <div class="project-shot-frame"><img src="{BAY_AREA_SCREENSHOT_URL}" alt="Bay Area transit dashboard"></div>
-                      <div class="project-shot-desc">Delay trends, freshness checks, and live reliability views for transit operations.</div>
-                    </div>
+                <div class="experience-grid">
+                  <div class="experience-card">
+                    <div class="experience-kicker">Real Time Data Services</div>
+                    <div class="experience-title">Data Analytics and Marketing Specialist</div>
+                    <div class="experience-meta">Delhi, India | Revenue and operations analytics</div>
+                    <ul class="experience-list">
+                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve targeting quality and reporting trust.</li>
+                      <li>Built Tableau dashboards across funnel, campaign, and revenue views so teams could spot performance gaps faster.</li>
+                      <li>Supported growth analysis tied to reactivation, campaign efficiency, and operational decision-making.</li>
+                    </ul>
+                  </div>
+                  <div class="experience-card">
+                    <div class="experience-kicker">The Best Notary</div>
+                    <div class="experience-title">Data Analyst, part-time</div>
+                    <div class="experience-meta">Remote, United States | AI operations workflow design</div>
+                    <ul class="experience-list">
+                      <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
+                      <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>
+                      <li>Created a live leadership dashboard showing productivity patterns, task distribution, and follow-up visibility.</li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -483,27 +496,6 @@ def render_journey_timeline(journey: list[dict]):
         ).strip(),
         unsafe_allow_html=True,
     )
-
-st.markdown(
-    '''
-    <div class="hero-contact">
-      <span class="contact-label">Connect</span>
-      <a class="contact-link" href="https://github.com/ritikagarg0903" target="_blank" aria-label="GitHub profile">
-        <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.6 7.6 0 0 1 8 3.87c.68 0 1.36.09 2 .26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
-        GitHub
-      </a>
-      <a class="contact-link" href="https://linkedin.com/in/ritikagarg14" target="_blank" aria-label="LinkedIn profile">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V24h-4V8Zm7.5 0h3.83v2.19h.05c.53-1 1.84-2.19 3.79-2.19 4.05 0 4.8 2.67 4.8 6.14V24h-4v-8.73c0-2.08-.04-4.75-2.9-4.75-2.9 0-3.34 2.27-3.34 4.6V24h-4V8Z"></path></svg>
-        LinkedIn
-      </a>
-      <a class="contact-link" href="mailto:ritikagarg0903@gmail.com" aria-label="Email Ritika Garg">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
-        Email
-      </a>
-    </div>
-    ''',
-    unsafe_allow_html=True,
-)
 
 journey = [
     {
@@ -636,6 +628,20 @@ with d4:
         "https://github.com/ritikagarg0903/PathFindHer",
     )
     st.markdown('</div>', unsafe_allow_html=True)
+
+st.markdown(" ")
+d5, d6 = st.columns(2, gap="large")
+with d5:
+    st.markdown('<div class="card"><div class="project-heading"><div class="tag">SQL Data Cleaning</div><h3>Coffee Survey Cleaning and SQL Modeling</h3></div>', unsafe_allow_html=True)
+    sql_case_study_panel()
+    project_copy_with_pdf(
+        "Documents how a messy survey file was cleaned into staging tables, normalized into a relational model, and used to answer business questions.",
+        "MySQL, SQL, CSV cleaning, schema design, ERD modeling",
+        COFFEE_SQL_CASE_STUDY_URL,
+    )
+    st.markdown('</div>', unsafe_allow_html=True)
+with d6:
+    st.empty()
 
 st.markdown("---")
 st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")

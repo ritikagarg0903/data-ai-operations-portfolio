@@ -10,7 +10,7 @@ SALES_AI_SCREENSHOT = BASE_DIR / "assets" / "sales_ai_agent.png"
 
 BAY_AREA_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/bay-area-transit/main/assets/bay_area_dashboard_screenshot.png"
 HACKER_NEWS_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/hacker-news-analytics/main/assets/dashboard_snapshot.png"
-COFFEE_SQL_CASE_STUDY_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/coffee_sql_case_study.pdf"
+UBER_CLEAN_CAPSTONE_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_capstone.pdf"
 
 st.set_page_config(
     page_title="Ritika Garg | Data, AI & Operations Product Portfolio",
@@ -126,17 +126,18 @@ def project_copy(description, tools, link):
 
 
 def project_copy_with_pdf(description, tools, pdf_link, link=None):
-    project_link_html = ""
+    links = []
     if link:
-        project_link_html = f'<a class="project-link" href="{link}" target="_blank">View project</a>'
+        links.append(f'<a class="project-link" href="{link}" target="_blank">View project</a>')
+    links.append(f'<a class="project-link alt-link" href="{pdf_link}" target="_blank">View PDF case study</a>')
+    links_html = "".join(links)
     st.markdown(
         f"""
         <div class="project-copy">
           <p class="muted"><strong>What it shows:</strong> {description}</p>
           <p class="tools-line"><strong>Tools:</strong> {tools}</p>
           <div class="project-links">
-            {project_link_html}
-            <a class="project-link alt-link" href="{pdf_link}" target="_blank">View PDF case study</a>
+            {links_html}
           </div>
         </div>
         """,
@@ -148,17 +149,17 @@ def sql_case_study_panel():
     st.markdown(
         """
         <div class="mock-dashboard">
-          <div class="mock-title">Coffee Survey Cleaning and SQL Modeling</div>
-          <p class="mini">Raw survey file to staging table, normalized schema, and business-question analysis.</p>
-          <div class="mock-tabs"><span>Raw CSV</span><span>Staging</span><span>ERD</span><span>Queries</span></div>
+          <div class="mock-title">Uber Clean Development Plan</div>
+          <p class="mini">Capstone concept for on-demand laundry pickup, service design, and go-to-market thinking.</p>
+          <div class="mock-tabs"><span>Personas</span><span>JTBD</span><span>Service Flow</span><span>Go-to-Market</span></div>
           <div class="mock-grid">
-            <div class="mock-kpi">Responses<strong>4,042</strong></div>
-            <div class="mock-kpi">Core tables<strong>6</strong></div>
-            <div class="mock-kpi">Data model<strong>Normalized</strong></div>
-            <div class="mock-kpi">Cleaning<strong>NULL + types</strong></div>
-            <div class="mock-kpi">Outputs<strong>Insights</strong></div>
+            <div class="mock-kpi">Service<strong>Uber Clean</strong></div>
+            <div class="mock-kpi">Partner<strong>P&amp;G</strong></div>
+            <div class="mock-kpi">Focus<strong>On-demand laundry</strong></div>
+            <div class="mock-kpi">User need<strong>Pickup + delivery</strong></div>
+            <div class="mock-kpi">Output<strong>Capstone plan</strong></div>
           </div>
-          <div class="mock-chart"><div class="bar" style="height:120px">Raw</div><div class="bar" style="height:135px">Stage</div><div class="bar" style="height:98px">Tables</div><div class="bar" style="height:112px">Queries</div></div>
+          <div class="mock-chart"><div class="bar" style="height:116px">Problem</div><div class="bar" style="height:132px">Persona</div><div class="bar" style="height:122px">Journey</div><div class="bar" style="height:110px">Launch</div></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -251,32 +252,31 @@ def render_journey_timeline(journey: list[dict]):
               gap: .45rem;
               margin: 0 0 .8rem;
             }}
-            .journey-copy {{
-              color: #716960;
-              line-height: 1.5;
-              max-width: 780px;
+            .pill-link {{
+              color: #25211d !important;
+              text-decoration: none;
             }}
             .journey-stats {{
               display: grid;
-              grid-template-columns: repeat(2, minmax(0, 1fr));
+              grid-template-columns: 1fr;
               border-left: 1px solid #ded5ca;
               background: color-mix(in srgb, #3d7b72 8%, transparent);
+              align-content: start;
             }}
             .journey-stat {{
-              padding: .95rem 1rem;
+              padding: .72rem .95rem;
               border-bottom: 1px solid #ded5ca;
             }}
-            .journey-stat:nth-child(odd) {{ border-right: 1px solid #ded5ca; }}
             .journey-stat strong {{
               display: block;
               color: #d96f5f;
-              font-size: 1.55rem;
+              font-size: 1.35rem;
               line-height: 1;
-              margin-bottom: .3rem;
+              margin-bottom: .18rem;
             }}
             .journey-stat span {{
               color: #25211d;
-              font-size: .78rem;
+              font-size: .72rem;
               font-weight: 900;
               letter-spacing: .04rem;
               text-transform: uppercase;
@@ -431,8 +431,13 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="journey-kicker">Career Profile</div>
                   <div class="journey-name">Ritika Garg</div>
                   <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>
-                  <div class="journey-pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>
-                  <div class="journey-copy">A visual career path showing how each step sharpened my ability to turn business questions into practical systems, dashboards, and product decisions.</div>
+                  <div class="journey-pill-row">
+                    <a class="pill pill-link" href="#tbn-automation">AI Automation</a>
+                    <a class="pill pill-link" href="#hacker-news-project">Product Analytics</a>
+                    <a class="pill pill-link" href="#transit-project">Operations Intelligence</a>
+                    <a class="pill pill-link" href="#sales-project">Decision Dashboards</a>
+                    <a class="pill pill-link" href="#uber-clean-project">SQL + Python</a>
+                  </div>
                   <div class="journey-contact">
                     <span class="contact-label">Connect</span>
                     <a class="contact-link" href="https://github.com/ritikagarg0903" target="_blank" aria-label="GitHub profile">
@@ -463,26 +468,26 @@ def render_journey_timeline(journey: list[dict]):
               <div class="journey-bottom">
                 <div class="strip-title">What I've Worked On</div>
                 <div class="impact-summary">
-                  <div class="impact-stat"><strong>AI</strong><span>LLM-assisted classification and workflow automation for operations teams.</span></div>
-                  <div class="impact-stat"><strong>BI</strong><span>Leadership dashboards in Looker Studio and Tableau for visibility and decisions.</span></div>
-                  <div class="impact-stat"><strong>CRM</strong><span>Segmentation, data cleanup, and campaign analysis across large customer datasets.</span></div>
-                  <div class="impact-stat"><strong>PM</strong><span>Product thinking applied through Kellogg coursework, capstones, and system design.</span></div>
+                  <div class="impact-stat"><strong>500+</strong><span>daily updates structured through AI automation workflows</span></div>
+                  <div class="impact-stat"><strong>5,000+</strong><span>CRM and marketing records cleaned for reporting and targeting</span></div>
+                  <div class="impact-stat"><strong>10+</strong><span>hours saved weekly by replacing manual review</span></div>
+                  <div class="impact-stat"><strong>85%</strong><span>classification accuracy after feedback-driven tuning</span></div>
                 </div>
                 <div class="experience-grid">
                   <div class="experience-card">
                     <div class="experience-kicker">Real Time Data Services</div>
-                    <div class="experience-title">Data Analytics and Marketing Specialist</div>
-                    <div class="experience-meta">Delhi, India | Revenue and operations analytics</div>
+                    <div class="experience-title">Salesforce + Tableau analytics for 5,000+ CRM records</div>
+                    <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics | Revenue and operations impact</div>
                     <ul class="experience-list">
-                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve targeting quality and reporting trust.</li>
-                      <li>Built Tableau dashboards across funnel, campaign, and revenue views so teams could spot performance gaps faster.</li>
-                      <li>Supported growth analysis tied to reactivation, campaign efficiency, and operational decision-making.</li>
+                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records, improving targeting quality and reporting trust across growth teams.</li>
+                      <li>Built Tableau dashboards across funnel, campaign, and revenue views so teams could identify performance gaps and reactivation opportunities faster.</li>
+                      <li>Supported revenue analysis tied to campaign efficiency, customer reactivation, and operational decision-making.</li>
                     </ul>
                   </div>
                   <div class="experience-card">
                     <div class="experience-kicker">The Best Notary</div>
-                    <div class="experience-title">Data Analyst, part-time</div>
-                    <div class="experience-meta">Remote, United States | AI operations workflow design</div>
+                    <div class="experience-title">Slack + Make.com + OpenAI workflow for 500+ daily updates</div>
+                    <div class="experience-meta">Remote, United States | Make.com, OpenAI, Google Sheets, Looker Studio | 10+ hours saved weekly</div>
                     <ul class="experience-list">
                       <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
                       <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>
@@ -518,9 +523,9 @@ journey = [
         "period": "Mar 2024-Jun 2025",
         "icon": "US",
         "milestone": "Relocation and career transition",
-        "organization": "India to United States + Kellogg + Physicians Against Red Meat",
-        "location": "India to United States",
-        "contribution": "Relocated internationally and transitioned into a new professional and academic environment while upskilling through Northwestern Kellogg and contributing to health-focused outreach with Physicians Against Red Meat.",
+        "organization": "Northwestern University Kellogg + Physicians Against Red Meat",
+        "location": "Professional education and remote NGO contribution",
+        "contribution": "Completed product management coursework at Northwestern Kellogg focused on go-to-market, product strategy, and database planning, while serving as Marketing and Communications Coordinator for Physicians Against Red Meat, a health-focused NGO, using CRM and outreach analysis to strengthen campaigns and audience targeting.",
     },
     {
         "period": "2025-2026",
@@ -542,6 +547,7 @@ journey = [
 
 render_journey_timeline(journey)
 
+st.markdown('<div id="tbn-automation"></div>', unsafe_allow_html=True)
 st.header("Flagship Work")
 st.subheader("The Best Notary Slack Productivity Automation")
 st.write("A Slack-to-dashboard automation that turns daily work updates into structured productivity insight for leadership review.")
@@ -576,6 +582,7 @@ st.markdown(
 st.header("Projects Highlights")
 d1, d2 = st.columns(2, gap="large")
 with d1:
+    st.markdown('<div id="sales-project"></div>', unsafe_allow_html=True)
     dashboard_card(
         "AI-Assisted Sales Pipeline Command Center",
         "Sales AI Agent",
@@ -585,6 +592,7 @@ with d1:
         local_path=SALES_AI_SCREENSHOT,
     )
 with d2:
+    st.markdown('<div id="transit-project"></div>', unsafe_allow_html=True)
     dashboard_card(
         "Bay Area Transit Performance Monitor",
         "Operational Analytics",
@@ -597,6 +605,7 @@ with d2:
 st.markdown(" ")
 d3, d4 = st.columns(2, gap="large")
 with d3:
+    st.markdown('<div id="hacker-news-project"></div>', unsafe_allow_html=True)
     dashboard_card(
         "Hacker News Virality Analysis",
         "Product Analytics",
@@ -632,12 +641,13 @@ with d4:
 st.markdown(" ")
 d5, d6 = st.columns(2, gap="large")
 with d5:
-    st.markdown('<div class="card"><div class="project-heading"><div class="tag">SQL Data Cleaning</div><h3>Coffee Survey Cleaning and SQL Modeling</h3></div>', unsafe_allow_html=True)
+    st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="card"><div class="project-heading"><div class="tag">Capstone Product Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
     sql_case_study_panel()
     project_copy_with_pdf(
-        "Documents how a messy survey file was cleaned into staging tables, normalized into a relational model, and used to answer business questions.",
-        "MySQL, SQL, CSV cleaning, schema design, ERD modeling",
-        COFFEE_SQL_CASE_STUDY_URL,
+        "A product capstone outlining an on-demand laundry pickup and delivery service, including personas, jobs-to-be-done, service design, and launch planning with Procter &amp; Gamble as a strategic partner.",
+        "Product strategy, service design, persona research, jobs-to-be-done, go-to-market planning",
+        UBER_CLEAN_CAPSTONE_URL,
     )
     st.markdown('</div>', unsafe_allow_html=True)
 with d6:

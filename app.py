@@ -12,6 +12,7 @@ UBER_CLEAN_COVER = BASE_DIR / "assets" / "uber_clean_cover.png"
 BAY_AREA_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/bay-area-transit/main/assets/bay_area_dashboard_screenshot.png"
 HACKER_NEWS_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/hacker-news-analytics/main/assets/dashboard_snapshot.png"
 UBER_CLEAN_COVER_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_cover.png"
+UBER_CLEAN_GROWTH_TACTICS_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_growth_tactics.png"
 UBER_CLEAN_CAPSTONE_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_capstone.pdf"
 
 st.set_page_config(
@@ -63,6 +64,8 @@ st.markdown(
     .flow-step span { display: block; color: #716960; font-size: .86rem; line-height: 1.38; }
     .image-frame { width: 100%; height: 315px; overflow: hidden; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; display: flex; align-items: center; justify-content: center; margin: .55rem 0 .75rem; }
     .image-frame img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; display: block; }
+    .image-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .7rem; margin: .55rem 0 .75rem; }
+    .image-pair .image-frame { margin: 0; height: 260px; }
     .media-gap { height: .55rem; }
     .video-note { border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; margin: .55rem 0 .75rem; }
     .mock-dashboard { width: 100%; height: 315px; box-sizing: border-box; border: 1px solid #ded5ca; border-radius: 8px; background: #ffffff; padding: 1rem; overflow: hidden; margin: .55rem 0 .75rem; }
@@ -86,6 +89,18 @@ def metric(value, label):
 
 def image_frame(src, alt):
     st.markdown(f'<div class="image-frame"><img src="{src}" alt="{alt}"></div>', unsafe_allow_html=True)
+
+
+def image_pair(left_src, left_alt, right_src, right_alt):
+    st.markdown(
+        f'''
+        <div class="image-pair">
+          <div class="image-frame"><img src="{left_src}" alt="{left_alt}"></div>
+          <div class="image-frame"><img src="{right_src}" alt="{right_alt}"></div>
+        </div>
+        ''',
+        unsafe_allow_html=True,
+    )
 
 
 def local_image_or_mock(path):
@@ -627,7 +642,12 @@ with d4:
 st.markdown(" ")
 st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
 st.markdown('<div class="card"><div class="project-heading"><div class="tag">Go-to-Market Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
-image_frame(UBER_CLEAN_COVER_URL, "Uber Clean Development Plan cover")
+image_pair(
+    UBER_CLEAN_COVER_URL,
+    "Uber Clean Development Plan cover",
+    UBER_CLEAN_GROWTH_TACTICS_URL,
+    "Uber Clean growth tactics slide",
+)
 project_copy_with_pdf(
     "A presentation-led capstone focused on go-to-market strategy for Uber Clean, covering the customer problem, target persona, service model, and launch framing with Procter &amp; Gamble as a strategic partner.",
     "Go-to-market strategy, product planning, persona research, JTBD, service design",

@@ -1,4 +1,5 @@
 from pathlib import Path
+from textwrap import dedent
 
 import streamlit as st
 
@@ -148,19 +149,20 @@ def render_journey_timeline(journey: list[dict]):
     for index, item in enumerate(journey):
         current_class = " current" if index == len(journey) - 1 else ""
         timeline_items.append(
-            f"""
-            <div class="timeline-item{current_class}">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <div class="timeline-year">{item["year"]}</div>
-                <div class="timeline-title"><span class="timeline-icon">{item["icon"]}</span>{item["title"]}</div>
-                <div class="timeline-desc">{item["desc"]}</div>
-              </div>
-            </div>
-            """
+            (
+                f'<div class="timeline-item{current_class}">'
+                '<div class="timeline-dot"></div>'
+                '<div class="timeline-content">'
+                f'<div class="timeline-year">{item["year"]}</div>'
+                f'<div class="timeline-title"><span class="timeline-icon">{item["icon"]}</span>{item["title"]}</div>'
+                f'<div class="timeline-desc">{item["desc"]}</div>'
+                '</div>'
+                '</div>'
+            )
         )
     st.markdown(
-        f"""
+        dedent(
+            f"""
         <style>
         .journey-wrap {{
           position: relative;
@@ -223,10 +225,9 @@ def render_journey_timeline(journey: list[dict]):
           max-width: 850px;
         }}
         </style>
-        <div class="journey-wrap">
-          {"".join(timeline_items)}
-        </div>
-        """,
+        <div class="journey-wrap">{"".join(timeline_items)}</div>
+        """
+        ).strip(),
         unsafe_allow_html=True,
     )
 

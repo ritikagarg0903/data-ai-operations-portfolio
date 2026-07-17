@@ -186,12 +186,32 @@ def render_journey_timeline(journey: list[dict]):
               text-transform: uppercase;
               margin-bottom: .45rem;
             }}
+            .journey-name {{
+              color: #25211d;
+              font-size: clamp(2.65rem, 5vw, 4.5rem);
+              font-weight: 900;
+              line-height: .98;
+              margin-bottom: .65rem;
+            }}
+            .journey-subhead {{
+              color: #716960;
+              font-size: 1.08rem;
+              line-height: 1.5;
+              max-width: 820px;
+              margin-bottom: .8rem;
+            }}
+            .journey-pill-row {{
+              display: flex;
+              flex-wrap: wrap;
+              gap: .45rem;
+              margin: 0 0 .8rem;
+            }}
             .journey-headline {{
               color: #25211d;
-              font-size: clamp(1.45rem, 3vw, 2.35rem);
+              font-size: clamp(1.22rem, 2.1vw, 1.7rem);
               font-weight: 900;
-              line-height: 1.05;
-              margin-bottom: .55rem;
+              line-height: 1.18;
+              margin-bottom: .45rem;
             }}
             .journey-copy {{
               color: #716960;
@@ -236,7 +256,7 @@ def render_journey_timeline(journey: list[dict]):
             }}
             .career-path {{
               display: grid;
-              grid-template-columns: repeat(6, minmax(150px, 1fr));
+              grid-template-columns: repeat(5, minmax(180px, 1fr));
               gap: .5rem;
               overflow-x: auto;
               padding: .25rem 0 .35rem;
@@ -408,6 +428,9 @@ def render_journey_timeline(journey: list[dict]):
               <div class="journey-top">
                 <div class="journey-intro">
                   <div class="journey-kicker">Career Profile</div>
+                  <div class="journey-name">Ritika Garg</div>
+                  <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>
+                  <div class="journey-pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>
                   <div class="journey-headline">India to USA, marketing to analytics, analytics to AI operations.</div>
                   <div class="journey-copy">A visual career path showing how each step sharpened my ability to turn business questions into practical systems, dashboards, and product decisions.</div>
                 </div>
@@ -461,10 +484,6 @@ def render_journey_timeline(journey: list[dict]):
         unsafe_allow_html=True,
     )
 
-
-st.title("Ritika Garg")
-st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
-st.markdown('<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>', unsafe_allow_html=True)
 st.markdown(
     '''
     <div class="hero-contact">
@@ -504,20 +523,12 @@ journey = [
         "contribution": "Led data-driven marketing initiatives focused on revenue growth and operational efficiency.",
     },
     {
-        "period": "2024",
-        "icon": "PM",
-        "milestone": "Upskilling and contributing to society",
-        "organization": "Kellogg product education + Physicians Against Red Meat",
-        "location": "Professional education and remote social-impact work",
-        "contribution": "Built product management, go-to-market, and database knowledge through Northwestern Kellogg while applying analytics and communication skills to health-focused outreach.",
-    },
-    {
         "period": "Mar 2024-Jun 2025",
         "icon": "US",
         "milestone": "Relocation and career transition",
-        "organization": "Career break",
+        "organization": "India to United States + Kellogg + Physicians Against Red Meat",
         "location": "India to United States",
-        "contribution": "Relocated internationally and transitioned into a new professional and academic environment.",
+        "contribution": "Relocated internationally and transitioned into a new professional and academic environment while upskilling through Northwestern Kellogg and contributing to health-focused outreach with Physicians Against Red Meat.",
     },
     {
         "period": "2025-2026",

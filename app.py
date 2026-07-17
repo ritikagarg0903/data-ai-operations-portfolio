@@ -41,9 +41,9 @@ st.markdown(
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
     .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; }
-    .project-heading { position: relative; min-height: 118px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+    .project-heading { position: relative; min-height: 92px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
     .project-heading.with-badge { padding-right: 10.5rem; }
-    .project-heading h3 { margin: .62rem 0 0; line-height: 1.12; }
+    .project-heading h3 { margin: .48rem 0 0; line-height: 1.1; }
     .tag { color: #3d7b72; font-size: .7rem; font-weight: 900; letter-spacing: .08rem; text-transform: uppercase; }
     .winner-badge { position: absolute; right: 0; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; gap: .3rem; border: 1px solid #d7b36b; border-radius: 999px; background: #fff3cf; color: #775217; padding: .3rem .5rem; font-size: .64rem; font-weight: 900; letter-spacing: .035rem; text-transform: uppercase; white-space: nowrap; }
     .winner-badge svg { width: 13px; height: 13px; flex: 0 0 auto; }

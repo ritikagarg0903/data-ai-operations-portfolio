@@ -462,12 +462,12 @@ def render_journey_timeline(journey: list[dict]):
                 <div class="experience-grid">
                   <div class="experience-card">
                     <div class="experience-kicker">Real Time Data Services</div>
-                    <div class="experience-title">Salesforce + Tableau analytics for 5,000+ CRM records</div>
+                    <div class="experience-title">Revenue analytics and campaign decision support</div>
                     <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics | Revenue and operations impact</div>
                     <ul class="experience-list">
-                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records, improving targeting quality and reporting trust across growth teams.</li>
-                      <li>Built Tableau dashboards across funnel, campaign, and revenue views so teams could identify performance gaps and reactivation opportunities faster.</li>
-                      <li>Supported revenue analysis tied to campaign efficiency, customer reactivation, and operational decision-making.</li>
+                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>
+                      <li>Built 3+ Tableau dashboard views across funnel, campaign, and revenue performance so teams could spot gaps and reactivation opportunities faster.</li>
+                      <li>Supported analysis tied to $600K in reactivated revenue by connecting campaign efficiency, customer behavior, and operational decisions.</li>
                     </ul>
                   </div>
                   <div class="experience-card">

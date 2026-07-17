@@ -143,6 +143,94 @@ def gif_or_upload_note(path, upload_name):
         st.markdown(f'<div class="video-note"><div class="tag">GIF Pending</div><p class="muted">Upload <strong>assets/{upload_name}</strong> to show the automation workflow here.</p></div>', unsafe_allow_html=True)
 
 
+def render_journey_timeline(journey: list[dict]):
+    timeline_items = []
+    for index, item in enumerate(journey):
+        current_class = " current" if index == len(journey) - 1 else ""
+        timeline_items.append(
+            f"""
+            <div class="timeline-item{current_class}">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <div class="timeline-year">{item["year"]}</div>
+                <div class="timeline-title"><span class="timeline-icon">{item["icon"]}</span>{item["title"]}</div>
+                <div class="timeline-desc">{item["desc"]}</div>
+              </div>
+            </div>
+            """
+        )
+    st.markdown(
+        f"""
+        <style>
+        .journey-wrap {{
+          position: relative;
+          margin: .8rem 0 1.5rem;
+          padding-left: 2.1rem;
+        }}
+        .journey-wrap::before {{
+          content: "";
+          position: absolute;
+          left: .42rem;
+          top: .3rem;
+          bottom: .35rem;
+          width: 1px;
+          background: color-mix(in srgb, currentColor 24%, transparent);
+        }}
+        .timeline-item {{
+          position: relative;
+          margin: 0 0 2rem;
+        }}
+        .timeline-item:last-child {{
+          margin-bottom: .2rem;
+        }}
+        .timeline-dot {{
+          position: absolute;
+          left: -2.08rem;
+          top: .38rem;
+          width: .72rem;
+          height: .72rem;
+          border-radius: 999px;
+          border: 2px solid #d96f5f;
+          background: var(--background-color, #f8f2ea);
+          box-sizing: border-box;
+        }}
+        .timeline-item.current .timeline-dot {{
+          background: #d96f5f;
+          box-shadow: 0 0 0 4px color-mix(in srgb, #d96f5f 18%, transparent);
+        }}
+        .timeline-year {{
+          color: color-mix(in srgb, currentColor 58%, transparent);
+          font-size: .78rem;
+          font-weight: 800;
+          letter-spacing: .08rem;
+          text-transform: uppercase;
+          margin-bottom: .22rem;
+        }}
+        .timeline-title {{
+          color: currentColor;
+          font-size: 1.02rem;
+          font-weight: 900;
+          line-height: 1.35;
+          margin-bottom: .28rem;
+        }}
+        .timeline-icon {{
+          display: inline-block;
+          width: 1.55rem;
+        }}
+        .timeline-desc {{
+          color: color-mix(in srgb, currentColor 68%, transparent);
+          line-height: 1.55;
+          max-width: 850px;
+        }}
+        </style>
+        <div class="journey-wrap">
+          {"".join(timeline_items)}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 st.title("Ritika Garg")
 st.markdown('<div class="subhead">Data, AI & Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>', unsafe_allow_html=True)
 st.markdown('<div class="pill-row"><span class="pill">AI Automation</span><span class="pill">Product Analytics</span><span class="pill">Operations Intelligence</span><span class="pill">Decision Dashboards</span><span class="pill">SQL + Python</span></div>', unsafe_allow_html=True)
@@ -166,6 +254,43 @@ st.markdown(
     ''',
     unsafe_allow_html=True,
 )
+
+journey = [
+    {
+        "year": "2019-2021",
+        "icon": "🎓",
+        "title": "Built a business foundation through an MBA",
+        "desc": "Studied International Business at FORE School of Management, where strategy, operations, and market thinking became the base for my analytics work.",
+    },
+    {
+        "year": "2021-2023",
+        "icon": "📊",
+        "title": "Turned messy CRM and marketing data into revenue insight",
+        "desc": "At Real Time Data Services, I cleaned and segmented 5,000+ Salesforce records, built Tableau dashboards, and helped teams act on funnel, campaign, and revenue signals.",
+    },
+    {
+        "year": "2025-2026",
+        "icon": "📈",
+        "title": "Deepened my analytics toolkit at UC Davis",
+        "desc": "Started the M.S. in Business Analytics with a focus on SQL, Python, BI systems, experimentation, and decision-ready data products.",
+    },
+    {
+        "year": "Aug 2025-Present",
+        "icon": "⚙️",
+        "title": "Built AI-powered operations workflows at The Best Notary",
+        "desc": "Architected a Slack-to-Google-Sheets automation using Make and LLMs, reducing manual review by 10+ hours weekly and improving classification accuracy from 60% to 85%.",
+    },
+    {
+        "year": "Now",
+        "icon": "🚀",
+        "title": "Shaping a portfolio around data, AI, and product operations",
+        "desc": "Bringing together automation, analytics dashboards, and agentic product ideas to show how I turn fragmented signals into useful decisions.",
+    },
+]
+
+st.header("My Journey")
+st.write("A short story of how business operations, analytics, and AI automation became the throughline in my work.")
+render_journey_timeline(journey)
 
 st.header("Flagship Work")
 st.subheader("The Best Notary Slack Productivity Automation")

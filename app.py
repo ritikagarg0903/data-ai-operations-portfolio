@@ -219,6 +219,7 @@ def render_journey_timeline(journey: list[dict]):
               display: grid;
               grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
               border-bottom: 1px solid #ded5ca;
+              align-items: start;
             }}
             .journey-intro {{
               padding: 1.15rem 1.25rem;
@@ -268,7 +269,7 @@ def render_journey_timeline(journey: list[dict]):
               padding: .8rem .95rem;
               border-bottom: 1px solid #ded5ca;
               color: #25211d !important;
-              text-decoration: none;
+              text-decoration: none !important;
               display: block;
               background: transparent;
             }}
@@ -278,6 +279,7 @@ def render_journey_timeline(journey: list[dict]):
               font-size: 1rem;
               line-height: 1.15;
               margin-bottom: 0;
+              text-decoration: none !important;
             }}
             .focus-link:hover {{
               background: rgba(255,255,255,.55);

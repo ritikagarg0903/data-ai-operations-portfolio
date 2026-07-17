@@ -145,164 +145,283 @@ def gif_or_upload_note(path, upload_name):
 
 
 def render_journey_timeline(journey: list[dict]):
-    timeline_items = []
+    path_nodes = []
     for index, item in enumerate(journey):
         current_class = " current" if index == len(journey) - 1 else ""
-        timeline_items.append(
+        path_nodes.append(
             (
-                f'<div class="timeline-item{current_class}">'
-                '<div class="timeline-dot"></div>'
-                '<div class="timeline-content">'
-                '<div class="timeline-meta">'
-                f'<span class="timeline-year">{item["period"]}</span>'
-                f'<span class="timeline-place">{item["location"]}</span>'
-                '</div>'
-                '<div class="timeline-main">'
-                f'<span class="timeline-icon">{item["icon"]}</span>'
-                '<div>'
-                f'<div class="timeline-title">{item["milestone"]}</div>'
-                f'<div class="timeline-org">{item["organization"]}</div>'
-                '</div>'
-                '</div>'
-                f'<div class="timeline-contribution"><span>Key contribution</span>{item["contribution"]}</div>'
-                '</div>'
+                f'<div class="career-node{current_class}">'
+                '<div class="node-dot"></div>'
+                f'<div class="node-period">{item["period"]}</div>'
+                f'<div class="node-title">{item["milestone"]}</div>'
+                f'<div class="node-org">{item["organization"]}</div>'
                 '</div>'
             )
         )
+
     st.markdown(
         dedent(
             f"""
-        <style>
-        .journey-wrap {{
-          position: relative;
-          margin: 1.15rem 0 1.9rem;
-          padding-left: 2.6rem;
-          max-width: 1040px;
-        }}
-        .journey-wrap::before {{
-          content: "";
-          position: absolute;
-          left: .62rem;
-          top: .7rem;
-          bottom: .75rem;
-          width: 1px;
-          background: color-mix(in srgb, currentColor 28%, transparent);
-        }}
-        .timeline-item {{
-          position: relative;
-          margin: 0 0 1.15rem;
-        }}
-        .timeline-item:last-child {{
-          margin-bottom: .2rem;
-        }}
-        .timeline-dot {{
-          position: absolute;
-          left: -2.42rem;
-          top: 1.3rem;
-          width: .94rem;
-          height: .94rem;
-          border-radius: 999px;
-          border: 2px solid #d96f5f;
-          background: var(--background-color, #f8f2ea);
-          box-sizing: border-box;
-        }}
-        .timeline-item.current .timeline-dot {{
-          background: #d96f5f;
-          box-shadow: 0 0 0 4px color-mix(in srgb, #d96f5f 18%, transparent);
-        }}
-        .timeline-content {{
-          border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-          border-radius: 8px;
-          background: color-mix(in srgb, currentColor 3%, transparent);
-          display: grid;
-          gap: .85rem;
-          grid-template-columns: minmax(0, 1.05fr) minmax(260px, .95fr);
-          padding: 1rem 1.1rem;
-        }}
-        .timeline-item.current .timeline-content {{
-          border-color: color-mix(in srgb, #d96f5f 48%, currentColor 12%);
-          background: color-mix(in srgb, #d96f5f 8%, transparent);
-        }}
-        .timeline-meta {{
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          gap: .45rem;
-          grid-column: 1 / -1;
-        }}
-        .timeline-year {{
-          color: color-mix(in srgb, currentColor 62%, transparent);
-          font-size: .72rem;
-          font-weight: 800;
-          letter-spacing: .08rem;
-          text-transform: uppercase;
-        }}
-        .timeline-place {{
-          border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
-          border-radius: 999px;
-          color: color-mix(in srgb, currentColor 68%, transparent);
-          font-size: .7rem;
-          font-weight: 800;
-          letter-spacing: .04rem;
-          padding: .2rem .5rem;
-          text-transform: uppercase;
-        }}
-        .timeline-main {{
-          align-items: center;
-          display: flex;
-          gap: .7rem;
-          min-width: 0;
-        }}
-        .timeline-icon {{
-          align-items: center;
-          background: color-mix(in srgb, #d96f5f 14%, transparent);
-          border: 1px solid color-mix(in srgb, #d96f5f 34%, transparent);
-          border-radius: 999px;
-          color: #d96f5f;
-          display: inline-flex;
-          flex: 0 0 auto;
-          font-size: .72rem;
-          font-weight: 900;
-          height: 2.1rem;
-          justify-content: center;
-          letter-spacing: .02rem;
-          width: 2.1rem;
-        }}
-        .timeline-title {{
-          color: currentColor;
-          font-size: 1.08rem;
-          font-weight: 900;
-          line-height: 1.26;
-          margin-bottom: .22rem;
-        }}
-        .timeline-org {{
-          color: color-mix(in srgb, currentColor 68%, transparent);
-          font-size: .88rem;
-          line-height: 1.4;
-        }}
-        .timeline-contribution {{
-          align-self: stretch;
-          border-left: 2px solid #d96f5f;
-          color: color-mix(in srgb, currentColor 76%, transparent);
-          font-size: .9rem;
-          line-height: 1.48;
-          padding-left: .85rem;
-        }}
-        .timeline-contribution span {{
-          color: #d96f5f;
-          display: block;
-          font-size: .68rem;
-          font-weight: 900;
-          letter-spacing: .07rem;
-          margin-bottom: .28rem;
-          text-transform: uppercase;
-        }}
-        @media (max-width: 900px) {{
-          .timeline-content {{ grid-template-columns: 1fr; }}
-        }}
-        </style>
-        <div class="journey-wrap">{"".join(timeline_items)}</div>
-        """
+            <style>
+            .journey-profile {{
+              border: 1px solid #ded5ca;
+              border-radius: 8px;
+              background: #fffaf4;
+              overflow: hidden;
+              margin: 1rem 0 1.9rem;
+            }}
+            .journey-top {{
+              display: grid;
+              grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
+              border-bottom: 1px solid #ded5ca;
+            }}
+            .journey-intro {{
+              padding: 1.15rem 1.25rem;
+            }}
+            .journey-kicker {{
+              color: #3d7b72;
+              font-size: .72rem;
+              font-weight: 900;
+              letter-spacing: .1rem;
+              text-transform: uppercase;
+              margin-bottom: .45rem;
+            }}
+            .journey-headline {{
+              color: #25211d;
+              font-size: clamp(1.45rem, 3vw, 2.35rem);
+              font-weight: 900;
+              line-height: 1.05;
+              margin-bottom: .55rem;
+            }}
+            .journey-copy {{
+              color: #716960;
+              line-height: 1.5;
+              max-width: 780px;
+            }}
+            .journey-stats {{
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              border-left: 1px solid #ded5ca;
+              background: color-mix(in srgb, #3d7b72 8%, transparent);
+            }}
+            .journey-stat {{
+              padding: .95rem 1rem;
+              border-bottom: 1px solid #ded5ca;
+            }}
+            .journey-stat:nth-child(odd) {{ border-right: 1px solid #ded5ca; }}
+            .journey-stat strong {{
+              display: block;
+              color: #d96f5f;
+              font-size: 1.55rem;
+              line-height: 1;
+              margin-bottom: .3rem;
+            }}
+            .journey-stat span {{
+              color: #25211d;
+              font-size: .78rem;
+              font-weight: 900;
+              letter-spacing: .04rem;
+              text-transform: uppercase;
+            }}
+            .career-strip {{
+              padding: 1.15rem 1.25rem 1rem;
+            }}
+            .strip-title {{
+              color: #25211d;
+              font-size: 1rem;
+              font-weight: 900;
+              letter-spacing: .05rem;
+              margin-bottom: .8rem;
+              text-transform: uppercase;
+            }}
+            .career-path {{
+              display: grid;
+              grid-template-columns: repeat(8, minmax(130px, 1fr));
+              gap: .5rem;
+              overflow-x: auto;
+              padding: .25rem 0 .35rem;
+              position: relative;
+            }}
+            .career-path::before {{
+              content: "";
+              position: absolute;
+              left: 2.3rem;
+              right: 2.3rem;
+              top: 1.03rem;
+              height: 1px;
+              background: #ccbfb0;
+            }}
+            .career-node {{
+              min-width: 130px;
+              position: relative;
+              padding-top: 1.65rem;
+            }}
+            .node-dot {{
+              position: absolute;
+              top: .47rem;
+              left: 0;
+              width: .78rem;
+              height: .78rem;
+              border-radius: 999px;
+              border: 2px solid #d96f5f;
+              background: #fffaf4;
+              z-index: 1;
+            }}
+            .career-node.current .node-dot {{
+              background: #d96f5f;
+              box-shadow: 0 0 0 4px color-mix(in srgb, #d96f5f 18%, transparent);
+            }}
+            .node-period {{
+              color: #d96f5f;
+              font-size: .68rem;
+              font-weight: 900;
+              letter-spacing: .05rem;
+              text-transform: uppercase;
+              min-height: 1.8rem;
+            }}
+            .node-title {{
+              color: #25211d;
+              font-size: .82rem;
+              font-weight: 900;
+              line-height: 1.25;
+              margin-bottom: .25rem;
+            }}
+            .node-org {{
+              color: #716960;
+              font-size: .72rem;
+              line-height: 1.25;
+            }}
+            .journey-bottom {{
+              display: grid;
+              grid-template-columns: minmax(0, .84fr) minmax(360px, 1.16fr);
+              border-top: 1px solid #ded5ca;
+            }}
+            .impact-list {{
+              padding: 1rem 1.25rem;
+              border-right: 1px solid #ded5ca;
+            }}
+            .impact-row {{
+              display: grid;
+              grid-template-columns: 4.6rem minmax(0, 1fr);
+              gap: .8rem;
+              padding: .72rem 0;
+              border-top: 1px solid #ded5ca;
+            }}
+            .impact-row:first-of-type {{ border-top: 0; }}
+            .impact-row strong {{
+              color: #d96f5f;
+              font-size: 1.35rem;
+              line-height: 1;
+            }}
+            .impact-row span {{
+              color: #716960;
+              line-height: 1.42;
+              font-size: .9rem;
+            }}
+            .project-moments {{
+              padding: 1rem 1.25rem 1.15rem;
+            }}
+            .project-grid {{
+              display: grid;
+              grid-template-columns: repeat(3, minmax(0, 1fr));
+              gap: .75rem;
+            }}
+            .project-shot {{
+              border: 1px solid #ded5ca;
+              border-radius: 8px;
+              background: #ffffff;
+              min-height: 132px;
+              overflow: hidden;
+              position: relative;
+            }}
+            .project-shot img {{
+              width: 100%;
+              height: 132px;
+              object-fit: cover;
+              display: block;
+            }}
+            .project-shot span {{
+              position: absolute;
+              left: .55rem;
+              right: .55rem;
+              bottom: .5rem;
+              border-radius: 999px;
+              background: rgba(255, 250, 244, .92);
+              color: #25211d;
+              font-size: .68rem;
+              font-weight: 900;
+              letter-spacing: .04rem;
+              padding: .32rem .48rem;
+              text-transform: uppercase;
+            }}
+            .sales-mini {{
+              height: 132px;
+              box-sizing: border-box;
+              padding: .7rem;
+            }}
+            .sales-mini-title {{
+              color: #071d3a;
+              font-size: .78rem;
+              font-weight: 900;
+              line-height: 1.15;
+              margin-bottom: .45rem;
+            }}
+            .sales-mini-bars {{
+              align-items: end;
+              display: flex;
+              gap: .34rem;
+              height: 72px;
+              border-top: 1px solid #e1e6ef;
+              padding-top: .45rem;
+            }}
+            .sales-mini-bars i {{
+              background: #0b70c9;
+              flex: 1;
+              min-height: 26px;
+            }}
+            @media (max-width: 900px) {{
+              .journey-top, .journey-bottom {{ grid-template-columns: 1fr; }}
+              .journey-stats, .impact-list {{ border-left: 0; border-right: 0; }}
+              .project-grid {{ grid-template-columns: 1fr; }}
+            }}
+            </style>
+            <div class="journey-profile">
+              <div class="journey-top">
+                <div class="journey-intro">
+                  <div class="journey-kicker">Career Profile</div>
+                  <div class="journey-headline">India to USA, marketing to analytics, analytics to AI operations.</div>
+                  <div class="journey-copy">A visual career path showing how each step sharpened my ability to turn business questions into practical systems, dashboards, and product decisions.</div>
+                </div>
+                <div class="journey-stats">
+                  <div class="journey-stat"><strong>3+</strong><span>years analytics work</span></div>
+                  <div class="journey-stat"><strong>10+</strong><span>hours saved weekly</span></div>
+                  <div class="journey-stat"><strong>$600K</strong><span>reactivated revenue</span></div>
+                  <div class="journey-stat"><strong>90%</strong><span>manual reporting cut</span></div>
+                </div>
+              </div>
+              <div class="career-strip">
+                <div class="strip-title">Career Journey</div>
+                <div class="career-path">{"".join(path_nodes)}</div>
+              </div>
+              <div class="journey-bottom">
+                <div class="impact-list">
+                  <div class="strip-title">Experience & Impact</div>
+                  <div class="impact-row"><strong>AI</strong><span>Automated field-operations updates into structured reporting workflows.</span></div>
+                  <div class="impact-row"><strong>BI</strong><span>Built Looker Studio and Tableau dashboards for leadership visibility.</span></div>
+                  <div class="impact-row"><strong>PM</strong><span>Applied Kellogg product thinking through go-to-market and capstone planning.</span></div>
+                  <div class="impact-row"><strong>SQL</strong><span>Used data cleaning, segmentation, and analysis to support growth decisions.</span></div>
+                </div>
+                <div class="project-moments">
+                  <div class="strip-title">Portfolio Project Snapshots</div>
+                  <div class="project-grid">
+                    <div class="project-shot sales-mini"><div class="sales-mini-title">AI Sales Pipeline Command Center</div><div class="sales-mini-bars"><i style="height: 56px"></i><i style="height: 48px"></i><i style="height: 70px"></i><i style="height: 60px"></i></div><span>Sales AI Agent</span></div>
+                    <div class="project-shot"><img src="{HACKER_NEWS_SCREENSHOT_URL}" alt="Hacker News analytics dashboard"><span>Hacker News Analytics</span></div>
+                    <div class="project-shot"><img src="{BAY_AREA_SCREENSHOT_URL}" alt="Bay Area transit dashboard"><span>Transit Performance</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            """
         ).strip(),
         unsafe_allow_html=True,
     )

@@ -245,40 +245,49 @@ def render_journey_timeline(journey: list[dict]):
               max-width: 820px;
               margin-bottom: .8rem;
             }}
-            .journey-pill-row {{
-              display: flex;
-              flex-wrap: wrap;
-              gap: .45rem;
-              margin: 0 0 .8rem;
-            }}
             .pill-link {{
               color: #25211d !important;
               text-decoration: none;
             }}
-            .journey-stats {{
+            .journey-focus {{
               display: grid;
               grid-template-columns: 1fr;
               border-left: 1px solid #ded5ca;
               background: color-mix(in srgb, #3d7b72 8%, transparent);
               align-content: start;
             }}
-            .journey-stat {{
-              padding: .72rem .95rem;
-              border-bottom: 1px solid #ded5ca;
-            }}
-            .journey-stat strong {{
-              display: block;
-              color: #d96f5f;
-              font-size: 1.35rem;
-              line-height: 1;
-              margin-bottom: .18rem;
-            }}
-            .journey-stat span {{
-              color: #25211d;
+            .focus-head {{
+              padding: .9rem .95rem .55rem;
+              color: #3d7b72;
               font-size: .72rem;
               font-weight: 900;
+              letter-spacing: .09rem;
+              text-transform: uppercase;
+            }}
+            .focus-link {{
+              padding: .8rem .95rem;
+              border-bottom: 1px solid #ded5ca;
+              color: #25211d !important;
+              text-decoration: none;
+              display: block;
+              background: transparent;
+            }}
+            .focus-link strong {{
+              display: block;
+              color: #d96f5f;
+              font-size: 1rem;
+              line-height: 1.15;
+              margin-bottom: .2rem;
+            }}
+            .focus-link span {{
+              color: #716960;
+              font-size: .72rem;
+              font-weight: 700;
               letter-spacing: .04rem;
               text-transform: uppercase;
+            }}
+            .focus-link:hover {{
+              background: rgba(255,255,255,.55);
             }}
             .career-strip {{
               padding: 1.15rem 1.25rem 1rem;
@@ -420,7 +429,7 @@ def render_journey_timeline(journey: list[dict]):
             }}
             @media (max-width: 900px) {{
               .journey-top, .journey-bottom {{ grid-template-columns: 1fr; }}
-              .journey-stats {{ border-left: 0; border-right: 0; }}
+              .journey-focus {{ border-left: 0; border-right: 0; }}
               .impact-summary, .experience-grid {{ grid-template-columns: 1fr; }}
             }}
             </style>
@@ -430,13 +439,6 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="journey-kicker">Career Profile</div>
                   <div class="journey-name">Ritika Garg</div>
                   <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>
-                  <div class="journey-pill-row">
-                    <a class="pill pill-link" href="#tbn-automation">AI Automation</a>
-                    <a class="pill pill-link" href="#hacker-news-project">Product Analytics</a>
-                    <a class="pill pill-link" href="#transit-project">Operations Intelligence</a>
-                    <a class="pill pill-link" href="#sales-project">Decision Dashboards</a>
-                    <a class="pill pill-link" href="#uber-clean-project">SQL + Python</a>
-                  </div>
                   <div class="journey-contact">
                     <span class="contact-label">Connect</span>
                     <a class="contact-link" href="https://github.com/ritikagarg0903" target="_blank" aria-label="GitHub profile">
@@ -453,13 +455,13 @@ def render_journey_timeline(journey: list[dict]):
                     </a>
                   </div>
                 </div>
-                <div class="journey-stats">
-                  <div class="journey-stat"><strong>3+</strong><span>years analytics work</span></div>
-                  <div class="journey-stat"><strong>10+</strong><span>hours saved weekly</span></div>
-                  <div class="journey-stat"><strong>$600K</strong><span>reactivated revenue</span></div>
-                  <div class="journey-stat"><strong>90%</strong><span>manual reporting cut</span></div>
-                  <div class="journey-stat"><strong>5+</strong><span>portfolio case studies built</span></div>
-                  <div class="journey-stat"><strong>2</strong><span>markets worked across India and the U.S.</span></div>
+                <div class="journey-focus">
+                  <div class="focus-head">Skills and Work</div>
+                  <a class="focus-link" href="#tbn-automation"><strong>AI Automation</strong><span>Slack, Make.com, OpenAI, workflow systems</span></a>
+                  <a class="focus-link" href="#hacker-news-project"><strong>Product Analytics</strong><span>Virality, retention, behavior analysis</span></a>
+                  <a class="focus-link" href="#transit-project"><strong>Operations Intelligence</strong><span>Freshness checks, monitoring, performance</span></a>
+                  <a class="focus-link" href="#sales-project"><strong>Decision Dashboards</strong><span>Executive views, pipeline, KPI storytelling</span></a>
+                  <a class="focus-link" href="#uber-clean-project"><strong>SQL + Python</strong><span>Modeling, analysis, GTM and capstone strategy</span></a>
                 </div>
               </div>
               <div class="career-strip">

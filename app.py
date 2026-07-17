@@ -148,14 +148,17 @@ def render_journey_timeline(journey: list[dict]):
     timeline_items = []
     for index, item in enumerate(journey):
         current_class = " current" if index == len(journey) - 1 else ""
+        place = f'<span class="timeline-place">{item["place"]}</span>' if item.get("place") else ""
+        highlight = f'<div class="timeline-highlight">{item["highlight"]}</div>' if item.get("highlight") else ""
         timeline_items.append(
             (
                 f'<div class="timeline-item{current_class}">'
                 '<div class="timeline-dot"></div>'
                 '<div class="timeline-content">'
-                f'<div class="timeline-year">{item["year"]}</div>'
-                f'<div class="timeline-title"><span class="timeline-icon">{item["icon"]}</span>{item["title"]}</div>'
+                f'<div class="timeline-meta"><span class="timeline-year">{item["year"]}</span>{place}</div>'
+                f'<div class="timeline-title"><span class="timeline-icon">{item["icon"]}</span><span>{item["title"]}</span></div>'
                 f'<div class="timeline-desc">{item["desc"]}</div>'
+                f'{highlight}'
                 '</div>'
                 '</div>'
             )
@@ -166,31 +169,32 @@ def render_journey_timeline(journey: list[dict]):
         <style>
         .journey-wrap {{
           position: relative;
-          margin: .8rem 0 1.5rem;
-          padding-left: 2.1rem;
+          margin: 1.15rem 0 1.75rem;
+          padding-left: 2.45rem;
+          max-width: 980px;
         }}
         .journey-wrap::before {{
           content: "";
           position: absolute;
-          left: .42rem;
-          top: .3rem;
-          bottom: .35rem;
+          left: .52rem;
+          top: .55rem;
+          bottom: .65rem;
           width: 1px;
-          background: color-mix(in srgb, currentColor 24%, transparent);
+          background: color-mix(in srgb, currentColor 28%, transparent);
         }}
         .timeline-item {{
           position: relative;
-          margin: 0 0 2rem;
+          margin: 0 0 2.05rem;
         }}
         .timeline-item:last-child {{
           margin-bottom: .2rem;
         }}
         .timeline-dot {{
           position: absolute;
-          left: -2.08rem;
-          top: .38rem;
-          width: .72rem;
-          height: .72rem;
+          left: -2.42rem;
+          top: 1.08rem;
+          width: .94rem;
+          height: .94rem;
           border-radius: 999px;
           border: 2px solid #d96f5f;
           background: var(--background-color, #f8f2ea);
@@ -200,29 +204,72 @@ def render_journey_timeline(journey: list[dict]):
           background: #d96f5f;
           box-shadow: 0 0 0 4px color-mix(in srgb, #d96f5f 18%, transparent);
         }}
+        .timeline-content {{
+          border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+          border-radius: 8px;
+          background: color-mix(in srgb, currentColor 3%, transparent);
+          padding: 1rem 1.1rem;
+        }}
+        .timeline-item.current .timeline-content {{
+          border-color: color-mix(in srgb, #d96f5f 48%, currentColor 12%);
+          background: color-mix(in srgb, #d96f5f 8%, transparent);
+        }}
+        .timeline-meta {{
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: .45rem;
+          margin-bottom: .52rem;
+        }}
         .timeline-year {{
-          color: color-mix(in srgb, currentColor 58%, transparent);
-          font-size: .78rem;
+          color: color-mix(in srgb, currentColor 62%, transparent);
+          font-size: .72rem;
           font-weight: 800;
           letter-spacing: .08rem;
           text-transform: uppercase;
-          margin-bottom: .22rem;
+        }}
+        .timeline-place {{
+          border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
+          border-radius: 999px;
+          color: color-mix(in srgb, currentColor 68%, transparent);
+          font-size: .7rem;
+          font-weight: 800;
+          letter-spacing: .04rem;
+          padding: .2rem .5rem;
+          text-transform: uppercase;
         }}
         .timeline-title {{
+          align-items: center;
           color: currentColor;
-          font-size: 1.02rem;
+          display: flex;
+          gap: .58rem;
+          font-size: 1.08rem;
           font-weight: 900;
-          line-height: 1.35;
-          margin-bottom: .28rem;
+          line-height: 1.3;
+          margin-bottom: .42rem;
         }}
         .timeline-icon {{
-          display: inline-block;
-          width: 1.55rem;
+          align-items: center;
+          background: color-mix(in srgb, #d96f5f 14%, transparent);
+          border-radius: 999px;
+          display: inline-flex;
+          flex: 0 0 auto;
+          height: 2rem;
+          justify-content: center;
+          width: 2rem;
         }}
         .timeline-desc {{
           color: color-mix(in srgb, currentColor 68%, transparent);
           line-height: 1.55;
           max-width: 850px;
+        }}
+        .timeline-highlight {{
+          border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+          color: color-mix(in srgb, currentColor 76%, transparent);
+          font-size: .9rem;
+          font-weight: 800;
+          margin-top: .85rem;
+          padding-top: .72rem;
         }}
         </style>
         <div class="journey-wrap">{"".join(timeline_items)}</div>
@@ -260,37 +307,50 @@ journey = [
     {
         "year": "2019-2021",
         "icon": "🎓",
-        "title": "Built a business foundation through an MBA",
-        "desc": "Studied International Business at FORE School of Management, where strategy, operations, and market thinking became the base for my analytics work.",
+        "place": "Delhi, India",
+        "title": "Started with business, strategy, and operations",
+        "desc": "My MBA in International Business gave me the lens I still use today: understand the business problem first, then choose the right data or system to solve it.",
+        "highlight": "Foundation: strategy, operations, market thinking",
     },
     {
         "year": "2021-2023",
         "icon": "📊",
-        "title": "Turned messy CRM and marketing data into revenue insight",
+        "place": "Delhi, India",
+        "title": "Turned raw business data into revenue decisions",
         "desc": "At Real Time Data Services, I cleaned and segmented 5,000+ Salesforce records, built Tableau dashboards, and helped teams act on funnel, campaign, and revenue signals.",
+        "highlight": "Impact: $600K reactivated revenue and 90% less manual reporting",
+    },
+    {
+        "year": "2025",
+        "icon": "✈️",
+        "place": "India → USA",
+        "title": "Moved to the United States to go deeper into analytics",
+        "desc": "I moved from India to the Bay Area to pursue an M.S. in Business Analytics at UC Davis, bringing my operations background into a more technical, data-product focused environment.",
+        "highlight": "Shift: from analytics execution to building scalable decision systems",
     },
     {
         "year": "2025-2026",
         "icon": "📈",
-        "title": "Deepened my analytics toolkit at UC Davis",
-        "desc": "Started the M.S. in Business Analytics with a focus on SQL, Python, BI systems, experimentation, and decision-ready data products.",
+        "place": "UC Davis",
+        "title": "Built a sharper analytics and experimentation toolkit",
+        "desc": "In the MSBA program, I deepened my work across SQL, Python, BI systems, experimentation, and decision-ready dashboards.",
+        "highlight": "Focus: product analytics, operations analytics, and BI storytelling",
     },
     {
         "year": "Aug 2025-Present",
         "icon": "⚙️",
-        "title": "Built AI-powered operations workflows at The Best Notary",
-        "desc": "Architected a Slack-to-Google-Sheets automation using Make and LLMs, reducing manual review by 10+ hours weekly and improving classification accuracy from 60% to 85%.",
-    },
-    {
-        "year": "Now",
-        "icon": "🚀",
-        "title": "Shaping a portfolio around data, AI, and product operations",
-        "desc": "Bringing together automation, analytics dashboards, and agentic product ideas to show how I turn fragmented signals into useful decisions.",
+        "place": "San Francisco",
+        "title": "Built AI-powered workflows for real operations teams",
+        "desc": "At The Best Notary, I architected a Slack-to-Google-Sheets automation using Make and LLMs, reducing manual review by 10+ hours weekly and improving classification accuracy from 60% to 85%.",
+        "highlight": "Now: turning fragmented signals into leadership-ready insight",
     },
 ]
 
 st.header("My Journey")
-st.write("A short story of how business operations, analytics, and AI automation became the throughline in my work.")
+st.markdown(
+    '<div class="subhead">From India to the Bay Area, my path has moved from business operations to analytics systems to AI-powered workflows built for real teams.</div>',
+    unsafe_allow_html=True,
+)
 render_journey_timeline(journey)
 
 st.header("Flagship Work")

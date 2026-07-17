@@ -442,6 +442,8 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="journey-stat"><strong>10+</strong><span>hours saved weekly</span></div>
                   <div class="journey-stat"><strong>$600K</strong><span>reactivated revenue</span></div>
                   <div class="journey-stat"><strong>90%</strong><span>manual reporting cut</span></div>
+                  <div class="journey-stat"><strong>5+</strong><span>portfolio case studies built</span></div>
+                  <div class="journey-stat"><strong>2</strong><span>markets worked across India and the U.S.</span></div>
                 </div>
               </div>
               <div class="career-strip">
@@ -622,42 +624,16 @@ with d4:
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown(" ")
-d5, d6 = st.columns(2, gap="large")
-with d5:
-    st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
-    st.markdown('<div class="card"><div class="project-heading"><div class="tag">Go-to-Market Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
-    image_frame(str(UBER_CLEAN_COVER), "Uber Clean Development Plan cover")
-    project_copy_with_pdf(
-        "A presentation-led capstone focused on go-to-market strategy for Uber Clean, covering the customer problem, target persona, service model, and launch framing with Procter &amp; Gamble as a strategic partner.",
-        "Go-to-market strategy, product planning, persona research, JTBD, service design",
-        UBER_CLEAN_CAPSTONE_URL,
-        pdf_label="View presentation PDF",
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
-with d6:
-    st.markdown('<div class="card"><div class="project-heading"><div class="tag">Community Analytics</div><h3>Physicians Against Red Meat Outreach Analytics</h3></div>', unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class="mock-dashboard">
-          <div class="mock-title">Campaign and CRM Signal Review</div>
-          <p class="mini">Audience segmentation, outreach visibility, and campaign support for a health-focused NGO.</p>
-          <div class="mock-grid">
-            <div class="mock-kpi">Focus<strong>CRM targeting</strong></div>
-            <div class="mock-kpi">Channel<strong>Outreach</strong></div>
-            <div class="mock-kpi">Lens<strong>Engagement</strong></div>
-            <div class="mock-kpi">Role<strong>Part-time</strong></div>
-            <div class="mock-kpi">Impact<strong>Campaign clarity</strong></div>
-          </div>
-          <div class="mock-chart"><div class="bar" style="height:122px">Audience</div><div class="bar" style="height:104px">CRM</div><div class="bar" style="height:132px">Message</div><div class="bar" style="height:110px">Response</div></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    project_copy(
-        "A lightweight analytics project supporting NGO outreach through CRM review, audience targeting, and clearer campaign decision-making.",
-        "CRM analysis, audience segmentation, campaign reporting, communications planning",
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
+st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
+st.markdown('<div class="card"><div class="project-heading"><div class="tag">Go-to-Market Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
+image_frame(str(UBER_CLEAN_COVER), "Uber Clean Development Plan cover")
+project_copy_with_pdf(
+    "A presentation-led capstone focused on go-to-market strategy for Uber Clean, covering the customer problem, target persona, service model, and launch framing with Procter &amp; Gamble as a strategic partner.",
+    "Go-to-market strategy, product planning, persona research, JTBD, service design",
+    UBER_CLEAN_CAPSTONE_URL,
+    pdf_label="View presentation PDF",
+)
+st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")

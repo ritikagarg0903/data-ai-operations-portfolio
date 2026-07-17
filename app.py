@@ -148,17 +148,23 @@ def render_journey_timeline(journey: list[dict]):
     timeline_items = []
     for index, item in enumerate(journey):
         current_class = " current" if index == len(journey) - 1 else ""
-        place = f'<span class="timeline-place">{item["place"]}</span>' if item.get("place") else ""
-        highlight = f'<div class="timeline-highlight">{item["highlight"]}</div>' if item.get("highlight") else ""
         timeline_items.append(
             (
                 f'<div class="timeline-item{current_class}">'
                 '<div class="timeline-dot"></div>'
                 '<div class="timeline-content">'
-                f'<div class="timeline-meta"><span class="timeline-year">{item["year"]}</span>{place}</div>'
-                f'<div class="timeline-title"><span class="timeline-icon">{item["icon"]}</span><span>{item["title"]}</span></div>'
-                f'<div class="timeline-desc">{item["desc"]}</div>'
-                f'{highlight}'
+                '<div class="timeline-meta">'
+                f'<span class="timeline-year">{item["period"]}</span>'
+                f'<span class="timeline-place">{item["location"]}</span>'
+                '</div>'
+                '<div class="timeline-main">'
+                f'<span class="timeline-icon">{item["icon"]}</span>'
+                '<div>'
+                f'<div class="timeline-title">{item["milestone"]}</div>'
+                f'<div class="timeline-org">{item["organization"]}</div>'
+                '</div>'
+                '</div>'
+                f'<div class="timeline-contribution"><span>Key contribution</span>{item["contribution"]}</div>'
                 '</div>'
                 '</div>'
             )
@@ -169,22 +175,22 @@ def render_journey_timeline(journey: list[dict]):
         <style>
         .journey-wrap {{
           position: relative;
-          margin: 1.15rem 0 1.75rem;
-          padding-left: 2.45rem;
-          max-width: 980px;
+          margin: 1.15rem 0 1.9rem;
+          padding-left: 2.6rem;
+          max-width: 1040px;
         }}
         .journey-wrap::before {{
           content: "";
           position: absolute;
-          left: .52rem;
-          top: .55rem;
-          bottom: .65rem;
+          left: .62rem;
+          top: .7rem;
+          bottom: .75rem;
           width: 1px;
           background: color-mix(in srgb, currentColor 28%, transparent);
         }}
         .timeline-item {{
           position: relative;
-          margin: 0 0 2.05rem;
+          margin: 0 0 1.15rem;
         }}
         .timeline-item:last-child {{
           margin-bottom: .2rem;
@@ -192,7 +198,7 @@ def render_journey_timeline(journey: list[dict]):
         .timeline-dot {{
           position: absolute;
           left: -2.42rem;
-          top: 1.08rem;
+          top: 1.3rem;
           width: .94rem;
           height: .94rem;
           border-radius: 999px;
@@ -208,6 +214,9 @@ def render_journey_timeline(journey: list[dict]):
           border: 1px solid color-mix(in srgb, currentColor 16%, transparent);
           border-radius: 8px;
           background: color-mix(in srgb, currentColor 3%, transparent);
+          display: grid;
+          gap: .85rem;
+          grid-template-columns: minmax(0, 1.05fr) minmax(260px, .95fr);
           padding: 1rem 1.1rem;
         }}
         .timeline-item.current .timeline-content {{
@@ -219,7 +228,7 @@ def render_journey_timeline(journey: list[dict]):
           align-items: center;
           flex-wrap: wrap;
           gap: .45rem;
-          margin-bottom: .52rem;
+          grid-column: 1 / -1;
         }}
         .timeline-year {{
           color: color-mix(in srgb, currentColor 62%, transparent);
@@ -238,38 +247,58 @@ def render_journey_timeline(journey: list[dict]):
           padding: .2rem .5rem;
           text-transform: uppercase;
         }}
-        .timeline-title {{
+        .timeline-main {{
           align-items: center;
-          color: currentColor;
           display: flex;
-          gap: .58rem;
-          font-size: 1.08rem;
-          font-weight: 900;
-          line-height: 1.3;
-          margin-bottom: .42rem;
+          gap: .7rem;
+          min-width: 0;
         }}
         .timeline-icon {{
           align-items: center;
           background: color-mix(in srgb, #d96f5f 14%, transparent);
+          border: 1px solid color-mix(in srgb, #d96f5f 34%, transparent);
           border-radius: 999px;
+          color: #d96f5f;
           display: inline-flex;
           flex: 0 0 auto;
-          height: 2rem;
+          font-size: .72rem;
+          font-weight: 900;
+          height: 2.1rem;
           justify-content: center;
-          width: 2rem;
+          letter-spacing: .02rem;
+          width: 2.1rem;
         }}
-        .timeline-desc {{
+        .timeline-title {{
+          color: currentColor;
+          font-size: 1.08rem;
+          font-weight: 900;
+          line-height: 1.26;
+          margin-bottom: .22rem;
+        }}
+        .timeline-org {{
           color: color-mix(in srgb, currentColor 68%, transparent);
-          line-height: 1.55;
-          max-width: 850px;
+          font-size: .88rem;
+          line-height: 1.4;
         }}
-        .timeline-highlight {{
-          border-top: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+        .timeline-contribution {{
+          align-self: stretch;
+          border-left: 2px solid #d96f5f;
           color: color-mix(in srgb, currentColor 76%, transparent);
           font-size: .9rem;
-          font-weight: 800;
-          margin-top: .85rem;
-          padding-top: .72rem;
+          line-height: 1.48;
+          padding-left: .85rem;
+        }}
+        .timeline-contribution span {{
+          color: #d96f5f;
+          display: block;
+          font-size: .68rem;
+          font-weight: 900;
+          letter-spacing: .07rem;
+          margin-bottom: .28rem;
+          text-transform: uppercase;
+        }}
+        @media (max-width: 900px) {{
+          .timeline-content {{ grid-template-columns: 1fr; }}
         }}
         </style>
         <div class="journey-wrap">{"".join(timeline_items)}</div>
@@ -305,50 +334,85 @@ st.markdown(
 
 journey = [
     {
-        "year": "2019-2021",
-        "icon": "🎓",
-        "place": "Delhi, India",
-        "title": "Started with business, strategy, and operations",
-        "desc": "My MBA in International Business gave me the lens I still use today: understand the business problem first, then choose the right data or system to solve it.",
-        "highlight": "Foundation: strategy, operations, market thinking",
+        "period": "2019-2021",
+        "icon": "MBA",
+        "milestone": "MBA in International Business and Marketing",
+        "organization": "FORE School of Management, New Delhi",
+        "location": "India",
+        "contribution": "Built a foundation in international business, marketing research, structured problem-solving, and strategy.",
     },
     {
-        "year": "2021-2023",
-        "icon": "📊",
-        "place": "Delhi, India",
-        "title": "Turned raw business data into revenue decisions",
-        "desc": "At Real Time Data Services, I cleaned and segmented 5,000+ Salesforce records, built Tableau dashboards, and helped teams act on funnel, campaign, and revenue signals.",
-        "highlight": "Impact: $600K reactivated revenue and 90% less manual reporting",
+        "period": "2020",
+        "icon": "MR",
+        "milestone": "Marketing and Research Intern",
+        "organization": "Global Governance Initiative",
+        "location": "Internship",
+        "contribution": "Identified three new market segments through SQL-based industry analysis, informing expansion strategy.",
     },
     {
-        "year": "2025",
-        "icon": "✈️",
-        "place": "India → USA",
-        "title": "Moved to the United States to go deeper into analytics",
-        "desc": "I moved from India to the Bay Area to pursue an M.S. in Business Analytics at UC Davis, bringing my operations background into a more technical, data-product focused environment.",
-        "highlight": "Shift: from analytics execution to building scalable decision systems",
+        "period": "2021-2023",
+        "icon": "DA",
+        "milestone": "Data Analytics and Marketing Specialist",
+        "organization": "Real Time Data Services",
+        "location": "Delhi, India; on-site",
+        "contribution": "Led data-driven marketing initiatives focused on revenue growth and operational efficiency.",
     },
     {
-        "year": "2025-2026",
-        "icon": "📈",
-        "place": "UC Davis",
-        "title": "Built a sharper analytics and experimentation toolkit",
-        "desc": "In the MSBA program, I deepened my work across SQL, Python, BI systems, experimentation, and decision-ready dashboards.",
-        "highlight": "Focus: product analytics, operations analytics, and BI storytelling",
+        "period": "2024",
+        "icon": "CRM",
+        "milestone": "Marketing and Communications Coordinator, part-time",
+        "organization": "Physicians Against Red Meat",
+        "location": "Remote",
+        "contribution": "Analyzed engagement and CRM data to improve outreach, audience targeting, and campaign communication.",
     },
     {
-        "year": "Aug 2025-Present",
-        "icon": "⚙️",
-        "place": "San Francisco",
-        "title": "Built AI-powered workflows for real operations teams",
-        "desc": "At The Best Notary, I architected a Slack-to-Google-Sheets automation using Make and LLMs, reducing manual review by 10+ hours weekly and improving classification accuracy from 60% to 85%.",
-        "highlight": "Now: turning fragmented signals into leadership-ready insight",
+        "period": "2024",
+        "icon": "PM",
+        "milestone": "Product Management Certificate",
+        "organization": "Northwestern University - Kellogg School of Management",
+        "location": "Professional education",
+        "contribution": "Developed product management, go-to-market, and database knowledge through a capstone product development plan.",
+    },
+    {
+        "period": "Mar 2024-Jun 2025",
+        "icon": "US",
+        "milestone": "Relocation and career transition",
+        "organization": "Career break",
+        "location": "India to United States",
+        "contribution": "Relocated internationally and transitioned into a new professional and academic environment.",
+    },
+    {
+        "period": "2025-2026",
+        "icon": "MS",
+        "milestone": "MS in Business Analytics",
+        "organization": "University of California, Davis - Graduate School of Management",
+        "location": "United States",
+        "contribution": "Advanced training in business, data, and marketing analytics.",
+    },
+    {
+        "period": "Sep 2025-Jun 2026",
+        "icon": "AI",
+        "milestone": "Data Analyst, part-time",
+        "organization": "The Best Notary",
+        "location": "Remote, United States",
+        "contribution": "Automated Slack-message processing with Make.com and OpenAI, eliminating 10+ hours of weekly manual review; built a real-time Looker Studio leadership dashboard.",
     },
 ]
 
 st.header("My Journey")
 st.markdown(
-    '<div class="subhead">From India to the Bay Area, my path has moved from business operations to analytics systems to AI-powered workflows built for real teams.</div>',
+    '<div class="subhead">From India to the United States, my career has moved through marketing, analytics, product thinking, and AI-powered operations systems.</div>',
+    unsafe_allow_html=True,
+)
+st.markdown(
+    '''
+    <div class="pill-row">
+      <span class="pill">India to USA</span>
+      <span class="pill">Marketing to Analytics</span>
+      <span class="pill">Product Strategy</span>
+      <span class="pill">AI Operations</span>
+    </div>
+    ''',
     unsafe_allow_html=True,
 )
 render_journey_timeline(journey)

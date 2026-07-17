@@ -236,7 +236,7 @@ def render_journey_timeline(journey: list[dict]):
             }}
             .career-path {{
               display: grid;
-              grid-template-columns: repeat(7, minmax(140px, 1fr));
+              grid-template-columns: repeat(6, minmax(150px, 1fr));
               gap: .5rem;
               overflow-x: auto;
               padding: .25rem 0 .35rem;
@@ -428,6 +428,7 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="impact-row"><strong>AI</strong><span>Automated field-operations updates into structured reporting workflows.</span></div>
                   <div class="impact-row"><strong>BI</strong><span>Built Looker Studio and Tableau dashboards for leadership visibility.</span></div>
                   <div class="impact-row"><strong>PM</strong><span>Applied Kellogg product thinking through go-to-market and capstone planning.</span></div>
+                  <div class="impact-row"><strong>CARE</strong><span>Used analytics and communication work to support health-focused community outreach.</span></div>
                   <div class="impact-row"><strong>SQL</strong><span>Used data cleaning, segmentation, and analysis to support growth decisions.</span></div>
                 </div>
                 <div class="project-moments">
@@ -504,19 +505,11 @@ journey = [
     },
     {
         "period": "2024",
-        "icon": "CRM",
-        "milestone": "Marketing and Communications Coordinator, part-time",
-        "organization": "Physicians Against Red Meat",
-        "location": "Remote",
-        "contribution": "Analyzed engagement and CRM data to improve outreach, audience targeting, and campaign communication.",
-    },
-    {
-        "period": "2024",
         "icon": "PM",
-        "milestone": "Product Management Certificate",
-        "organization": "Northwestern University - Kellogg School of Management",
-        "location": "Professional education",
-        "contribution": "Developed product management, go-to-market, and database knowledge through a capstone product development plan.",
+        "milestone": "Upskilling and contributing to society",
+        "organization": "Kellogg product education + Physicians Against Red Meat",
+        "location": "Professional education and remote social-impact work",
+        "contribution": "Built product management, go-to-market, and database knowledge through Northwestern Kellogg while applying analytics and communication skills to health-focused outreach.",
     },
     {
         "period": "Mar 2024-Jun 2025",
@@ -544,22 +537,6 @@ journey = [
     },
 ]
 
-st.header("My Journey")
-st.markdown(
-    '<div class="subhead">From India to the United States, my career has moved through marketing, analytics, product thinking, and AI-powered operations systems.</div>',
-    unsafe_allow_html=True,
-)
-st.markdown(
-    '''
-    <div class="pill-row">
-      <span class="pill">India to USA</span>
-      <span class="pill">Marketing to Analytics</span>
-      <span class="pill">Product Strategy</span>
-      <span class="pill">AI Operations</span>
-    </div>
-    ''',
-    unsafe_allow_html=True,
-)
 render_journey_timeline(journey)
 
 st.header("Flagship Work")

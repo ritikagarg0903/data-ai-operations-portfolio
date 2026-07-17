@@ -125,11 +125,11 @@ def project_copy(description, tools, link):
     )
 
 
-def project_copy_with_pdf(description, tools, pdf_link, link=None):
+def project_copy_with_pdf(description, tools, pdf_link, link=None, pdf_label="View PDF case study"):
     links = []
     if link:
         links.append(f'<a class="project-link" href="{link}" target="_blank">View project</a>')
-    links.append(f'<a class="project-link alt-link" href="{pdf_link}" target="_blank">View PDF case study</a>')
+    links.append(f'<a class="project-link alt-link" href="{pdf_link}" target="_blank">{pdf_label}</a>')
     links_html = "".join(links)
     st.markdown(
         f"""
@@ -150,16 +150,16 @@ def sql_case_study_panel():
         """
         <div class="mock-dashboard">
           <div class="mock-title">Uber Clean Development Plan</div>
-          <p class="mini">Capstone concept for on-demand laundry pickup, service design, and go-to-market thinking.</p>
-          <div class="mock-tabs"><span>Personas</span><span>JTBD</span><span>Service Flow</span><span>Go-to-Market</span></div>
+          <p class="mini">Go-to-market strategy presentation for an on-demand laundry pickup and delivery concept.</p>
+          <div class="mock-tabs"><span>Market Need</span><span>Target User</span><span>Service Model</span><span>Go-to-Market</span></div>
           <div class="mock-grid">
             <div class="mock-kpi">Service<strong>Uber Clean</strong></div>
             <div class="mock-kpi">Partner<strong>P&amp;G</strong></div>
-            <div class="mock-kpi">Focus<strong>On-demand laundry</strong></div>
+            <div class="mock-kpi">Focus<strong>GTM strategy</strong></div>
             <div class="mock-kpi">User need<strong>Pickup + delivery</strong></div>
-            <div class="mock-kpi">Output<strong>Capstone plan</strong></div>
+            <div class="mock-kpi">Output<strong>Presentation deck</strong></div>
           </div>
-          <div class="mock-chart"><div class="bar" style="height:116px">Problem</div><div class="bar" style="height:132px">Persona</div><div class="bar" style="height:122px">Journey</div><div class="bar" style="height:110px">Launch</div></div>
+          <div class="mock-chart"><div class="bar" style="height:116px">Need</div><div class="bar" style="height:132px">Persona</div><div class="bar" style="height:122px">Model</div><div class="bar" style="height:110px">GTM</div></div>
         </div>
         """,
         unsafe_allow_html=True,
@@ -642,12 +642,13 @@ st.markdown(" ")
 d5, d6 = st.columns(2, gap="large")
 with d5:
     st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)
-    st.markdown('<div class="card"><div class="project-heading"><div class="tag">Capstone Product Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
+    st.markdown('<div class="card"><div class="project-heading"><div class="tag">Go-to-Market Strategy</div><h3>Uber Clean Development Plan</h3></div>', unsafe_allow_html=True)
     sql_case_study_panel()
     project_copy_with_pdf(
-        "A product capstone outlining an on-demand laundry pickup and delivery service, including personas, jobs-to-be-done, service design, and launch planning with Procter &amp; Gamble as a strategic partner.",
-        "Product strategy, service design, persona research, jobs-to-be-done, go-to-market planning",
+        "A presentation-led capstone focused on go-to-market strategy for Uber Clean, covering the customer problem, target persona, service model, and launch framing with Procter &amp; Gamble as a strategic partner.",
+        "Go-to-market strategy, product planning, persona research, JTBD, service design",
         UBER_CLEAN_CAPSTONE_URL,
+        pdf_label="View presentation PDF",
     )
     st.markdown('</div>', unsafe_allow_html=True)
 with d6:

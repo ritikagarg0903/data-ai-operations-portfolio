@@ -191,13 +191,21 @@ def gif_or_upload_note(path, upload_name):
 
 
 def render_journey_timeline(journey: list[dict]):
+    icon_svgs = {
+        "AI": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>',
+        "DA": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path></svg>',
+        "MS": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>',
+        "MBA": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>',
+        "US": '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"></path></svg>',
+    }
     path_nodes = []
     for index, item in enumerate(journey):
         current_class = " current" if index == 0 else ""
+        icon_svg = icon_svgs.get(item["icon"], "")
         path_nodes.append(
             (
                 f'<div class="career-node{current_class}">'
-                '<div class="node-dot"></div>'
+                f'<div class="node-icon">{icon_svg}</div>'
                 f'<div class="node-period">{item["period"]}</div>'
                 f'<div class="node-title">{item["milestone"]}</div>'
                 f'<div class="node-org">{item["organization"]}</div>'
@@ -318,20 +326,33 @@ def render_journey_timeline(journey: list[dict]):
               position: relative;
               padding-top: 1.65rem;
             }}
-            .node-dot {{
+            .node-icon {{
               position: absolute;
-              top: .47rem;
+              top: .15rem;
               left: 0;
-              width: .78rem;
-              height: .78rem;
+              width: 1.45rem;
+              height: 1.45rem;
               border-radius: 999px;
               border: 2px solid #d96f5f;
               background: #fffaf4;
               z-index: 1;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              padding: .22rem;
+              box-sizing: border-box;
             }}
-            .career-node.current .node-dot {{
+            .node-icon svg {{
+              width: 100%;
+              height: 100%;
+              color: #d96f5f;
+            }}
+            .career-node.current .node-icon {{
               background: #d96f5f;
               box-shadow: 0 0 0 4px color-mix(in srgb, #d96f5f 18%, transparent);
+            }}
+            .career-node.current .node-icon svg {{
+              color: #fffaf4;
             }}
             .node-period {{
               color: #d96f5f;

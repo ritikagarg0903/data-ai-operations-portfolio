@@ -44,7 +44,13 @@ st.markdown(
     .metric { border-top: 1px solid #ded5ca; padding: .85rem 0; }
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
-    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; display: flex; flex-direction: column; }
+    [data-testid="stHorizontalBlock"] { align-items: stretch !important; }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] { display: flex !important; flex-direction: column !important; }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] > div { display: flex !important; flex-direction: column !important; flex: 1 1 auto !important; }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] div[data-testid="stMarkdownContainer"] { display: flex !important; flex-direction: column !important; flex: 1 1 auto !important; }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] div.stMarkdown { display: flex !important; flex-direction: column !important; flex: 1 1 auto !important; }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] div.stMarkdown > div { display: flex !important; flex-direction: column !important; flex: 1 1 auto !important; }
+    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; flex: 1 1 auto !important; display: flex !important; flex-direction: column !important; box-sizing: border-box; }
     .project-heading { position: relative; min-height: 92px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
     .project-heading.with-badge { padding-right: 10.5rem; }
     .project-heading h3 { margin: .48rem 0 0; line-height: 1.1; }
@@ -167,16 +173,17 @@ def project_copy_with_pdf(description, tools, pdf_link, link=None, pdf_label="Vi
     )
 
 
-def dashboard_card(title, tag, description, tools, link, img=None, local_path=None):
+def dashboard_card(title, tag, description, tools, link, img=None, local_path=None, card_id=None):
     img_html = ""
     if img:
         img_html = f'<div class="image-frame"><img src="{img}" alt="{title}"></div>'
     links_html = ""
     if link:
         links_html = f'<a class="project-link" href="{link}" target="_blank">View project</a>'
+    id_attr = f' id="{card_id}"' if card_id else ""
     st.markdown(
         f"""
-        <div class="card">
+        <div{id_attr} class="card">
           <div class="project-heading"><div class="tag">{tag}</div><h3>{title}</h3></div>
           {img_html}
           <div class="project-copy">
@@ -616,7 +623,6 @@ st.markdown(
 st.header("Projects Highlights")
 d1, d2 = st.columns(2, gap="large")
 with d1:
-    st.markdown('<div id="sales-project"></div>', unsafe_allow_html=True)
     dashboard_card(
         "AI-Assisted Sales Pipeline Command Center",
         "Sales AI Agent",
@@ -624,9 +630,9 @@ with d1:
         "Python, Streamlit, pandas, Plotly",
         "https://github.com/ritikagarg0903/sales-ops-command-center",
         img=SALES_AI_SCREENSHOT_URL,
+        card_id="sales-project",
     )
 with d2:
-    st.markdown('<div id="transit-project"></div>', unsafe_allow_html=True)
     dashboard_card(
         "Bay Area Transit Performance Monitor",
         "Operational Analytics",
@@ -634,12 +640,12 @@ with d2:
         "Python, SQL, BigQuery, dbt, Looker Studio",
         "https://github.com/ritikagarg0903/bay-area-transit",
         img=BAY_AREA_SCREENSHOT_URL,
+        card_id="transit-project",
     )
 
-st.markdown(" ")
+st.markdown('<div style="height: 1.5rem;"></div>', unsafe_allow_html=True)
 d3, d4 = st.columns(2, gap="large")
 with d3:
-    st.markdown('<div id="hacker-news-project"></div>', unsafe_allow_html=True)
     dashboard_card(
         "Hacker News Virality Analysis",
         "Product Analytics",
@@ -647,11 +653,12 @@ with d3:
         "SQL, BigQuery, dbt, Looker Studio",
         "https://github.com/ritikagarg0903/hacker-news-analytics",
         img=HACKER_NEWS_SCREENSHOT_URL,
+        card_id="hacker-news-project",
     )
 with d4:
     st.markdown(
         f'''
-        <div class="card">
+        <div id="pathfindher-project" class="card">
           <div class="project-heading with-badge">
             <div class="tag">Agentic Product Experiences</div>
             <h3>PathFindHer</h3>

@@ -634,7 +634,7 @@ with d3:
     dashboard_card(
         "Hacker News Virality Analysis",
         "Product Analytics",
-        "Analyzes 286K+ posts to reveal when content gains traction, where posts stall, and how creator cohorts retain.",
+        "Analyzes 286K+ Hacker News posts to reveal when content gains traction to go viral, where posts stall, and how creator cohorts retain.",
         "SQL, BigQuery, dbt, Looker Studio",
         "https://github.com/ritikagarg0903/hacker-news-analytics",
         img=HACKER_NEWS_SCREENSHOT_URL,

@@ -621,7 +621,7 @@ with d2:
     dashboard_card(
         "Bay Area Transit Performance Monitor",
         "Operational Analytics",
-        "Tracks reliability with delay KPIs, freshness checks, route trends, heatmaps, and live geospatial context.",
+        "Tracks Bay area transit reliability with delay KPIs, freshness checks, route trends, heatmaps, and live geospatial context by scraping public data.",
         "Python, SQL, BigQuery, dbt, Looker Studio",
         "https://github.com/ritikagarg0903/bay-area-transit",
         img=BAY_AREA_SCREENSHOT_URL,

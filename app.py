@@ -501,7 +501,7 @@ def render_journey_timeline(journey: list[dict]):
                     <ul class="experience-list">
                       <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
                       <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>
-                      <li>Created a live leadership dashboard showing productivity patterns, task distribution, and follow-up visibility.</li>
+                      <li>Created a live leadership dashboard showing productivity patterns, task distribution, and follow-up visibility, adding insights that led to more efficient business operations.</li>
                     </ul>
                   </div>
                   <div class="experience-card">

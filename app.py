@@ -526,7 +526,7 @@ def render_journey_timeline(journey: list[dict]):
                   </div>
                   <div class="experience-card">
                     <div class="experience-kicker">Real Time Data Services</div>
-                    <div class="experience-title">Revenue analytics and campaign decision support</div>
+                    <div class="experience-title">Turned CRM and campaign data into revenue insight</div>
                     <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics</div>
                     <ul class="experience-list">
                       <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>

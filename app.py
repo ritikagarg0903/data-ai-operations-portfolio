@@ -14,6 +14,7 @@ HACKER_NEWS_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/h
 UBER_CLEAN_COVER_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_cover.png"
 UBER_CLEAN_GROWTH_TACTICS_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_growth_tactics.png"
 UBER_CLEAN_CAPSTONE_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_capstone.pdf"
+SALES_AI_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/sales_ai_agent.png"
 
 st.set_page_config(
     page_title="Ritika Garg | Data, AI & Operations Product Portfolio",
@@ -587,7 +588,7 @@ with d1:
         "Turns pipeline data into one executive view for quota gaps, coverage, forecast confidence, rep performance, and deal risk.",
         "Python, Streamlit, pandas, Plotly",
         "https://github.com/ritikagarg0903/sales-ops-command-center",
-        local_path=SALES_AI_SCREENSHOT,
+        img=SALES_AI_SCREENSHOT_URL,
     )
 with d2:
     st.markdown('<div id="transit-project"></div>', unsafe_allow_html=True)

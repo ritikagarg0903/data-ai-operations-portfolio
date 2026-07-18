@@ -521,7 +521,7 @@ journey = [
     {
         "period": "2024-2025",
         "icon": "US",
-        "milestone": "Relocation and career transition",
+        "milestone": "Relocation and transition",
         "organization": "Northwestern University",
         "location": "Professional education and remote NGO contribution",
         "contribution": "Completed product management coursework at Northwestern Kellogg focused on go-to-market, product strategy, and database planning, while serving as Marketing and Communications Coordinator for Physicians Against Red Meat, a health-focused NGO, using CRM and outreach analysis to strengthen campaigns and audience targeting.",

@@ -584,7 +584,7 @@ def render_journey_timeline(journey: list[dict]):
                     <ul class="experience-list">
                       <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>
                       <li>Supported analysis tied to $600K in reactivated revenue by connecting campaign efficiency, customer behavior, and operational decisions.</li>
-                      <li>Automated 4 marketing workflows using trigger-based segmentation and lead scoring criteria, increasing email engagement rates by 12% and cutting time-to-first-touch by 24 hours.</li>
+                      <li>Automated marketing workflows using trigger-based segmentation and lead scoring criteria, increasing email engagement by 12% and cutting time-to-first-touch by 24 hours.</li>
                     </ul>
                   </div>
                 </div>

@@ -43,12 +43,7 @@ st.markdown(
     .metric { border-top: 1px solid #ded5ca; padding: .85rem 0; }
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
-    [data-testid="stHorizontalBlock"] { align-items: stretch !important; }
-    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] { display: flex !important; flex-direction: column !important; }
-    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] > div,
-    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] > div > div,
-    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] > div > div > div { flex: 1 !important; display: flex !important; flex-direction: column !important; }
-    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; flex: 1 !important; display: flex; flex-direction: column; }
+    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; display: flex; flex-direction: column; }
     .project-heading { position: relative; min-height: 92px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
     .project-heading.with-badge { padding-right: 10.5rem; }
     .project-heading h3 { margin: .48rem 0 0; line-height: 1.1; }
@@ -57,7 +52,7 @@ st.markdown(
     .winner-badge svg { width: 13px; height: 13px; flex: 0 0 auto; }
     .muted { color: #716960; line-height: 1.5; }
     .mini { color: #716960; font-size: .86rem; }
-    .project-copy { border-top: 1px solid #ded5ca; margin-top: .85rem; padding-top: .85rem; }
+    .project-copy { border-top: 1px solid #ded5ca; margin-top: auto; padding-top: .85rem; }
     .project-copy p { margin: 0 0 .55rem 0; }
     .project-copy strong { color: #25211d; }
     .tools-line { color: #716960; font-size: .86rem; margin-bottom: .7rem !important; }
@@ -172,13 +167,26 @@ def project_copy_with_pdf(description, tools, pdf_link, link=None, pdf_label="Vi
 
 
 def dashboard_card(title, tag, description, tools, link, img=None, local_path=None):
-    st.markdown(f'<div class="card"><div class="project-heading"><div class="tag">{tag}</div><h3>{title}</h3></div>', unsafe_allow_html=True)
-    if local_path is not None:
-        local_image_or_mock(local_path)
-    elif img:
-        image_frame(img, title)
-    project_copy(description, tools, link)
-    st.markdown('</div>', unsafe_allow_html=True)
+    img_html = ""
+    if img:
+        img_html = f'<div class="image-frame"><img src="{img}" alt="{title}"></div>'
+    links_html = ""
+    if link:
+        links_html = f'<a class="project-link" href="{link}" target="_blank">View project</a>'
+    st.markdown(
+        f"""
+        <div class="card">
+          <div class="project-heading"><div class="tag">{tag}</div><h3>{title}</h3></div>
+          {img_html}
+          <div class="project-copy">
+            <p class="muted"><strong>What it shows:</strong> {description}</p>
+            <p class="tools-line"><strong>Tools:</strong> {tools}</p>
+            <div class="project-links">{links_html}</div>
+          </div>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
 
 def video_or_upload_note(path, upload_name):

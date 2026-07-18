@@ -193,7 +193,7 @@ def gif_or_upload_note(path, upload_name):
 def render_journey_timeline(journey: list[dict]):
     path_nodes = []
     for index, item in enumerate(journey):
-        current_class = " current" if index == len(journey) - 1 else ""
+        current_class = " current" if index == 0 else ""
         path_nodes.append(
             (
                 f'<div class="career-node{current_class}">'
@@ -474,16 +474,6 @@ def render_journey_timeline(journey: list[dict]):
                 </div>
                 <div class="experience-grid">
                   <div class="experience-card">
-                    <div class="experience-kicker">Real Time Data Services</div>
-                    <div class="experience-title">Revenue analytics and campaign decision support</div>
-                    <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics | Revenue and operations impact</div>
-                    <ul class="experience-list">
-                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>
-                      <li>Built 3+ Tableau dashboard views across funnel, campaign, and revenue performance so teams could spot gaps and reactivation opportunities faster.</li>
-                      <li>Supported analysis tied to $600K in reactivated revenue by connecting campaign efficiency, customer behavior, and operational decisions.</li>
-                    </ul>
-                  </div>
-                  <div class="experience-card">
                     <div class="experience-kicker">The Best Notary</div>
                     <div class="experience-title">Slack + Make.com + OpenAI workflow for 500+ daily updates</div>
                     <div class="experience-meta">Remote, United States | Make.com, OpenAI, Google Sheets, Looker Studio | 10+ hours saved weekly</div>
@@ -491,6 +481,16 @@ def render_journey_timeline(journey: list[dict]):
                       <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
                       <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>
                       <li>Created a live leadership dashboard showing productivity patterns, task distribution, and follow-up visibility.</li>
+                    </ul>
+                  </div>
+                  <div class="experience-card">
+                    <div class="experience-kicker">Real Time Data Services</div>
+                    <div class="experience-title">Revenue analytics and campaign decision support</div>
+                    <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics | Revenue and operations impact</div>
+                    <ul class="experience-list">
+                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>
+                      <li>Built 3+ Tableau dashboard views across funnel, campaign, and revenue performance so teams could spot gaps and reactivation opportunities faster.</li>
+                      <li>Supported analysis tied to $600K in reactivated revenue by connecting campaign efficiency, customer behavior, and operational decisions.</li>
                     </ul>
                   </div>
                 </div>
@@ -503,28 +503,12 @@ def render_journey_timeline(journey: list[dict]):
 
 journey = [
     {
-        "period": "2019-2021",
-        "icon": "MBA",
-        "milestone": "MBA in International Business and Marketing",
-        "organization": "FORE School of Management, New Delhi",
-        "location": "India",
-        "contribution": "Built a foundation in international business, marketing research, structured problem-solving, and strategy.",
-    },
-    {
-        "period": "2021-2023",
-        "icon": "DA",
-        "milestone": "Data Analytics and Marketing Specialist",
-        "organization": "Real Time Data Services",
-        "location": "Delhi, India; on-site",
-        "contribution": "Led data-driven marketing initiatives focused on revenue growth and operational efficiency.",
-    },
-    {
-        "period": "Mar 2024-Jun 2025",
-        "icon": "US",
-        "milestone": "Relocation and career transition",
-        "organization": "Northwestern University Kellogg + Physicians Against Red Meat",
-        "location": "Professional education and remote NGO contribution",
-        "contribution": "Completed product management coursework at Northwestern Kellogg focused on go-to-market, product strategy, and database planning, while serving as Marketing and Communications Coordinator for Physicians Against Red Meat, a health-focused NGO, using CRM and outreach analysis to strengthen campaigns and audience targeting.",
+        "period": "Sep 2025-Jun 2026",
+        "icon": "AI",
+        "milestone": "Data Analyst, part-time",
+        "organization": "The Best Notary",
+        "location": "Remote, United States",
+        "contribution": "Automated Slack-message processing with Make.com and OpenAI, eliminating 10+ hours of weekly manual review; built a real-time Looker Studio leadership dashboard.",
     },
     {
         "period": "2025-2026",
@@ -535,12 +519,28 @@ journey = [
         "contribution": "Advanced training in business, data, and marketing analytics.",
     },
     {
-        "period": "Sep 2025-Jun 2026",
-        "icon": "AI",
-        "milestone": "Data Analyst, part-time",
-        "organization": "The Best Notary",
-        "location": "Remote, United States",
-        "contribution": "Automated Slack-message processing with Make.com and OpenAI, eliminating 10+ hours of weekly manual review; built a real-time Looker Studio leadership dashboard.",
+        "period": "Mar 2024-Jun 2025",
+        "icon": "US",
+        "milestone": "Relocation and career transition",
+        "organization": "Northwestern University Kellogg + Physicians Against Red Meat",
+        "location": "Professional education and remote NGO contribution",
+        "contribution": "Completed product management coursework at Northwestern Kellogg focused on go-to-market, product strategy, and database planning, while serving as Marketing and Communications Coordinator for Physicians Against Red Meat, a health-focused NGO, using CRM and outreach analysis to strengthen campaigns and audience targeting.",
+    },
+    {
+        "period": "2021-2023",
+        "icon": "DA",
+        "milestone": "Data Analytics and Marketing Specialist",
+        "organization": "Real Time Data Services",
+        "location": "Delhi, India; on-site",
+        "contribution": "Led data-driven marketing initiatives focused on revenue growth and operational efficiency.",
+    },
+    {
+        "period": "2019-2021",
+        "icon": "MBA",
+        "milestone": "MBA in International Business and Marketing",
+        "organization": "FORE School of Management, New Delhi",
+        "location": "India",
+        "contribution": "Built a foundation in international business, marketing research, structured problem-solving, and strategy.",
     },
 ]
 

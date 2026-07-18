@@ -654,4 +654,29 @@ project_copy_with_pdf(
 st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
-st.caption("Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.")
+st.markdown(
+    """
+    <div style="padding: 1.2rem 0 .5rem;">
+      <div class="journey-contact" style="justify-content: center; border-top: 1px solid #ded5ca; border-bottom: none; padding-top: 1rem;">
+        <span class="contact-label">Get in Touch</span>
+        <a class="contact-link" href="https://github.com/ritikagarg0903" target="_blank" aria-label="GitHub profile">
+          <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.6 7.6 0 0 1 8 3.87c.68 0 1.36.09 2 .26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+          GitHub
+        </a>
+        <a class="contact-link" href="https://linkedin.com/in/ritikagarg14" target="_blank" aria-label="LinkedIn profile">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.5 8h4V24h-4V8Zm7.5 0h3.83v2.19h.05c.53-1 1.84-2.19 3.79-2.19 4.05 0 4.8 2.67 4.8 6.14V24h-4v-8.73c0-2.08-.04-4.75-2.9-4.75-2.9 0-3.34 2.27-3.34 4.6V24h-4V8Z"></path></svg>
+          LinkedIn
+        </a>
+        <a class="contact-link" href="mailto:ritikagarg0903@gmail.com" aria-label="Email Ritika Garg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+          Email
+        </a>
+      </div>
+      <p style="text-align: center; color: #716960; font-size: .78rem; margin-top: .85rem; line-height: 1.5;">
+        Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.<br>
+        Last updated: July 2026
+      </p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)

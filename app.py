@@ -674,7 +674,7 @@ with d4:
           </div>
           <div class="project-copy">
             <p class="muted"><strong>What it shows:</strong> Shows a safety-first travel experience with AI area scanning, community signals, safe havens, and route-aware recommendations, built with Google AI Studio.</p>
-            <p class="tools-line"><strong>Tools:</strong> React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini</p>
+            <p class="tools-line"><strong>Tools:</strong> React, TypeScript, Tailwind, Google Maps, Gemini</p>
             <div class="project-links"><a class="project-link" href="https://github.com/ritikagarg0903/PathFindHer" target="_blank">View project</a></div>
           </div>
         </div>

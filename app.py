@@ -497,7 +497,7 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="experience-card">
                     <div class="experience-kicker">The Best Notary</div>
                     <div class="experience-title">Slack + Make.com + OpenAI workflow for 500+ daily updates</div>
-                    <div class="experience-meta">San Francisco, CA | Make.com, OpenAI, Google Sheets, Looker Studio | 10+ hours saved weekly</div>
+                    <div class="experience-meta">San Francisco, CA | Make.com, OpenAI, Google Sheets, Looker Studio</div>
                     <ul class="experience-list">
                       <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
                       <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>
@@ -507,7 +507,7 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="experience-card">
                     <div class="experience-kicker">Real Time Data Services</div>
                     <div class="experience-title">Revenue analytics and campaign decision support</div>
-                    <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics | Revenue and operations impact</div>
+                    <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics</div>
                     <ul class="experience-list">
                       <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>
                       <li>Built 3+ Tableau dashboard views across funnel, campaign, and revenue performance so teams could spot gaps and reactivation opportunities faster.</li>

@@ -476,7 +476,7 @@ def render_journey_timeline(journey: list[dict]):
                   <div class="experience-card">
                     <div class="experience-kicker">The Best Notary</div>
                     <div class="experience-title">Slack + Make.com + OpenAI workflow for 500+ daily updates</div>
-                    <div class="experience-meta">Remote, United States | Make.com, OpenAI, Google Sheets, Looker Studio | 10+ hours saved weekly</div>
+                    <div class="experience-meta">San Francisco, CA | Make.com, OpenAI, Google Sheets, Looker Studio | 10+ hours saved weekly</div>
                     <ul class="experience-list">
                       <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
                       <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>

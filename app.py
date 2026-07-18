@@ -493,7 +493,7 @@ def render_journey_timeline(journey: list[dict]):
                   </div>
                 </div>
                 <div class="journey-focus">
-                  <div class="focus-head">Skills and Work</div>
+                  <div class="focus-head">Top Skills</div>
                   <a class="focus-link" href="#tbn-automation"><strong>AI Automation</strong></a>
                   <a class="focus-link" href="#hacker-news-project"><strong>Product Analytics</strong></a>
                   <a class="focus-link" href="#transit-project"><strong>Operations Intelligence</strong></a>

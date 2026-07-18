@@ -493,10 +493,28 @@ def render_journey_timeline(journey: list[dict]):
               .journey-focus {{ border-left: 0; border-right: 0; }}
               .impact-summary, .experience-grid {{ grid-template-columns: 1fr; }}
             }}
+            .monogram {{
+              width: 3.6rem;
+              height: 3.6rem;
+              border-radius: 999px;
+              background: linear-gradient(135deg, #d96f5f 0%, #c75a4a 100%);
+              color: #fffaf4;
+              font-size: 1.25rem;
+              font-weight: 900;
+              letter-spacing: .06rem;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              flex-shrink: 0;
+              box-shadow: 0 0 0 4px color-mix(in srgb, #d96f5f 15%, transparent),
+                          0 2px 8px rgba(0,0,0,.08);
+              margin-bottom: .7rem;
+            }}
             </style>
             <div class="journey-profile">
               <div class="journey-top">
                 <div class="journey-intro">
+                  <div class="monogram">RG</div>
                   <div class="journey-kicker">Career Profile</div>
                   <div class="journey-name">Ritika Garg</div>
                   <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted classification systems, and decision dashboards that turn messy operational data into leadership-ready insight.</div>

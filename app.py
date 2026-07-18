@@ -258,7 +258,6 @@ def render_journey_timeline(journey: list[dict]):
             .journey-top {{
               display: grid;
               grid-template-columns: minmax(0, 1.35fr) minmax(300px, .65fr);
-              border-bottom: 1px solid #ded5ca;
               align-items: start;
             }}
             .journey-intro {{

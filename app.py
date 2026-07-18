@@ -15,6 +15,7 @@ UBER_CLEAN_COVER_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai
 UBER_CLEAN_GROWTH_TACTICS_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_growth_tactics.png"
 UBER_CLEAN_CAPSTONE_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/uber_clean_capstone.pdf"
 SALES_AI_SCREENSHOT_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/sales_ai_agent.png"
+PATHFINDHER_VIDEO_URL = "https://raw.githubusercontent.com/ritikagarg0903/data-ai-operations-portfolio/staging/assets/PathFindHer_Walk_Without_Fear.mp4"
 
 st.set_page_config(
     page_title="Ritika Garg | Data, AI & Operations Product Portfolio",
@@ -649,7 +650,7 @@ with d3:
     )
 with d4:
     st.markdown(
-        '''
+        f'''
         <div class="card">
           <div class="project-heading with-badge">
             <div class="tag">Agentic Product Experiences</div>
@@ -659,17 +660,20 @@ with d4:
               Hackathon Winner
             </div>
           </div>
+          <div class="image-frame" style="height: 315px;">
+            <video controls style="width:100%; height:100%; object-fit:contain;">
+              <source src="{PATHFINDHER_VIDEO_URL}" type="video/mp4">
+            </video>
+          </div>
+          <div class="project-copy">
+            <p class="muted"><strong>What it shows:</strong> Shows a safety-first travel experience with AI area scanning, community signals, safe havens, and route-aware recommendations, built with Google AI Studio.</p>
+            <p class="tools-line"><strong>Tools:</strong> React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini</p>
+            <div class="project-links"><a class="project-link" href="https://github.com/ritikagarg0903/PathFindHer" target="_blank">View project</a></div>
+          </div>
+        </div>
         ''',
         unsafe_allow_html=True,
     )
-    st.markdown('<div class="media-gap"></div>', unsafe_allow_html=True)
-    video_or_upload_note(PATHFINDHER_VIDEO, "PathFindHer_Walk_Without_Fear.mp4")
-    project_copy(
-        "Shows a safety-first travel experience with AI area scanning, community signals, safe havens, and route-aware recommendations, built with Google AI Studio.",
-        "React, TypeScript, Tailwind, Leaflet, Google Maps, Gemini",
-        "https://github.com/ritikagarg0903/PathFindHer",
-    )
-    st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown(" ")
 st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)

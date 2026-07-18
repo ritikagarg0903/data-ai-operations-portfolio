@@ -698,6 +698,88 @@ project_copy_with_pdf(
 )
 st.markdown('</div>', unsafe_allow_html=True)
 
+st.header("Certifications")
+st.markdown(
+    """
+    <style>
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .85rem;
+      margin-bottom: 1.2rem;
+    }
+    .cert-card {
+      border: 1px solid #ded5ca;
+      border-radius: 8px;
+      background: #fffaf4;
+      padding: 1.15rem 1rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .55rem;
+    }
+    .cert-icon {
+      width: 2.8rem;
+      height: 2.8rem;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .cert-icon svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+    .cert-icon.marketo  { background: color-mix(in srgb, #7b2d8e 12%, transparent); }
+    .cert-icon.marketo svg  { color: #7b2d8e; }
+    .cert-icon.northwestern { background: color-mix(in srgb, #4e2a84 12%, transparent); }
+    .cert-icon.northwestern svg { color: #4e2a84; }
+    .cert-icon.hubspot  { background: color-mix(in srgb, #ff7a59 12%, transparent); }
+    .cert-icon.hubspot svg  { color: #ff7a59; }
+    .cert-title {
+      color: #25211d;
+      font-size: .92rem;
+      font-weight: 900;
+      line-height: 1.25;
+    }
+    .cert-org {
+      color: #716960;
+      font-size: .8rem;
+      line-height: 1.35;
+    }
+    @media (max-width: 900px) {
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+    </style>
+    <div class="cert-grid">
+      <div class="cert-card">
+        <div class="cert-icon marketo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+        </div>
+        <div class="cert-title">Adobe Marketo Engage Business Practitioner</div>
+        <div class="cert-org">Adobe</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon northwestern">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg>
+        </div>
+        <div class="cert-title">Professional Certificate in Product Management</div>
+        <div class="cert-org">Northwestern University – Kellogg School of Management</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon hubspot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 14.5L19 21l-3.5-1L14 23l-2-6"/><path d="M10 23l-1.5-3L5 21l3.5-6.5"/></svg>
+        </div>
+        <div class="cert-title">HubSpot Marketing Software Certified</div>
+        <div class="cert-org">HubSpot Academy</div>
+      </div>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
+
 st.markdown(
     """
     <div style="border-top: 1px solid #ded5ca; margin-top: 1.8rem; padding-top: 1rem;">

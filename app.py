@@ -598,7 +598,7 @@ with m1:
 with m2:
     metric("10+ hrs", "manual review saved weekly")
 with m3:
-    metric("85%", "classification accuracy after feedback loop")
+    metric("85%", "accuracy after feedback loop")
 with m4:
     metric("Live", "leadership reporting dashboard")
 

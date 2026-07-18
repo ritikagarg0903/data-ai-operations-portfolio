@@ -505,7 +505,7 @@ journey = [
     {
         "period": "Sep 2025-Jun 2026",
         "icon": "AI",
-        "milestone": "Data Analyst, part-time",
+        "milestone": "Data Analyst",
         "organization": "The Best Notary",
         "location": "Remote, United States",
         "contribution": "Automated Slack-message processing with Make.com and OpenAI, eliminating 10+ hours of weekly manual review; built a real-time Looker Studio leadership dashboard.",

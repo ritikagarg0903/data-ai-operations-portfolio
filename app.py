@@ -611,7 +611,7 @@ with d1:
     dashboard_card(
         "AI-Assisted Sales Pipeline Command Center",
         "Sales AI Agent",
-        "Turns pipeline data into one executive view for quota gaps, coverage, forecast confidence, rep performance, and deal risk.",
+        "Turns sales pipeline data into one executive view for quota gaps, coverage, forecast confidence, rep performance, and deal risk.",
         "Python, Streamlit, pandas, Plotly",
         "https://github.com/ritikagarg0903/sales-ops-command-center",
         img=SALES_AI_SCREENSHOT_URL,

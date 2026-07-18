@@ -241,9 +241,19 @@ def render_journey_timeline(journey: list[dict]):
             .journey-profile {{
               border: 1px solid #ded5ca;
               border-radius: 8px;
-              background: #fffaf4;
+              background: linear-gradient(135deg, #fffaf4 0%, #f5ede3 55%, #f0e8dd 100%);
               overflow: hidden;
               margin: 1rem 0 1.9rem;
+              position: relative;
+              border-left: 4px solid #d96f5f;
+            }}
+            .journey-profile::before {{
+              content: "";
+              position: absolute;
+              inset: 0;
+              background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");
+              pointer-events: none;
+              border-radius: 8px;
             }}
             .journey-top {{
               display: grid;
@@ -296,23 +306,36 @@ def render_journey_timeline(journey: list[dict]):
               text-transform: uppercase;
             }}
             .focus-link {{
-              padding: .8rem .95rem;
+              padding: .65rem .95rem;
               border-bottom: 1px solid #ded5ca;
               color: #25211d !important;
               text-decoration: none !important;
               display: block;
               background: transparent;
+              transition: all .2s ease;
             }}
             .focus-link strong {{
-              display: block;
+              display: inline-block;
               color: #d96f5f;
-              font-size: 1rem;
-              line-height: 1.15;
+              font-size: .88rem;
+              font-weight: 900;
+              line-height: 1;
               margin-bottom: 0;
               text-decoration: none !important;
+              background: color-mix(in srgb, #d96f5f 10%, transparent);
+              padding: .38rem .72rem;
+              border-radius: 999px;
+              border: 1px solid color-mix(in srgb, #d96f5f 20%, transparent);
+              transition: all .25s ease;
             }}
             .focus-link:hover {{
-              background: rgba(255,255,255,.55);
+              background: rgba(255,255,255,.35);
+            }}
+            .focus-link:hover strong {{
+              background: color-mix(in srgb, #d96f5f 18%, transparent);
+              border-color: color-mix(in srgb, #d96f5f 35%, transparent);
+              transform: translateX(3px) scale(1.03);
+              box-shadow: 0 2px 8px color-mix(in srgb, #d96f5f 15%, transparent);
             }}
             .career-strip {{
               padding: 1.15rem 1.25rem 1rem;

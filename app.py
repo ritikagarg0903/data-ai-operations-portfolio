@@ -673,7 +673,6 @@ st.markdown(
         </a>
       </div>
       <p style="text-align: center; color: #716960; font-size: .78rem; margin-top: .85rem; line-height: 1.5;">
-        Portfolio built for Streamlit Community Cloud using free/open-source dependencies. No paid APIs are called at runtime.<br>
         Last updated: July 2026
       </p>
     </div>

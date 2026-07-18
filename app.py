@@ -36,7 +36,7 @@ st.markdown(
     .subhead { color: #716960; font-size: 1.08rem; line-height: 1.5; max-width: 900px; margin-bottom: .75rem; }
     .pill-row { display: flex; flex-wrap: wrap; gap: .45rem; margin: .5rem 0 .9rem; }
     .pill { border: 1px solid #ccbfb0; border-radius: 999px; padding: .38rem .7rem; font-size: .72rem; font-weight: 900; letter-spacing: .07rem; text-transform: uppercase; background: rgba(255,250,244,.75); white-space: nowrap; }
-    .hero-contact, .journey-contact { border-top: 1px solid #ded5ca; padding: .78rem 0; margin-top: .95rem; display: flex; flex-wrap: wrap; gap: .52rem; align-items: center; }
+    .hero-contact, .journey-contact { border-top: 1px solid #ded5ca; border-bottom: 1px solid #ded5ca; padding: .78rem 0; margin-top: .95rem; display: flex; flex-wrap: wrap; gap: .52rem; align-items: center; }
     .contact-label { color: #25211d; font-size: .78rem; font-weight: 900; letter-spacing: .08rem; margin-right: .15rem; text-transform: uppercase; }
     .contact-link { display: inline-flex; align-items: center; gap: .38rem; border: 1px solid #ccbfb0; border-radius: 999px; padding: .42rem .68rem; background: #fffaf4; color: #246b61 !important; font-size: .86rem; line-height: 1; }
     .contact-link svg { width: 15px; height: 15px; flex: 0 0 auto; }

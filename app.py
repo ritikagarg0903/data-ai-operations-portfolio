@@ -489,7 +489,7 @@ def render_journey_timeline(journey: list[dict]):
                 <div class="strip-title">What I've Worked On</div>
                 <div class="impact-summary">
                   <div class="impact-stat"><strong>500+</strong><span>daily updates structured through AI automation workflows</span></div>
-                  <div class="impact-stat"><strong>5,000+</strong><span>CRM and marketing records cleaned for reporting and targeting</span></div>
+                  <div class="impact-stat"><strong>$600K</strong><span>CRM and marketing records mined for customer targeting</span></div>
                   <div class="impact-stat"><strong>10+</strong><span>hours saved weekly by replacing manual review</span></div>
                   <div class="impact-stat"><strong>85%</strong><span>classification accuracy after feedback-driven tuning</span></div>
                 </div>

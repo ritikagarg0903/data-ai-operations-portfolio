@@ -519,10 +519,10 @@ journey = [
         "contribution": "Advanced training in business, data, and marketing analytics.",
     },
     {
-        "period": "Mar 2024-Jun 2025",
+        "period": "2024-2025",
         "icon": "US",
         "milestone": "Relocation and career transition",
-        "organization": "Northwestern University Kellogg + Physicians Against Red Meat",
+        "organization": "Northwestern University",
         "location": "Professional education and remote NGO contribution",
         "contribution": "Completed product management coursework at Northwestern Kellogg focused on go-to-market, product strategy, and database planning, while serving as Marketing and Communications Coordinator for Physicians Against Red Meat, a health-focused NGO, using CRM and outreach analysis to strengthen campaigns and audience targeting.",
     },

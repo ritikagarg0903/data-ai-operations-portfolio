@@ -43,7 +43,9 @@ st.markdown(
     .metric { border-top: 1px solid #ded5ca; padding: .85rem 0; }
     .metric-value { color: #d96f5f; font-size: 2rem; font-weight: 900; line-height: 1; }
     .metric-label { color: #716960; font-size: .85rem; margin-top: .4rem; }
-    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; min-height: 100%; }
+    [data-testid="stHorizontalBlock"] { align-items: stretch; }
+    [data-testid="stHorizontalBlock"] > [data-testid="stColumn"] > div { height: 100%; display: flex; flex-direction: column; }
+    .card { border: 1px solid #ded5ca; background: #fffaf4; border-radius: 8px; padding: .95rem; flex: 1; display: flex; flex-direction: column; }
     .project-heading { position: relative; min-height: 92px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
     .project-heading.with-badge { padding-right: 10.5rem; }
     .project-heading h3 { margin: .48rem 0 0; line-height: 1.1; }

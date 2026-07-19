@@ -103,30 +103,31 @@ _GROWTH = {
 _DATA = {
     "kicker": "Data Analytics Portfolio",
     "subhead": (
-        "I build analytical pipelines, executive dashboards, and data infrastructure "
-        "that turn raw operational data into leadership-ready insight. From SQL and "
-        "BigQuery to dbt and Looker Studio, I work across the modern data stack."
+        "Data Analyst with 3+ years of experience analyzing marketing, CRM, product, and "
+        "operations data using SQL, Python, Tableau, Looker Studio, and Salesforce. I build "
+        "dashboards, validate datasets, run A/B and hypothesis tests, and translate business "
+        "questions into actionable insights."
     ),
     "flagship_title": "Flagship Analytics Project",
     "stats": [
-        ("500+", "daily data points structured through automated ETL pipelines"),
-        ("90%", "faster conversion insights after Tableau + GA migration"),
-        ("5,000+", "CRM records cleaned, segmented, and analyzed"),
-        ("85%", "accuracy through iterative data quality improvements"),
+        ("$1M+", "revenue impact supported through analytics-driven campaigns"),
+        ("90%", "reduction in manual reporting after Tableau + GA migration"),
+        ("500+", "daily records structured through automated data pipelines"),
+        ("40%", "ROI improvement from data-driven campaign optimization"),
     ],
     "tbn_kicker": "The Best Notary",
-    "tbn_title": "End-to-end data pipeline and ICP scoring for 500+ daily updates",
+    "tbn_title": "Automated operations analytics pipeline for 500+ daily records",
     "tbn_bullets": [
-        "Designed a data-driven ICP framework using Python-based weighted scoring across firmographic, behavioral, and intent signals; operationalized in Salesforce CRM for segment-level targeting.",
-        "Built an end-to-end data pipeline connecting Slack, Make.com, OpenAI, Google Sheets, and Looker Studio to structure 500+ daily work updates with 85% classification accuracy.",
-        "Created a live Looker Studio dashboard showing productivity patterns, task distribution, and follow-up visibility for executive reporting.",
+        "Built an automated analytics workflow converting 500+ daily Slack updates into structured task data using Make, OpenAI APIs, and Google Sheets &mdash; Looker Studio dashboard became the primary entry point for leadership to review operational efficiency.",
+        "Designed data validation checks for missing fields, undefined categories, duplicate records, and timestamp errors. Improved classification accuracy from 60% to 85% through misclassification analysis and a human-in-the-loop feedback process.",
+        "Performed EDA in Python on performance data and built a scoring model to identify high-reliability candidates, enabling data-driven hiring decisions.",
     ],
     "rtds_kicker": "Real Time Data Services (B2B SaaS)",
-    "rtds_title": "CRM analytics and marketing data infrastructure",
+    "rtds_title": "Multi-source analytics dashboards and CRM data infrastructure",
     "rtds_bullets": [
-        "Cleaned and segmented 5,000+ Salesforce records to build trusted reporting, supporting analysis tied to $1M+ in revenue across reactivation campaigns and SEM optimization.",
-        "Migrated manual Excel-based reporting to an automated Tableau ecosystem integrated with Google Analytics, enabling stakeholders to identify conversion drivers 90% faster.",
-        "Built analytical workflows for lead scoring and trigger-based segmentation, increasing email engagement by 12% and cutting time-to-first-touch by 24 hours.",
+        "Leveraged advanced SQL (CTEs, Window Functions) to cleanse, validate, and segment 5,000+ dormant Salesforce CRM records; data quality checks and targeted campaign execution drove $600K in reactivated revenue.",
+        "Built Tableau dashboards combining GA4, Salesforce, and campaign data to monitor traffic, leads, conversions, and revenue trends &mdash; reduced weekly manual reporting time by 90%.",
+        "Analyzed A/B test and campaign performance to identify higher-converting channels, contributing to $400K revenue uplift and 40% ROI improvement; partnered cross-functionally to analyze funnel drop-offs and inform website optimization.",
     ],
     "project_order": ["transit", "hacker_news", "sales_ai", "pathfindher"],
 }

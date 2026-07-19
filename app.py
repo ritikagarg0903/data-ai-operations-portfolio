@@ -23,6 +23,10 @@ st.set_page_config(
     layout="wide",
 )
 
+from role_config import get_role_config as _get_role_config
+
+rc = _get_role_config(st.query_params.get("role", ""))
+
 st.markdown(
     """
     <style>
@@ -233,6 +237,13 @@ def render_journey_timeline(journey: list[dict]):
                 '</div>'
             )
         )
+
+    stats_html = "".join(
+        f'<div class="impact-stat"><strong>{v}</strong><span>{l}</span></div>'
+        for v, l in rc["stats"]
+    )
+    tbn_bullets_html = "".join(f"<li>{b}</li>" for b in rc["tbn_bullets"])
+    rtds_bullets_html = "".join(f"<li>{b}</li>" for b in rc["rtds_bullets"])
 
     st.markdown(
         dedent(
@@ -512,9 +523,9 @@ def render_journey_timeline(journey: list[dict]):
             <div class="journey-profile">
               <div class="journey-top">
                 <div class="journey-intro">
-                  <div class="journey-kicker">Portfolio</div>
+                  <div class="journey-kicker">{rc["kicker"]}</div>
                   <div class="journey-name">Ritika Garg</div>
-                  <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted systems, and decision dashboards that turn messy operational data into leadership-ready insight. From CRM analytics to pipeline intelligence, I leverage data so teams can move faster.</div>
+                  <div class="journey-subhead">{rc["subhead"]}</div>
                   <div class="journey-contact">
                     <a class="contact-link" href="https://github.com/ritikagarg0903" target="_blank" aria-label="GitHub profile">
                       <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.6 7.6 0 0 1 8 3.87c.68 0 1.36.09 2 .26 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
@@ -560,30 +571,23 @@ def render_journey_timeline(journey: list[dict]):
               <div class="journey-bottom">
                 <div class="strip-title">What I've Worked On</div>
                 <div class="impact-summary">
-                  <div class="impact-stat"><strong>500+</strong><span>daily updates structured through AI automation workflows</span></div>
-                  <div class="impact-stat"><strong>$600K</strong><span>CRM and marketing records mined for customer targeting</span></div>
-                  <div class="impact-stat"><strong>10+</strong><span>hours saved weekly by replacing manual review</span></div>
-                  <div class="impact-stat"><strong>85%</strong><span>classification accuracy after feedback-driven tuning</span></div>
+                  {stats_html}
                 </div>
                 <div class="experience-grid">
                   <div class="experience-card">
-                    <div class="experience-kicker">The Best Notary</div>
-                    <div class="experience-title">Slack + Make.com + OpenAI workflow for 500+ daily updates</div>
+                    <div class="experience-kicker">{rc["tbn_kicker"]}</div>
+                    <div class="experience-title">{rc["tbn_title"]}</div>
                     <div class="experience-meta">San Francisco, CA | Make.com, OpenAI, Google Sheets, Looker Studio</div>
                     <ul class="experience-list">
-                      <li>Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.</li>
-                      <li>Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.</li>
-                      <li>Created a live leadership dashboard showing productivity patterns, task distribution, and follow-up visibility, adding insights that led to more efficient business operations.</li>
+                      {tbn_bullets_html}
                     </ul>
                   </div>
                   <div class="experience-card">
-                    <div class="experience-kicker">Real Time Data Services</div>
-                    <div class="experience-title">Turned CRM and campaign data into revenue insight</div>
+                    <div class="experience-kicker">{rc["rtds_kicker"]}</div>
+                    <div class="experience-title">{rc["rtds_title"]}</div>
                     <div class="experience-meta">Delhi, India | Salesforce, Tableau, campaign analytics</div>
                     <ul class="experience-list">
-                      <li>Cleaned and segmented 5,000+ Salesforce and marketing records to improve reporting trust and sharpen audience targeting across growth campaigns.</li>
-                      <li>Supported analysis tied to $600K in reactivated revenue by connecting campaign efficiency, customer behavior, and operational decisions.</li>
-                      <li>Built workflows using trigger-based segmentation and lead scoring criteria, increasing email engagement by 12% and cutting time-to-first-touch by 24 hours.</li>
+                      {rtds_bullets_html}
                     </ul>
                   </div>
                 </div>
@@ -640,7 +644,7 @@ journey = [
 render_journey_timeline(journey)
 
 st.markdown('<div id="tbn-automation"></div>', unsafe_allow_html=True)
-st.header("Flagship Work")
+st.header(rc["flagship_title"])
 st.subheader("The Best Notary Slack Productivity Automation")
 st.write("A Slack-to-dashboard automation that turns daily work updates into structured productivity insight for leadership review.")
 
@@ -671,9 +675,8 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.header("Projects Highlights")
-d1, d2 = st.columns(2, gap="large")
-with d1:
+
+def _render_project_sales_ai():
     dashboard_card(
         "AI-Assisted Sales Pipeline Command Center",
         "Sales AI Agent",
@@ -683,7 +686,9 @@ with d1:
         img=SALES_AI_SCREENSHOT_URL,
         card_id="sales-project",
     )
-with d2:
+
+
+def _render_project_transit():
     dashboard_card(
         "Bay Area Transit Performance Monitor",
         "Operational Analytics",
@@ -694,9 +699,8 @@ with d2:
         card_id="transit-project",
     )
 
-st.markdown('<div style="height: 1.5rem;"></div>', unsafe_allow_html=True)
-d3, d4 = st.columns(2, gap="large")
-with d3:
+
+def _render_project_hacker_news():
     dashboard_card(
         "Hacker News Virality Analysis",
         "Product Analytics",
@@ -706,7 +710,9 @@ with d3:
         img=HACKER_NEWS_SCREENSHOT_URL,
         card_id="hacker-news-project",
     )
-with d4:
+
+
+def _render_project_pathfindher():
     st.markdown(
         f'''
         <div id="pathfindher-project" class="card">
@@ -732,6 +738,26 @@ with d4:
         ''',
         unsafe_allow_html=True,
     )
+
+
+_PROJECT_RENDERERS = {
+    "sales_ai": _render_project_sales_ai,
+    "transit": _render_project_transit,
+    "hacker_news": _render_project_hacker_news,
+    "pathfindher": _render_project_pathfindher,
+}
+
+st.header("Project Highlights")
+_order = rc["project_order"]
+for _i in range(0, len(_order), 2):
+    if _i > 0:
+        st.markdown('<div style="height: 1.5rem;"></div>', unsafe_allow_html=True)
+    _c1, _c2 = st.columns(2, gap="large")
+    with _c1:
+        _PROJECT_RENDERERS[_order[_i]]()
+    if _i + 1 < len(_order):
+        with _c2:
+            _PROJECT_RENDERERS[_order[_i + 1]]()
 
 st.markdown(" ")
 st.markdown('<div id="uber-clean-project"></div>', unsafe_allow_html=True)

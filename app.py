@@ -512,7 +512,7 @@ def render_journey_timeline(journey: list[dict]):
             <div class="journey-profile">
               <div class="journey-top">
                 <div class="journey-intro">
-                  <div class="journey-kicker">Career Profile</div>
+                  <div class="journey-kicker">Portfolio</div>
                   <div class="journey-name">Ritika Garg</div>
                   <div class="journey-subhead">Data, AI &amp; Operations Product Portfolio. I build automation workflows, AI-assisted systems, and decision dashboards that turn messy operational data into leadership-ready insight. From CRM analytics to pipeline intelligence, I leverage data so teams can move faster.</div>
                   <div class="journey-contact">
@@ -555,7 +555,6 @@ def render_journey_timeline(journey: list[dict]):
                 </div>
               </div>
               <div class="career-strip">
-                <div class="strip-title">Career Journey</div>
                 <div class="career-path">{"".join(path_nodes)}</div>
               </div>
               <div class="journey-bottom">

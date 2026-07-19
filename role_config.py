@@ -132,7 +132,7 @@ _DATA = {
     "project_order": ["transit", "hacker_news", "sales_ai", "pathfindher"],
 }
 
-_ROLES = {"ai": _AI, "growth": _GROWTH, "data": _DATA}
+_ROLES = {"ai": _AI, "gr": _GROWTH, "dt": _DATA, "growth": _GROWTH, "data": _DATA}
 
 
 def get_role_config(role: str) -> dict:

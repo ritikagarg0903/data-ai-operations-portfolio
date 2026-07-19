@@ -25,7 +25,9 @@ st.set_page_config(
 
 from role_config import get_role_config as _get_role_config
 
-rc = _get_role_config(st.query_params.get("role", ""))
+_params = st.query_params
+_role = next((k for k in ("ai", "gr", "dt") if k in _params), _params.get("role", ""))
+rc = _get_role_config(_role)
 
 st.markdown(
     """

@@ -24,7 +24,7 @@ _DEFAULT = {
     "tbn_bullets": [
         "Designed a data-driven ICP framework using Python-based weighted scoring across firmographic, behavioral, and intent signals; operationalized outputs in Salesforce CRM to align Sales and Marketing around high-propensity segments.",
         "Engineered a marketing automation workflow using Make.com and OpenAI API to parse 500+ daily Slack updates, eliminating 10+ hours/week of manual review while improving classification accuracy from 60% to 85%.",
-        "Built a real-time Looker Studio executive dashboard presenting productivity patterns, task distribution, and follow-up visibility directly to leadership.",
+        "Rapidly built a Clay data pipeline to enrich 500+ target law firm profiles — automating location, review, and specialization attributes into high-intent, segmented lead lists for outbound.",
     ],
     "rtds_kicker": "Real Time Data Services (B2B SaaS)",
     "rtds_title": "Drove $1M+ in revenue through data-driven campaigns",
@@ -56,7 +56,7 @@ _AI = {
     "tbn_bullets": [
         "Designed a data-driven ICP framework using Python-based weighted scoring across firmographic, behavioral, and intent signals; operationalized in Salesforce CRM for AI-assisted segment targeting.",
         "Engineered an AI pipeline using Make.com and OpenAI API to parse unstructured Slack data, classifying and routing 500+ daily work updates with 85% accuracy after iterative prompt tuning.",
-        "Built a real-time Looker Studio executive dashboard surfacing productivity patterns and performance insights directly to leadership for data-driven operational decisions.",
+        "Rapidly built a Clay data pipeline to enrich 500+ target law firm profiles — automating location, review, and specialization attributes into high-intent, segmented lead lists for outbound.",
     ],
     "rtds_kicker": "Real Time Data Services (B2B SaaS)",
     "rtds_title": "AI-assisted CRM segmentation and campaign targeting",
@@ -88,7 +88,7 @@ _GROWTH = {
     "tbn_bullets": [
         "Designed a data-driven ICP framework using Python-based weighted scoring across firmographic, behavioral, and intent signals; operationalized in Salesforce CRM to align Sales and Marketing on high-propensity segments and improve targeting precision against revenue goals.",
         "Built and iterated an automated classification pipeline processing 500+ daily signals, running hypothesis-test-measure cycles to improve accuracy from 60% to 85%, eliminating 10+ hours of weekly manual review.",
-        "Created a real-time executive dashboard surfacing productivity patterns and performance insights, enabling data-informed resource allocation and strategic decisions.",
+        "Rapidly built a Clay data pipeline to enrich 500+ target law firm profiles — automating location, review, and specialization attributes into high-intent, segmented lead lists for outbound.",
     ],
     "rtds_kicker": "Real Time Data Services (B2B SaaS)",
     "rtds_title": "Drove $1M+ revenue through lifecycle campaigns and growth experiments",
@@ -120,7 +120,7 @@ _DATA = {
     "tbn_bullets": [
         "Built an automated analytics workflow converting 500+ daily Slack updates into structured task data using Make, OpenAI APIs, and Google Sheets &mdash; Looker Studio dashboard became the primary entry point for leadership to review operational efficiency.",
         "Designed data validation checks for missing fields, undefined categories, duplicate records, and timestamp errors. Improved classification accuracy from 60% to 85% through misclassification analysis and a human-in-the-loop feedback process.",
-        "Performed EDA in Python on performance data and built a scoring model to identify high-reliability candidates, enabling data-driven hiring decisions.",
+        "Rapidly built a Clay data pipeline to enrich 500+ target law firm profiles — automating location, review, and specialization attributes into high-intent, segmented lead lists for outbound.",
     ],
     "rtds_kicker": "Real Time Data Services (B2B SaaS)",
     "rtds_title": "Multi-source analytics dashboards and CRM data infrastructure",

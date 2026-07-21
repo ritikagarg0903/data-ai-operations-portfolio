@@ -24,7 +24,7 @@ _DEFAULT = {
     "tbn_bullets": [
         "Designed an end-to-end Slack, Make.com, OpenAI, Google Sheets, and Looker Studio workflow for 500+ daily work updates.",
         "Reduced manual review by 10+ hours per week while improving classification accuracy from 60% to 85% through feedback loops.",
-        "Created a live leadership dashboard showing productivity patterns, task distribution, and follow-up visibility, adding insights that led to more efficient business operations.",
+        "Rapidly built a Clay data pipeline to enrich 500+ target law firm profiles — automating location, review, and specialization attributes into high-intent, segmented lead lists for outbound.",
     ],
     "rtds_kicker": "Real Time Data Services",
     "rtds_title": "Turned CRM and campaign data into revenue insight",

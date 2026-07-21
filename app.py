@@ -613,7 +613,7 @@ journey = [
         "period": "2025-2026",
         "icon": "MS",
         "milestone": "MS in Business Analytics",
-        "organization": "University of California, Davis - Graduate School of Management",
+        "organization": "University of California, Davis - Graduate School of Management<br><span style='font-size:.75rem;font-weight:400;opacity:.75'>(top 10% of class)</span>",
         "location": "United States",
         "contribution": "Advanced training in business, data, and marketing analytics.",
     },

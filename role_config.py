@@ -15,7 +15,7 @@ _DEFAULT = {
     "flagship_title": "Flagship Work",
     "stats": [
         ("500+", "daily updates structured through AI automation workflows"),
-        ("$1M", "CRM and marketing records mined for customer targeting"),
+        ("$1M", "total revenue driven through CRM lifecycle campaigns"),
         ("10+", "hours saved weekly by replacing manual review"),
         ("85%", "classification accuracy after feedback-driven tuning"),
     ],
